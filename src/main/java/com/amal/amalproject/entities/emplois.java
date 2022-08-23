@@ -10,19 +10,17 @@ public class emplois {
     private String secteur;
     private String ref_emploi;
     private Date date_expiration;
-    private int id_compte;
 
     public emplois() {
     }
 
-    public emplois(int id_emploi, String titre_emploi, String descriptif_emploi, String secteur, String ref_emploi, Date date_expiration, int id_compte) {
+    public emplois(int id_emploi, String titre_emploi, String descriptif_emploi, String secteur, String ref_emploi, Date date_expiration) {
         this.id_emploi = id_emploi;
         this.titre_emploi = titre_emploi;
         this.descriptif_emploi = descriptif_emploi;
         this.secteur = secteur;
         this.ref_emploi = ref_emploi;
         this.date_expiration = date_expiration;
-        this.id_compte = id_compte;
     }
 
     public int getId_emploi() {
@@ -73,25 +71,17 @@ public class emplois {
         this.date_expiration = date_expiration;
     }
 
-    public int getId_compte() {
-        return id_compte;
-    }
-
-    public void setId_compte(int id_compte) {
-        this.id_compte = id_compte;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof emplois)) return false;
         emplois emplois = (emplois) o;
-        return getId_emploi() == emplois.getId_emploi() && getId_compte() == emplois.getId_compte() && Objects.equals(getRef_emploi(), emplois.getRef_emploi());
+        return getId_emploi() == emplois.getId_emploi() && Objects.equals(getRef_emploi(), emplois.getRef_emploi());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId_emploi(), getRef_emploi(), getId_compte());
+        return Objects.hash(getId_emploi(), getRef_emploi());
     }
 
     @Override
@@ -103,7 +93,6 @@ public class emplois {
                 ", secteur='" + secteur + '\'' +
                 ", ref_emploi='" + ref_emploi + '\'' +
                 ", date_expiration=" + date_expiration +
-                ", id_compte=" + id_compte +
                 '}';
     }
 }

@@ -8,17 +8,15 @@ public class formation {
     private String theme;
     private String descriptif;
     private Date Date_publication;
-    private int id_compte;
 
     public formation() {
     }
 
-    public formation(int id_formation, String theme, String descriptif, Date date_publication, int id_compte) {
+    public formation(int id_formation, String theme, String descriptif, Date date_publication) {
         this.id_formation = id_formation;
         this.theme = theme;
         this.descriptif = descriptif;
         Date_publication = date_publication;
-        this.id_compte = id_compte;
     }
 
     public int getId_formation() {
@@ -53,25 +51,17 @@ public class formation {
         Date_publication = date_publication;
     }
 
-    public int getId_compte() {
-        return id_compte;
-    }
-
-    public void setId_compte(int id_compte) {
-        this.id_compte = id_compte;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof formation)) return false;
         formation formation = (formation) o;
-        return getId_formation() == formation.getId_formation() && getId_compte() == formation.getId_compte();
+        return getId_formation() == formation.getId_formation();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId_formation(), getId_compte());
+        return Objects.hash(getId_formation());
     }
 
     @Override
@@ -81,7 +71,6 @@ public class formation {
                 ", theme='" + theme + '\'' +
                 ", descriptif='" + descriptif + '\'' +
                 ", Date_publication=" + Date_publication +
-                ", id_compte=" + id_compte +
                 '}';
     }
 }

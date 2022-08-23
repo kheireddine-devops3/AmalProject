@@ -10,19 +10,18 @@ public class organisation {
     private int num_tel;
     private String email;
     private String adresse;
-    private int id_compte;
 
     public organisation() {
     }
 
-    public organisation(int matricule_fiscale, String nom_organisation, String forme_juridique, int num_tel, String email, String adresse, int id_compte) {
+    public organisation(int matricule_fiscale, String nom_organisation, String forme_juridique, int num_tel, String email, String adresse) {
         this.matricule_fiscale = matricule_fiscale;
         this.nom_organisation = nom_organisation;
         this.forme_juridique = forme_juridique;
         this.num_tel = num_tel;
         this.email = email;
         this.adresse = adresse;
-        this.id_compte = id_compte;
+
     }
 
     public int getMatricule_fiscale() {
@@ -73,25 +72,17 @@ public class organisation {
         this.adresse = adresse;
     }
 
-    public int getId_compte() {
-        return id_compte;
-    }
-
-    public void setId_compte(int id_compte) {
-        this.id_compte = id_compte;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof organisation)) return false;
         organisation that = (organisation) o;
-        return getMatricule_fiscale() == that.getMatricule_fiscale() && getId_compte() == that.getId_compte() && Objects.equals(getNom_organisation(), that.getNom_organisation());
+        return getMatricule_fiscale() == that.getMatricule_fiscale() && Objects.equals(getNom_organisation(), that.getNom_organisation());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMatricule_fiscale(), getNom_organisation(), getId_compte());
+        return Objects.hash(getMatricule_fiscale(), getNom_organisation());
     }
 
     @Override
@@ -103,7 +94,6 @@ public class organisation {
                 ", num_tel=" + num_tel +
                 ", email='" + email + '\'' +
                 ", adresse='" + adresse + '\'' +
-                ", id_compte=" + id_compte +
                 '}';
     }
 }

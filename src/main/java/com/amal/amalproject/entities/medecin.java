@@ -1,5 +1,6 @@
 package com.amal.amalproject.entities;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class medecin extends User {
@@ -9,11 +10,21 @@ private String specialite;
 private int id_ordre;
 private int cin;
 private String Assurance;
-private int id_user;
+
 private String inscrit_ordre;
 
     public medecin() {
         super();
+    }
+
+    public medecin(int id_user, String nom_user, String prenom_user, Date date_naissance_user, String photo_user, String email_user, int telephone_user, String sexe_user, String adresse_user, String matricule, String specialite, int id_ordre, int cin, String assurance, String inscrit_ordre) {
+        super(id_user, nom_user, prenom_user, date_naissance_user, photo_user, email_user, telephone_user, sexe_user, adresse_user);
+        this.matricule = matricule;
+        this.specialite = specialite;
+        this.id_ordre = id_ordre;
+        this.cin = cin;
+        Assurance = assurance;
+        this.inscrit_ordre = inscrit_ordre;
     }
 
     public String getMatricule() {
@@ -56,13 +67,7 @@ private String inscrit_ordre;
         Assurance = assurance;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
 
     public String getInscrit_ordre() {
         return inscrit_ordre;
@@ -78,12 +83,12 @@ private String inscrit_ordre;
         if (!(o instanceof medecin)) return false;
         if (!super.equals(o)) return false;
         medecin medecin = (medecin) o;
-        return getId_ordre() == medecin.getId_ordre() && getId_user() == medecin.getId_user() && Objects.equals(getMatricule(), medecin.getMatricule());
+        return getId_ordre() == medecin.getId_ordre() && Objects.equals(getMatricule(), medecin.getMatricule());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getMatricule(), getId_ordre(), getId_user());
+        return Objects.hash(super.hashCode(), getMatricule(), getId_ordre());
     }
 
     @Override
@@ -94,7 +99,6 @@ private String inscrit_ordre;
                 ", id_ordre=" + id_ordre +
                 ", cin=" + cin +
                 ", Assurance='" + Assurance + '\'' +
-                ", id_user=" + id_user +
                 ", inscrit_ordre='" + inscrit_ordre + '\'' +
                 ", id_user=" + id_user +
                 ", nom_user='" + nom_user + '\'' +
