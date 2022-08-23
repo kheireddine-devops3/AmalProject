@@ -8,16 +8,18 @@ public class admin {
     private String prenom;
     private String login;
     private String mot_de_passe;
+    private String image_admin;
 
     public admin() {
     }
 
-    public admin(int id_admin, String nom, String prenom, String login, String mot_de_passe) {
+    public admin(int id_admin, String nom, String prenom, String login, String mot_de_passe, String image_admin) {
         this.id_admin = id_admin;
         this.nom = nom;
         this.prenom = prenom;
         this.login = login;
         this.mot_de_passe = mot_de_passe;
+        this.image_admin = image_admin;
     }
 
     public int getId_admin() {
@@ -60,6 +62,14 @@ public class admin {
         this.mot_de_passe = mot_de_passe;
     }
 
+    public String getImage_admin() {
+        return image_admin;
+    }
+
+    public void setImage_admin(String image_admin) {
+        this.image_admin = image_admin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,6 +91,9 @@ public class admin {
                 ", prenom='" + prenom + '\'' +
                 ", login='" + login + '\'' +
                 ", mot_de_passe='" + mot_de_passe + '\'' +
+                ", image_admin='" + image_admin + '\'' +
                 '}';
     }
+
+
 }

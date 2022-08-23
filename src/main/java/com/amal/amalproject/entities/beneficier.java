@@ -24,8 +24,88 @@ public class beneficier extends User{
 
     public beneficier() {
         super();
-
     }
 
+    public int getCarte_handicap() {
+        return carte_handicap;
+    }
 
+    public void setCarte_handicap(int carte_handicap) {
+        this.carte_handicap = carte_handicap;
+    }
+
+    public Date getDate_expiration() {
+        return date_expiration;
+    }
+
+    public void setDate_expiration(Date date_expiration) {
+        this.date_expiration = date_expiration;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getCarte_img() {
+        return carte_img;
+    }
+
+    public void setCarte_img(String carte_img) {
+        this.carte_img = carte_img;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof beneficier)) return false;
+        if (!super.equals(o)) return false;
+        beneficier that = (beneficier) o;
+        return getCarte_handicap() == that.getCarte_handicap() && getId_user() == that.getId_user();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCarte_handicap(), getId_user());
+    }
+
+    @Override
+    public String toString() {
+        return "beneficier{" +
+                "carte_handicap=" + carte_handicap +
+                ", date_expiration=" + date_expiration +
+                ", id_user=" + id_user +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", carte_img='" + carte_img + '\'' +
+                ", id_user=" + id_user +
+                ", nom_user='" + nom_user + '\'' +
+                ", prenom_user='" + prenom_user + '\'' +
+                ", date_naissance_user=" + date_naissance_user +
+                ", photo_user='" + photo_user + '\'' +
+                ", email_user='" + email_user + '\'' +
+                ", telephone_user=" + telephone_user +
+                ", sexe_user='" + sexe_user + '\'' +
+                ", adresse_user='" + adresse_user + '\'' +
+                '}';
+    }
 }
