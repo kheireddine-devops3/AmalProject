@@ -3,11 +3,11 @@ package com.amal.amalproject.entities;
 import java.util.Objects;
 
 public class dons {
-    private int id_dons;
-    private String libele_dons;
-    private String description_dons;
-    private String  photo_produit_dons;
-    private String type_dons;
+    private static int id_dons;
+    private static String libele_dons;
+    private static String description_dons;
+    private static String  photo_produit_dons;
+    private static String type_dons;
 
     public dons() {
     }
@@ -20,6 +20,16 @@ public class dons {
         this.type_dons = type_dons;
     }
 
+    public dons(String libele_dons, String description_dons, String photo_produit_dons, String type_dons) {
+        
+        this.libele_dons = libele_dons;
+        this.description_dons = description_dons;
+        this.photo_produit_dons = photo_produit_dons;
+        this.type_dons = type_dons;
+    }
+
+
+
     public int getId_dons() {
         return id_dons;
     }
@@ -28,7 +38,7 @@ public class dons {
         this.id_dons = id_dons;
     }
 
-    public String getLibele_dons() {
+    public static String getLibele_dons() {
         return libele_dons;
     }
 
@@ -36,7 +46,7 @@ public class dons {
         this.libele_dons = libele_dons;
     }
 
-    public String getDescription_dons() {
+    public static String getDescription_dons() {
         return description_dons;
     }
 
@@ -44,7 +54,7 @@ public class dons {
         this.description_dons = description_dons;
     }
 
-    public String getPhoto_produit_dons() {
+    public static String getPhoto_produit_dons() {
         return photo_produit_dons;
     }
 
@@ -52,7 +62,7 @@ public class dons {
         this.photo_produit_dons = photo_produit_dons;
     }
 
-    public String getType_dons() {
+    public static String getType_dons() {
         return type_dons;
     }
 
