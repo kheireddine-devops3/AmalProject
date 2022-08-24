@@ -18,13 +18,13 @@ public class DonsModel implements IDonsModel{
     public dons addDons(dons DON) {
         try {
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `dons`(`id_dons`, `libele_dons`, `description_dons`, `photo_produit_dons`, `type_dons`, `id_compte`) VALUES (NULL,?,?,?,?,?,NULL)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `dons`(`id_dons`, `libele_dons`, `description_dons`, `photo_produit_dons`, `type_dons`, `id_compte`) VALUES (NULL,?,?,?,?,NULL)");
 
 
-            ps.setString(2,dons.getLibele_dons());
+            ps.setString(1,dons.getLibele_dons());
             ps.setString(2,dons.getDescription_dons());
-            ps.setString(2,dons.getPhoto_produit_dons());
-            ps.setString(2,dons.getType_dons());
+            ps.setString(3,dons.getPhoto_produit_dons());
+            ps.setString(4,dons.getType_dons());
 
             int n = ps.executeUpdate();
 

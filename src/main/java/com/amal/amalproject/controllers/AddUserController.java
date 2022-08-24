@@ -31,7 +31,7 @@
         //for (User u: userModel.getAllUsers()) {
           //  System.out.println(u);
 //        }
->>>>>>> haythem
+
 
   //  }
 //}
