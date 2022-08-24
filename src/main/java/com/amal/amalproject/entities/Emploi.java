@@ -9,7 +9,7 @@ public class Emploi {
     private String descriptif_emploi;
     private String secteur;
     private String ref_emploi;
-    private Date date_expiration;
+    private String date_expiration;
 	public int getId_emploi() {
 		return id_emploi;
 	}
@@ -40,10 +40,10 @@ public class Emploi {
 	public void setRef_emploi(String ref_emploi) {
 		this.ref_emploi = ref_emploi;
 	}
-	public Date getDate_expiration() {
+	public String getDate_expiration() {
 		return date_expiration;
 	}
-	public void setDate_expiration(Date date_expiration) {
+	public void setDate_expiration(String date_expiration) {
 		this.date_expiration = date_expiration;
 	}
 	@Override
@@ -56,7 +56,7 @@ public class Emploi {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id_emploi;
+		result = prime * result + ((ref_emploi == null) ? 0 : ref_emploi.hashCode());
 		return result;
 	}
 	@Override
@@ -68,10 +68,33 @@ public class Emploi {
 		if (getClass() != obj.getClass())
 			return false;
 		Emploi other = (Emploi) obj;
-		if (id_emploi != other.id_emploi)
+		if (ref_emploi == null) {
+			if (other.ref_emploi != null)
+				return false;
+		} else if (!ref_emploi.equals(other.ref_emploi))
 			return false;
 		return true;
 	}
+	public Emploi(int id_emploi, String titre_emploi, String descriptif_emploi, String secteur, String ref_emploi,
+			String date_expiration) {
+		
+		this.id_emploi = id_emploi;
+		this.titre_emploi = titre_emploi;
+		this.descriptif_emploi = descriptif_emploi;
+		this.secteur = secteur;
+		this.ref_emploi = ref_emploi;
+		this.date_expiration = date_expiration;
+	}
+	public Emploi(String titre_emploi, String descriptif_emploi, String secteur, String ref_emploi,
+			String date_expiration) {
+		
+		this.titre_emploi = titre_emploi;
+		this.descriptif_emploi = descriptif_emploi;
+		this.secteur = secteur;
+		this.ref_emploi = ref_emploi;
+		this.date_expiration = date_expiration;
+	}
+	
 
 
 

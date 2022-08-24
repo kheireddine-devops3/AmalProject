@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="613.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddEmploiController">
+   <children>
+      <Label layoutX="61.0" layoutY="42.0" text="titre" />
+      <Label layoutX="63.0" layoutY="103.0" text="secteur" />
+      <Label layoutX="63.0" layoutY="178.0" text="référence" />
+      <Label layoutX="63.0" layoutY="244.0" text="date expiration" />
+      <Label layoutX="57.0" layoutY="401.0" text="description" />
+      <TextField fx:id="txttitre" layoutX="183.0" layoutY="21.0" prefHeight="31.0" prefWidth="487.0" />
+      <TextField fx:id="txtsecteur" layoutX="183.0" layoutY="98.0" prefHeight="31.0" prefWidth="487.0" />
+      <TextField fx:id="txtref" layoutX="183.0" layoutY="173.0" prefHeight="31.0" prefWidth="487.0" />
+      <TextField fx:id="txtdate" layoutX="190.0" layoutY="239.0" prefHeight="31.0" prefWidth="478.0" />
+      <TextArea fx:id="txtdesc" layoutX="188.0" layoutY="311.0" prefHeight="200.0" prefWidth="478.0" />
+      <Button fx:id="btnadd" layoutX="373.0" layoutY="547.0" mnemonicParsing="false" onAction="#onAddEmploiClick" prefHeight="31.0" prefWidth="100.0" text="add" />
+   </children>
+</AnchorPane>
