@@ -1,6 +1,7 @@
 package com.amal.amalproject.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Emploi {
 	
@@ -9,7 +10,7 @@ public class Emploi {
     private String descriptif_emploi;
     private String secteur;
     private String ref_emploi;
-    private String date_expiration;
+    private Date date_expiration;
 	public int getId_emploi() {
 		return id_emploi;
 	}
@@ -40,10 +41,10 @@ public class Emploi {
 	public void setRef_emploi(String ref_emploi) {
 		this.ref_emploi = ref_emploi;
 	}
-	public String getDate_expiration() {
+	public Date getDate_expiration() {
 		return date_expiration;
 	}
-	public void setDate_expiration(String date_expiration) {
+	public void setDate_expiration(Date date_expiration) {
 		this.date_expiration = date_expiration;
 	}
 	@Override
@@ -76,7 +77,7 @@ public class Emploi {
 		return true;
 	}
 	public Emploi(int id_emploi, String titre_emploi, String descriptif_emploi, String secteur, String ref_emploi,
-			String date_expiration) {
+			Date date_expiration) {
 		
 		this.id_emploi = id_emploi;
 		this.titre_emploi = titre_emploi;
@@ -86,7 +87,7 @@ public class Emploi {
 		this.date_expiration = date_expiration;
 	}
 	public Emploi(String titre_emploi, String descriptif_emploi, String secteur, String ref_emploi,
-			String date_expiration) {
+			Date date_expiration) {
 		
 		this.titre_emploi = titre_emploi;
 		this.descriptif_emploi = descriptif_emploi;

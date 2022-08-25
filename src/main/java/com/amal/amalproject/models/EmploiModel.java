@@ -3,9 +3,14 @@ import com.amal.amalproject.entities.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,14 +21,16 @@ public class EmploiModel implements Iservice <Emploi>{
 	@Override
 	public void add(Emploi t) {
 		  try {
-
+			   
 	            PreparedStatement ps = connection.prepareStatement("INSERT INTO emplois(ID_EMPLOI,TITRE_EMPLOI,DESCRIPTIF_EMPLOI,SECTEUR,REF_EMPLOI,DATE_EXPIRATION,ID_COMPTE) VALUES (NULL,?,?,?,?,?,NUll)");
 
 	            ps.setString(1,t.getTitre_emploi());
 	            ps.setString(2,t.getDescriptif_emploi());
 	            ps.setString(3,t.getSecteur());
 	            ps.setString(4, t.getRef_emploi());
-	            ps.setString(5, t.getDate_expiration());
+	            ps.setDate(5, t.getDate_expiration());
+	           
+	         //  ps.setString(5, t.getDate_expiration());
 
 	            int n = ps.executeUpdate();
 
@@ -59,9 +66,9 @@ public class EmploiModel implements Iservice <Emploi>{
                 String descriptif_emploi = resultSet.getString("descriptif_emploi");
                 String secteur = resultSet.getString("secteur");
                 String ref_emploi = resultSet.getString("ref_emploi");
-                String date_expiration = resultSet.getString("date_expiration");
+                Date date_expiration = resultSet.getDate("date_expiration");
                
-                emplois.add(new Emploi (titre_emploi, descriptif_emploi,secteur,ref_emploi,date_expiration));
+                emplois.add(new Emploi (titre_emploi, descriptif_emploi,secteur,ref_emploi,(java.sql.Date) date_expiration));
 
             }
 
