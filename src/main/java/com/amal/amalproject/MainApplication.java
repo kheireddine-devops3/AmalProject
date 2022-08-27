@@ -2,28 +2,46 @@ package com.amal.amalproject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class MainApplication extends Application {
 
     private Stage stage;
+    private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-user-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        scene = new Scene(new BorderPane(), 1000, 800);
+        loadView("login-view");
         stage.setTitle("Amal Application");
         stage.setScene(scene);
+//        stage.setResizable(true);
         stage.show();
     }
+    public static void loadView(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
 
+        URL url = MainApplication.class.getResource(fxml + ".css");
+        if (url != null) {
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(url.toExternalForm());
+        }
+    }
 
-
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
 
     public static void main(String[] args) {
         launch();
     }
 }
+
+
