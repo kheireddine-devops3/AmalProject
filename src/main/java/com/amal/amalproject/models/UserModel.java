@@ -97,6 +97,7 @@ public class UserModel implements IUserModel {
 
             } else {
                 System.out.println("ERROR-GET-COMPTE-BY-LOGIN");
+                System.out.println(resultSet.next());
             }
 
             ps.close();
@@ -249,5 +250,42 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return medecin;
+    }
+
+    @Override
+    public Organization addOrganization(Organization organization) {
+        try {
+
+            Compte compte = this.addCompte(organization.getCompte());
+            System.out.println(compte);
+            Compte savedCompte = this.getCompteByLogin(compte.getLogin());
+            System.out.println(savedCompte);
+
+            organization.setUserId(savedCompte.getCompteId());
+
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `organisation` (`matricule_fiscale`, `nom_organisation`, `forme_juridique`, `num_tel`, `email`, `adresse`, `id_compte`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+
+            ps.setString(1,organization.getMatriculeFiscale());
+            ps.setString(2,organization.getNom());
+            ps.setString(3,organization.getFormJuridique());
+            ps.setString(4,organization.getNumPhone());
+            ps.setString(5,organization.getEmail());
+            ps.setString(6,organization.getAdresse());
+            ps.setInt(7,organization.getUserId());
+
+            int n = ps.executeUpdate();
+
+            if(n == 1) {
+                System.out.println("SUCCESS-ADD-ORGANIZATION");
+            } else {
+                System.out.println("ERROR-ADD-ORGANIZATION");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return organization;
     }
 }

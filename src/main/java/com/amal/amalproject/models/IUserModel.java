@@ -16,4 +16,5 @@ public interface IUserModel {
     List<User> getAllUsers();
     User getUserById(int userId);
     Medecin addMedecin(Medecin medecin);
+    Organization addOrganization(Organization organization);
 }
