@@ -1,9 +1,6 @@
 package com.amal.amalproject.models;
 
-import com.amal.amalproject.entities.Compte;
-import com.amal.amalproject.entities.Medecin;
-import com.amal.amalproject.entities.Organization;
-import com.amal.amalproject.entities.User;
+import com.amal.amalproject.entities.*;
 import com.amal.amalproject.utils.DBConnection;
 
 import java.sql.*;
@@ -257,7 +254,6 @@ public class UserModel implements IUserModel {
         try {
 
             Compte compte = this.addCompte(organization.getCompte());
-            System.out.println(compte);
             Compte savedCompte = this.getCompteByLogin(compte.getLogin());
             System.out.println(savedCompte);
 
@@ -287,5 +283,40 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return organization;
+    }
+
+    @Override
+    public Beneficier addBeneficier(Beneficier beneficier) {
+        try {
+
+            Compte compte = this.addCompte(beneficier.getCompte());
+            Compte savedCompte = this.getCompteByLogin(compte.getLogin());
+            System.out.println(savedCompte);
+            beneficier.setUserId(savedCompte.getCompteId());
+            User user = this.addUser(beneficier);
+            User savedUser = this.getUserById(user.getUserId());
+            System.out.println(savedUser);
+            beneficier.setUserId(savedUser.getUserId());
+
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `beneficier` (`carte_handicap`, `date_expiration`, `id_user`) VALUES (?, ?, ?);");
+
+            ps.setString(1,beneficier.getCarteHandicapNumber());
+            ps.setDate(2,beneficier.getDateExpiration() != null ? Date.valueOf(beneficier.getDateExpiration()) : null);
+            ps.setInt(3,beneficier.getUserId());
+
+            int n = ps.executeUpdate();
+
+            if(n == 1) {
+                System.out.println("SUCCESS-ADD-BENEFICIER");
+            } else {
+                System.out.println("ERROR-ADD-BENEFICIER");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return beneficier;
     }
 }

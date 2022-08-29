@@ -1,9 +1,6 @@
 package com.amal.amalproject.models;
 
-import com.amal.amalproject.entities.Compte;
-import com.amal.amalproject.entities.Medecin;
-import com.amal.amalproject.entities.Organization;
-import com.amal.amalproject.entities.User;
+import com.amal.amalproject.entities.*;
 
 import java.util.List;
 
@@ -17,4 +14,5 @@ public interface IUserModel {
     User getUserById(int userId);
     Medecin addMedecin(Medecin medecin);
     Organization addOrganization(Organization organization);
+    Beneficier addBeneficier(Beneficier beneficier);
 }
