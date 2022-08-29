@@ -2,6 +2,7 @@ package com.amal.amalproject.models;
 
 import com.amal.amalproject.entities.*;
 import com.amal.amalproject.utils.DBConnection;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class UserModel implements IUserModel {
 
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
             ps.setString(1,username);
-            ps.setString(2,password);
+            ps.setString(2,DigestUtils.sha256Hex(password));
 
             ResultSet resultSet = ps.executeQuery();
 
@@ -47,10 +48,9 @@ public class UserModel implements IUserModel {
     @Override
     public Compte addCompte(Compte compte) {
         try {
-
             PreparedStatement ps = connection.prepareStatement("INSERT INTO `compte` (`id_compte`, `login`, `password`, `role`, `status`) VALUES (NULL, ?, ?, ?, ?);");
             ps.setString(1,compte.getLogin());
-            ps.setString(2,compte.getPassword());
+            ps.setString(2, DigestUtils.sha256Hex(compte.getPassword()));
             ps.setString(3,compte.getRole());
             ps.setString(4,compte.getStatus());
 
@@ -215,11 +215,10 @@ public class UserModel implements IUserModel {
         try {
 
             Compte compte = this.addCompte(medecin.getCompte());
-            System.out.println(compte);
             Compte savedCompte = this.getCompteByLogin(compte.getLogin());
             System.out.println(savedCompte);
-            User user = this.addUser(medecin);
             medecin.setUserId(savedCompte.getCompteId());
+            User user = this.addUser(medecin);
             User savedUser = this.getUserById(user.getUserId());
             System.out.println(savedUser);
             medecin.setUserId(savedUser.getUserId());
