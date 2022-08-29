@@ -8,7 +8,7 @@ import com.amal.amalproject.entities.User;
 import java.util.List;
 
 public interface IUserModel {
-
+    Compte login(String username, String password);
     Compte addCompte(Compte compte);
     Compte getCompteByLogin(String login);
     User addUser(User user);

@@ -14,6 +14,40 @@ public class UserModel implements IUserModel {
     Connection connection = DBConnection.getConnection();
 
     @Override
+    public Compte login(String username, String password) {
+        Compte compte = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
+            ps.setString(1,username);
+            ps.setString(2,password);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                compte = new Compte();
+
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setPassword(resultSet.getString("password"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                System.out.println("SUCCESS-GET-COMPTE-BY-LOGIN");
+
+            } else {
+                System.out.println("ERROR-GET-COMPTE-BY-LOGIN");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return compte;
+    }
+
+    @Override
     public Compte addCompte(Compte compte) {
         try {
 
