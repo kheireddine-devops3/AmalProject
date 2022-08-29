@@ -1,0 +1,8 @@
+.header-text {
+    -fx-padding: 1em;
+    -fx-font-size: 38px;
+    -fx-color: tomato;
+    -fx-pref-height: 250px;
+    -fx-pref-width: Infinity;
+    -fx-background-color: #ffffff;
+}
