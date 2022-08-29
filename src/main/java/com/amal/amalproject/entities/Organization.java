@@ -1,6 +1,8 @@
 package com.amal.amalproject.entities;
 
 public class Organization {
+
+    private int userId;
     private String matriculeFiscale;
     private String nom;
     private String formJuridique;
@@ -17,6 +19,13 @@ public class Organization {
 
 
     /* Start Section Getters & Setters */
+
+    public int getUserId() {
+        return userId;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
     public String getMatriculeFiscale() {
         return matriculeFiscale;
     }
