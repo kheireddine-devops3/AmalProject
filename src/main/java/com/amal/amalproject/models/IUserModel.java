@@ -15,4 +15,5 @@ public interface IUserModel {
     User editUser(User userUpdated,int userId);
     List<User> getAllUsers();
     User getUserById(int userId);
+    Medecin addMedecin(Medecin medecin);
 }

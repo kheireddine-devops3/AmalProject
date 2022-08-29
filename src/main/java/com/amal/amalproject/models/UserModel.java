@@ -211,4 +211,43 @@ public class UserModel implements IUserModel {
         }
         return user;
     }
+
+    @Override
+    public Medecin addMedecin(Medecin medecin) {
+        try {
+
+            Compte compte = this.addCompte(medecin.getCompte());
+            System.out.println(compte);
+            Compte savedCompte = this.getCompteByLogin(compte.getLogin());
+            System.out.println(savedCompte);
+            User user = this.addUser(medecin);
+            medecin.setUserId(savedCompte.getCompteId());
+            User savedUser = this.getUserById(user.getUserId());
+            System.out.println(savedUser);
+            medecin.setUserId(savedUser.getUserId());
+
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `medecin` (`id_user`,`matricule`, `specialite`, `id_ordre`, `cin`, `Assurance`) VALUES (?, ?, ?, ?, ?, ?);");
+
+            ps.setInt(1,medecin.getUserId());
+            ps.setString(2,medecin.getMatricule());
+            ps.setString(3,medecin.getSpecialite());
+            ps.setInt(4,500);
+            ps.setString(5,"98989898");
+            ps.setString(6,medecin.getAssurance());
+
+            int n = ps.executeUpdate();
+
+            if(n == 1) {
+                System.out.println("SUCCESS-ADD-DOCTOR");
+            } else {
+                System.out.println("ERROR-ADD-DOCTOR");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return medecin;
+    }
 }
