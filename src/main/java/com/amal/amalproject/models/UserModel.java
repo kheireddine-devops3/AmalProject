@@ -318,4 +318,38 @@ public class UserModel implements IUserModel {
         }
         return beneficier;
     }
+
+    @Override
+    public Benevole addBenevole(Benevole benevole) {
+        try {
+
+            Compte compte = this.addCompte(benevole.getCompte());
+            Compte savedCompte = this.getCompteByLogin(compte.getLogin());
+            System.out.println(savedCompte);
+            benevole.setUserId(savedCompte.getCompteId());
+            User user = this.addUser(benevole);
+            User savedUser = this.getUserById(user.getUserId());
+            System.out.println(savedUser);
+            benevole.setUserId(savedUser.getUserId());
+
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `benevole` (`profession`, `id_user`) VALUES (?, ?);");
+
+            ps.setString(1,benevole.getProfession());
+            ps.setInt(2,benevole.getUserId());
+
+            int n = ps.executeUpdate();
+
+            if(n == 1) {
+                System.out.println("SUCCESS-ADD-BENEVOLE");
+            } else {
+                System.out.println("ERROR-ADD-BENEVOLE");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return benevole;
+    }
 }

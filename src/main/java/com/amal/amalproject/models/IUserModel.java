@@ -15,4 +15,5 @@ public interface IUserModel {
     Medecin addMedecin(Medecin medecin);
     Organization addOrganization(Organization organization);
     Beneficier addBeneficier(Beneficier beneficier);
+    Benevole addBenevole(Benevole benevole);
 }
