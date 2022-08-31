@@ -42,3 +42,10 @@ TextField , PasswordField {
 .add-doctor-buttons Button {
     -fx-padding: 0.5em 2em;
 }
+.error-label {
+    -fx-text-fill: tomato;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+    -fx-wrap-text: true;
+    -fx-label: 0.5em;
+}

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.image.ImageView?>
-        <!-- maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0"  -->
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="container" fx:controller="com.amal.amalproject.controllers.CompteController"  xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<!-- maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0"  -->
+
+<BorderPane styleClass="container" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddMedecinController">
     <top>
         <VBox styleClass="add-doctor-header">
-            <Label text=""></Label>
+            <Label text="" />
         </VBox>
     </top>
     <center>
@@ -40,57 +40,64 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
 
-                <Label text="Nom *" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <TextField promptText="Tapez votre nom" fx:id="firstNameID" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Nom *" GridPane.columnIndex="0" />
+                <TextField fx:id="firstNameID" promptText="Tapez votre nom" GridPane.columnIndex="1" />
 
-                <Label text="Prénom *" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <TextField promptText="Tapez votre prénom" fx:id="lastNameID" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Prénom *" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="lastNameID" promptText="Tapez votre prénom" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <Label text="Nom d'utilisateur" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-                <TextField promptText="Tapez votre username" fx:id="loginID" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                <Label text="Nom d'utilisateur" GridPane.columnIndex="2" />
+                <TextField fx:id="loginID" promptText="Tapez votre username" GridPane.columnIndex="3" />
 
-                <Label text="Mot de passe" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                <PasswordField promptText="Tapez votre Mot de passe" fx:id="passwordID" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                <Label text="Mot de passe" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <PasswordField fx:id="passwordID" promptText="Tapez votre Mot de passe" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
-                <Label text="Adresse mail *" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                <TextField promptText="Tapez votre adresse mail" fx:id="emailID" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="Adresse mail *" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <TextField fx:id="emailID" promptText="Tapez votre adresse mail" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-                <Label text="Sexe" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                <HBox styleClass="radio-sexe" alignment="CENTER_LEFT" spacing="10.0" nodeOrientation="LEFT_TO_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+                <Label text="Sexe" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0" styleClass="radio-sexe" GridPane.columnIndex="1" GridPane.rowIndex="6">
                     <children>
-                        <RadioButton mnemonicParsing="false" fx:id="maleRadioID" text="Male" userData="GENDER_MALE" BorderPane.alignment="CENTER">
+                        <RadioButton fx:id="maleRadioID" mnemonicParsing="false" text="Male" userData="GENDER_MALE" BorderPane.alignment="CENTER">
                             <toggleGroup>
-                                <ToggleGroup fx:id="sexeGroupID"/>
+                                <ToggleGroup fx:id="sexeGroupID" />
                             </toggleGroup>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" fx:id="femaleRadioID" text="Female" userData="GENDER_FEMALE" BorderPane.alignment="CENTER">
+                        <RadioButton fx:id="femaleRadioID" mnemonicParsing="false" text="Female" userData="GENDER_FEMALE" BorderPane.alignment="CENTER">
                             <toggleGroup>
-                                <fx:reference source="sexeGroupID"/>
+                                <fx:reference source="sexeGroupID" />
                             </toggleGroup>
                         </RadioButton>
                     </children>
                 </HBox>
 
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="4" text="Date de naissance"/>
-                <DatePicker promptText="Tapez votre date de naissance" GridPane.columnIndex="1" GridPane.rowIndex="4" maxWidth="Infinity" fx:id="dateNaissanceID" />
+                <Label text="Date de naissance" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                <DatePicker fx:id="dateNaissanceID" maxWidth="Infinity" promptText="Tapez votre date de naissance" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="5" text="Téléphone Mobile *"/>
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="telephoneID" promptText="Tapez votre numéro mobile"/>
+                <Label text="Téléphone Mobile *" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                <TextField fx:id="telephoneID" promptText="Tapez votre numéro mobile" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="6" text="Adresse"/>
-                <TextField promptText="Tapez votre adresse professionnelle" GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="adresseID"/>
+                <Label text="Adresse" GridPane.rowIndex="12" />
+                <TextField fx:id="adresseID" promptText="Tapez votre adresse professionnelle" GridPane.columnIndex="1" GridPane.rowIndex="12" />
 
-                <Label text="Spécialité *"  GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-                <ComboBox promptText="Sélectionnez votre spécialité" GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="specialiteID" maxWidth="Infinity" prefWidth="150.0" BorderPane.alignment="CENTER" >
+                <Label text="Spécialité *" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                <ComboBox fx:id="specialiteID" maxWidth="Infinity" prefWidth="150.0" promptText="Sélectionnez votre spécialité" BorderPane.alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="6">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
 <!--                            <String fx:value="Sélectionnez votre spécialité"/>-->
@@ -98,28 +105,41 @@
                     </items>
                 </ComboBox>
 
-                <Label text="CIN" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-                <TextField promptText="Tapez votre numéro C.I.N" fx:id="cinID" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                <Label text="CIN" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                <TextField fx:id="cinID" promptText="Tapez votre numéro C.I.N" GridPane.columnIndex="3" GridPane.rowIndex="8" />
 
-                <Label text="Matricule" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-                <TextField promptText="Tapez votre assurance" fx:id="matriculeID" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                <Label text="Matricule" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                <TextField fx:id="matriculeID" promptText="Tapez votre assurance" GridPane.columnIndex="3" GridPane.rowIndex="10" />
 
-                <Label text="Assurance" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                <ComboBox promptText="Sélectionner votre assurance" GridPane.columnIndex="3" GridPane.rowIndex="6" fx:id="assuranceID" maxWidth="Infinity" prefWidth="150.0" BorderPane.alignment="CENTER" >
+                <Label text="Assurance" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                <ComboBox fx:id="assuranceID" maxWidth="Infinity" prefWidth="150.0" promptText="Sélectionner votre assurance" BorderPane.alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="12">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="ASSURANCE 1"/>
-                            <String fx:value="ASSURANCE 2"/>
+                            <String fx:value="ASSURANCE 1" />
+                            <String fx:value="ASSURANCE 2" />
                         </FXCollections>
                     </items>
                 </ComboBox>
+            <Label fx:id="errorLoginID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="errorFirstNameID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="errorPasswordID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label fx:id="errorLastNameID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="errorEmailID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="errorSexeGroupID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="errorDateNaissanceID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="errorTelephoneID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label fx:id="errorAdresseID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label fx:id="errorSpecialiteID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Label fx:id="errorCinID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Label fx:id="errorMatriculeID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+            <Label fx:id="errorAssuranceID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="13" />
             </children>
         </GridPane>
     </center>
     <bottom>
         <ButtonBar styleClass="add-doctor-buttons">
             <buttons>
-                <Button mnemonicParsing="false" text="S'inscrire" onAction="#onAddDoctorClick"/>
+                <Button mnemonicParsing="false" onAction="#onAddDoctorClick" text="S'inscrire" />
             </buttons>
         </ButtonBar>
 <!--                <Button text="Add Photo" onAction="#onAddPhotoClick"/>-->
