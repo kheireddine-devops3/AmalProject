@@ -1,0 +1,43 @@
+.container {
+    -fx-background-color: #1F4690;
+}
+.sidebar {
+    -fx-background-color: #1F4690;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 300px;
+}
+.toolbar {
+    -fx-background-color: #1F4690;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-height: 60px;
+    -fx-padding: 1em;
+}
+.sidebar Button {
+
+    -fx-pref-height: 50px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+.sidebar .seprator {
+    -fx-padding: 2em 0.5em;
+}
+.avatar {
+    -fx-background-color: tomato;
+    -fx-padding: 2em;
+}
+.views {
+
+    /*-fx-pref-height: 500px;*/
+    /*-fx-pref-width: 100%;*/
+    /*-fx-padding: 2em;*/
+}
+
+.button-logout {
+    /*-fx-text-fill: #1F4690;*/
+    /*-fx-background-color: #FFFFFF;*/
+    -fx-cursor: hand;
+}
+
+.button-logout:hover {
+    -fx-text-fill: red;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Separator?>
+<GridPane fx:controller="com.amal.amalproject.controllers.UserHomeController" styleClass="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+  <columnConstraints>
+      <ColumnConstraints hgrow="NEVER" minWidth="300.0" prefWidth="300.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="700.0" prefWidth="700.0" />
+<!--      <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />-->
+<!--      <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />-->
+<!--      <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />-->
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="NEVER" />
+    <RowConstraints minHeight="400.0" prefHeight="400.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox styleClass="sidebar" prefHeight="225.0" prefWidth="120.0" GridPane.rowSpan="3"  alignment="TOP_CENTER" >
+          <children>
+              <ImageView styleClass="avatar" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../../../images/unknown-user.jpg" />
+                  </image>
+              </ImageView>
+              <Separator styleClass="seprator" maxWidth="Infinity" />
+              <Button alignment="CENTER_LEFT" maxWidth="Infinity" userData="MENU_RENDEZ_VOUS_VIEW" onAction="#onMenuItemAction" text="Rendez-vous"/>
+              <Button alignment="CENTER_LEFT" maxWidth="Infinity" userData="MENU_INSCRIPTION_DOCTOR_VIEW" onAction="#onMenuItemAction" text="Doctor Inscription"/>
+              <Button alignment="CENTER_LEFT" maxWidth="Infinity" userData="MENU_CHOOSE_INSCRIPTION_VIEW" onAction="#onMenuItemAction" text="Choose Inscription"/>
+              <Button alignment="CENTER_LEFT" maxWidth="Infinity" userData="MENU_LOGIN_VIEW" onAction="#onMenuItemAction" text="LogIn"/>
+          </children>
+      </VBox>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" styleClass="toolbar" prefHeight="60.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.columnSpan="4">
+          <items>
+              <Button styleClass="button-logout" mnemonicParsing="false" >
+                  <graphic>
+                      <ImageView>
+                          <Image url="@../../../images/logout-32x32.png"/>
+                      </ImageView>
+                  </graphic>
+              </Button>
+          </items>
+      </ToolBar>
+      <ScrollPane fitToWidth="true" fitToHeight="true" fx:id="viewsID" prefHeight="Infinity" prefWidth="Infinity" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1" >
+      </ScrollPane>
+   </children>
+</GridPane>
