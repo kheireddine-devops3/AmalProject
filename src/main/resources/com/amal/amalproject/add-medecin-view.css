@@ -3,7 +3,6 @@
     -fx-pref-width: 1000.0;
 }
 .register-doctor-button {
-
     -fx-border-radius: 50%;
     -fx-background-image: url("./../../../images/volunteer.png");
     -fx-background-repeat: no-repeat;
