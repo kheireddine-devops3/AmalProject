@@ -16,4 +16,9 @@ public interface IUserModel {
     Organization addOrganization(Organization organization);
     Beneficier addBeneficier(Beneficier beneficier);
     Benevole addBenevole(Benevole benevole);
+    boolean existsCompteByLogin(String login);
+    boolean existsUserByEmail(String email);
+    boolean existsUserByTelephone(String telephone);
+    boolean existsMedecinByCIN(String cin);
+    boolean existsMedecinByMatricule(String matricule);
 }

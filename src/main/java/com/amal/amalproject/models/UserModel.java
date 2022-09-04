@@ -15,7 +15,7 @@ public class UserModel implements IUserModel {
     public Compte login(String username, String password) {
         Compte compte = null;
         try {
-
+            System.out.println("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
             ps.setString(1,username);
             ps.setString(2,DigestUtils.sha256Hex(password));
@@ -229,7 +229,7 @@ public class UserModel implements IUserModel {
             ps.setString(2,medecin.getMatricule());
             ps.setString(3,medecin.getSpecialite());
             ps.setInt(4,500);
-            ps.setString(5,"98989898");
+            ps.setString(5,medecin.getCin());
             ps.setString(6,medecin.getAssurance());
 
             int n = ps.executeUpdate();
@@ -351,5 +351,157 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return benevole;
+    }
+
+    @Override
+    public boolean existsCompteByLogin(String login) {
+        int nb = 0;
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT count(*) AS NB_COMPTES FROM `compte` WHERE `login`=?;");
+            ps.setString(1,login);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                nb = resultSet.getInt("NB_COMPTES");
+                System.out.println("NB_COMPTES : "+ nb);
+
+                System.out.println("SUCCESS-GET-COMPTE-BY-LOGIN");
+
+            } else {
+                System.out.println("ERROR-GET-COMPTE-BY-LOGIN");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return nb != 0 ? true : false;
+    }
+
+    @Override
+    public boolean existsUserByEmail(String email) {
+        int nb = 0;
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT SUM(RESULAT.NB_USERS) AS NB_USERS FROM (SELECT count(*) AS NB_USERS FROM `organisation` WHERE `email`=? UNION ALL SELECT count(*) AS NB_USERS FROM `user` WHERE `email_user`=?) AS RESULAT;");
+            ps.setString(1,email);
+            ps.setString(2,email);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                nb = resultSet.getInt("NB_USERS");
+                System.out.println("NB_USERS : "+ nb);
+
+                System.out.println("SUCCESS-GET-USER-BY-EMAIL");
+
+            } else {
+                System.out.println("ERROR-GET-USER-BY-EMAIL");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return nb != 0 ? true : false;
+    }
+
+    @Override
+    public boolean existsUserByTelephone(String telephone) {
+        int nb = 0;
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT SUM(RESULAT.NB_USERS) AS NB_USERS FROM (SELECT count(*) AS NB_USERS FROM `organisation` WHERE `num_tel`=? UNION ALL SELECT count(*) AS NB_USERS FROM `user` WHERE `telephone_user`=?) AS RESULAT;");
+            ps.setString(1,telephone);
+            ps.setString(2,telephone);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                nb = resultSet.getInt("NB_USERS");
+                System.out.println("NB_USERS : "+ nb);
+
+                System.out.println("SUCCESS-GET-USER-BY-TELEPHONE");
+
+            } else {
+                System.out.println("ERROR-GET-USER-BY-TELEPHONEL");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return nb != 0 ? true : false;
+    }
+
+    @Override
+    public boolean existsMedecinByCIN(String cin) {
+        int nb = 0;
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT count(*) AS NB_DOCTORS FROM `medecin` WHERE `cin`=?;");
+            ps.setString(1,cin);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                nb = resultSet.getInt("NB_DOCTORS");
+                System.out.println("NB_DOCTORS : "+ nb);
+
+                System.out.println("SUCCESS-GET-MEDECIN-BY-CIN");
+
+            } else {
+                System.out.println("ERROR-GET-MEDECIN-BY-CIN");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return nb != 0 ? true : false;
+    }
+
+    @Override
+    public boolean existsMedecinByMatricule(String matricule) {
+        int nb = 0;
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT count(*) AS NB_DOCTORS FROM `medecin` WHERE `matricule`=?;");
+            ps.setString(1,matricule);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                nb = resultSet.getInt("NB_DOCTORS");
+                System.out.println("NB_DOCTORS : "+ nb);
+
+                System.out.println("SUCCESS-GET-MEDECIN-BY-MATRICULE");
+
+            } else {
+                System.out.println("ERROR-GET-MEDECIN-BY-MATRICULE");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return nb != 0 ? true : false;
     }
 }
