@@ -34,7 +34,18 @@ public class MainApplication extends Application {
         }
     }
 
+    public static Parent includeView(String fxml) throws IOException {
+        return loadFXML(fxml);
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
+        URL urlUserHomeCss = MainApplication.class.getResource("user-home-view.css");
+        URL url = MainApplication.class.getResource(fxml + ".css");
+        if (url != null) {
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(urlUserHomeCss.toExternalForm());
+            scene.getStylesheets().add(url.toExternalForm());
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
