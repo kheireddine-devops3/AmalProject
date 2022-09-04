@@ -3,10 +3,10 @@
 }
 .left-pane {
     -fx-background-color: #ffffff;
-    /*-fx-background-image: url("./../../../images/7933.jpg");*/
-    /*-fx-background-repeat: no-repeat;*/
-    /*-fx-background-size: cover;*/
-    /*-fx-background-position: center center;*/
+    -fx-background-image: url("./../../../images/login-left-section.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
 
 }
 
@@ -18,9 +18,9 @@
 .right-pane-container {
     /*-fx-background-color: blue;*/
     /*-fx-effect: dropshadow(one-pass-box, rgb(26, 26, 26), 8, 0.6, 0, 0);*/
-    -fx-border-width: 0 0 0 5px;
+    -fx-border-width: 0 0 0 3px;
     -fx-border-style: solid;
-    -fx-border-color: blue;
+    -fx-border-color: #002B5B;
 }
 
 .logo {

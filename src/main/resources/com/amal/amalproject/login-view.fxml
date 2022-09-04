@@ -18,14 +18,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 <GridPane styleClass="container" xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.amal.amalproject.controllers.LoginController"
-          minWidth="1000.0"
-          minHeight="800.0"
-          maxWidth="Infinity"
-          maxHeight="Infinity"
-          prefWidth="1000.0"
-          prefHeight="800.0"
->
+          fx:controller="com.amal.amalproject.controllers.LoginController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="500.0" prefWidth="500.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="500.0" prefWidth="500.0" />
@@ -74,7 +67,7 @@
 
                 <ImageView styleClass="logo" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../images/logo.jpg" />
+                        <Image url="@../../../images/logo.png" />
                     </image>
                 </ImageView>
                 <!--                textAlignment="CENTER" contentDisplay="CENTER"-->
