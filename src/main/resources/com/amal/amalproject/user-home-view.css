@@ -1,29 +1,48 @@
 .container {
-    -fx-background-color: #1F4690;
+    -fx-background-color: #0F172A;
+    -fx-background-color: #d0d7de;
+    -fx-text-fill: #FFFFFF;
 }
 .sidebar {
-    -fx-background-color: #1F4690;
+    -fx-background-color: #0F172A;
     -fx-text-fill: #FFFFFF;
     -fx-pref-width: 300px;
 }
 .toolbar {
-    -fx-background-color: #1F4690;
+    -fx-background-color: #d0d7de;
     -fx-text-fill: #FFFFFF;
     -fx-pref-height: 60px;
     -fx-padding: 1em;
 }
 .sidebar Button {
-
     -fx-pref-height: 50px;
     -fx-background-color: transparent;
     -fx-text-fill: #FFFFFF;
 }
-.sidebar .seprator {
-    -fx-padding: 2em 0.5em;
+.sidebar Button:hover {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2C3344;
+    -fx-cursor: hand;
 }
-.avatar {
-    -fx-background-color: tomato;
-    -fx-padding: 2em;
+
+.sidebar .seprator {
+    -fx-padding: 0.5em;
+}
+.avatar-container {
+    -fx-background-color: #FFFFFF;
+}
+.user-avatar {
+
+    -fx-effect: dropshadow(one-pass-box, rgb(26, 26, 26), 8, 0.6, 0, 0);
+}
+.user-fullname {
+
+    -fx-background-color: #0F172A;
+    -fx-text-fill: rgb(129, 140, 248);
+    -fx-text-fill: #f1F5F9;
+    -fx-padding: 1.5em 1em 1em;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
 }
 .views {
 
@@ -33,11 +52,10 @@
 }
 
 .button-logout {
-    /*-fx-text-fill: #1F4690;*/
-    /*-fx-background-color: #FFFFFF;*/
+    -fx-background-color: #FFFFFF;
     -fx-cursor: hand;
 }
 
 .button-logout:hover {
-    -fx-text-fill: red;
+    -fx-background-color: tomato;
 }
