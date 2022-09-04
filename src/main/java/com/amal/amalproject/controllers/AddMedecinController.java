@@ -192,6 +192,9 @@ public class AddMedecinController extends SharedController implements Initializa
         } else if (!loginMatcher.matches()) {
             errorLoginID.setText("Le nom d'untilisateur doit contenir entre 4 et 20 caractères · doit contenir des chiffres et des lettres");
             isValidLogin = false;
+        } else if (userModel.existsCompteByLogin(login)) {
+            errorLoginID.setText("Ce nom d'utilisateur est déjà utilisé");
+            isValidLogin = false;
         } else {
             errorLoginID.setText("");
             isValidLogin = true;
@@ -244,6 +247,9 @@ public class AddMedecinController extends SharedController implements Initializa
         } else if (!emailMatcher.matches()) {
             errorEmailID.setText("Email n'est pas valide");
             isValidEmail = false;
+        } else if (userModel.existsUserByEmail(email)) {
+            errorEmailID.setText("Cette adresse e-mail est déjà utilisée");
+            isValidEmail = false;
         } else {
             errorEmailID.setText("");
             isValidEmail = true;
@@ -269,6 +275,9 @@ public class AddMedecinController extends SharedController implements Initializa
         } else if (!telephoneMatcher.matches()) {
             errorTelephoneID.setText("Numero de telephone n'est pas valide");
             isValidTelephone = false;
+        }  else if (userModel.existsUserByTelephone(telephone)) {
+            errorTelephoneID.setText("Ce numéro de téléphone est déjà utilisé");
+            isValidTelephone = false;
         } else {
             errorTelephoneID.setText("");
             isValidTelephone = true;
@@ -290,6 +299,9 @@ public class AddMedecinController extends SharedController implements Initializa
             isValidCIN = false;
         } else if (!cinMatcher.matches()) {
             errorCinID.setText("CIN n'est pas valide");
+            isValidCIN = false;
+        } else if (userModel.existsMedecinByCIN(cin)) {
+            errorCinID.setText("Ce numéro de carte d'identité national est déjà utilisé");
             isValidCIN = false;
         } else {
             errorCinID.setText("");
@@ -313,7 +325,10 @@ public class AddMedecinController extends SharedController implements Initializa
         if (matricule.isBlank()) {
             errorMatriculeID.setText("Matricule est obligatoire");
             isValidMatricule = false;
-        } else {
+        } else if (userModel.existsMedecinByMatricule(matricule)) {
+            errorMatriculeID.setText("Ce matricule est déjà utilisé");
+            isValidMatricule = false;
+        }else {
             errorMatriculeID.setText("");
             isValidMatricule = true;
         }
