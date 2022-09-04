@@ -35,14 +35,14 @@ public class UserModel implements IUserModel {
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM USER;");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM user;");
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
 
-                int id = resultSet.getInt("ID");
-                String firstName = resultSet.getString("FIRSTNAME");
-                String lastName = resultSet.getString("LASTNAME");
+                int id = resultSet.getInt("id_user");
+                String firstName = resultSet.getString("nom_user");
+                String lastName = resultSet.getString("prenom_user");
 
                 users.add(new User(id, firstName, lastName));
 
