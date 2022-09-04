@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class MainApplication extends Application {
+public class AmeniMainApplication extends Application {
 
     private Stage stage;
     private static Scene scene;
@@ -27,7 +27,7 @@ public class MainApplication extends Application {
     public static void loadView(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
 
-        URL url = MainApplication.class.getResource(fxml + ".css");
+        URL url = AmeniMainApplication.class.getResource(fxml + ".css");
         if (url != null) {
             scene.getStylesheets().clear();
             scene.getStylesheets().add(url.toExternalForm());
@@ -39,14 +39,14 @@ public class MainApplication extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        URL urlUserHomeCss = MainApplication.class.getResource("user-home-view.css");
-        URL url = MainApplication.class.getResource(fxml + ".css");
+        URL urlUserHomeCss = AmeniMainApplication.class.getResource("user-home-view.css");
+        URL url = AmeniMainApplication.class.getResource(fxml + ".css");
         if (url != null) {
             scene.getStylesheets().clear();
             scene.getStylesheets().add(urlUserHomeCss.toExternalForm());
             scene.getStylesheets().add(url.toExternalForm());
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AmeniMainApplication.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
