@@ -21,7 +21,7 @@
 
 <!-- maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0"  -->
 
-<BorderPane styleClass="add-doctor-view" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddMedecinController">
+<BorderPane styleClass="add-beneficier-view" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddMedecinController">
     <top>
         <VBox styleClass="add-doctor-header">
             <Label text="" />
