@@ -1,37 +1,25 @@
 package com.amal.amalproject.controllers;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
 
-import com.amal.amalproject.MainApplication;
 import com.amal.amalproject.entities.Emploi;
-import com.amal.amalproject.entities.User;
 import com.amal.amalproject.models.EmploiModel;
 import com.amal.amalproject.utils.Navigate;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-public class AddEmploiController implements Initializable  {
-	private EmploiModel em =new EmploiModel();
+public class UpdateEmploiController {
+
 	@FXML
 	private AnchorPane Apid;
 
@@ -58,37 +46,35 @@ public class AddEmploiController implements Initializable  {
 
 	@FXML
 	void OnRetour(ActionEvent event) throws IOException {
-
 		Navigate.changerScene(event, "ListEmploi.fxml","List des offres");
-		
-		
 	}
+	EmploiModel empModel = new EmploiModel();
+	private Emploi emp ;
 	@FXML
-	void onClick(ActionEvent event) throws IOException {
-		if (isInputValid()){
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd"); 
-			String titre =txttitre.getText();
-			String secteur=txtsecteur.getText();
-			String ref =txtref.getText();
-			Date dateexp= java.sql.Date.valueOf(dateExp.getValue());
-			String desc =txtdesc.getText();
+	void onModifier(ActionEvent event) throws IOException {
+		if (isInputValid()){	
 
-			Emploi e =new Emploi(titre,desc,secteur,ref,dateexp);
-			em.add(e);
+			emp.setRef_emploi(txtref.getText());
+			emp.setTitre_emploi(txttitre.getText());
+			emp.setSecteur(txtsecteur.getText());
+			emp.setDescriptif_emploi(txtdesc.getText());
+			emp.setDate_expiration(java.sql.Date.valueOf(dateExp.getValue()));
+			empModel.update(emp);
 			Navigate.changerScene(event, "ListEmploi.fxml", "Lise des offres");
-			/*
-			txttitre.clear();
-			txtsecteur.clear();
-			txtref.clear();
-			txtdesc.clear();
-			dateExp.getEditor().clear();*/
-
 		}
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+	public void setFields(Emploi e) {
+		emp=e; 
+		txtref.setText(e.getRef_emploi());
+		txttitre.setText(e.getTitre_emploi());
+		txtsecteur.setText(e.getSecteur());
+		txtdesc.setText(e.getDescriptif_emploi());
+
+
+		LocalDate dateExpLD=e.getDate_expiration().toLocalDate();
+		dateExp.setValue(dateExpLD);
+
 
 	}
 
@@ -129,5 +115,6 @@ public class AddEmploiController implements Initializable  {
 
 	}
 
-
 }
+
+

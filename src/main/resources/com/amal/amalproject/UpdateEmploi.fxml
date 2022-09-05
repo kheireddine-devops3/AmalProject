@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Apid" prefHeight="613.0" prefWidth="824.0" stylesheets="@stylessabrine.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.UpdateEmploiController">
+   <children>
+      <Pane layoutX="11.0" layoutY="22.0" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="btnmodif" layoutX="452.0" layoutY="558.0" mnemonicParsing="false" onAction="#onModifier" prefHeight="31.0" prefWidth="135.0" text="Modifier" />
+            <TextField fx:id="txtref" layoutX="101.0" layoutY="95.0" prefHeight="46.0" prefWidth="604.0" />
+            <Label layoutX="101.0" layoutY="76.0" text="Référence" />
+            <Label layoutX="101.0" layoutY="140.0" text="Titre" />
+            <TextField fx:id="txttitre" layoutX="101.0" layoutY="158.0" prefHeight="46.0" prefWidth="604.0" />
+            <TextField fx:id="txtsecteur" layoutX="102.0" layoutY="225.0" prefHeight="46.0" prefWidth="604.0" />
+            <Label layoutX="101.0" layoutY="207.0" text="Secteur" />
+            <DatePicker fx:id="dateExp" layoutX="103.0" layoutY="303.0" prefHeight="46.0" prefWidth="604.0" />
+            <Label layoutX="103.0" layoutY="284.0" text="Date d'expiration" />
+            <TextArea fx:id="txtdesc" layoutX="103.0" layoutY="373.0" prefHeight="166.0" prefWidth="604.0" />
+            <Label layoutX="103.0" layoutY="354.0" text="Description" />
+            <Button fx:id="btnretour" layoutX="620.0" layoutY="558.0" mnemonicParsing="false" onAction="#OnRetour" prefHeight="31.0" prefWidth="135.0" text="Annuler" />
+         </children>
+      </Pane>
+      <HBox layoutY="-1.0" prefHeight="85.0" prefWidth="825.0" style="-fx-background-color: #FFDAAF;">
+         <children>
+            <ImageView fitHeight="68.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagessab/alvo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="79.0" prefWidth="200.0" text="Modifier l'offre" textFill="#a15467" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Italic" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <ImageView fitHeight="80.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagessab/logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="420.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

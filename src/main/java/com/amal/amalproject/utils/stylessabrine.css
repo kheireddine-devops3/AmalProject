@@ -1,0 +1,13 @@
+
+
+.button
+{
+-fx-text-fill : black;
+}
+.button:hover{
+-fx-background-color : red;
+}
+
+.Pane{
+-fx-background-color : red	;
+}

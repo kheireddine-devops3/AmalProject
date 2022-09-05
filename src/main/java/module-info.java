@@ -10,4 +10,6 @@ module com.amal.amalproject {
     exports com.amal.amalproject;
     exports com.amal.amalproject.controllers;
     opens com.amal.amalproject.controllers to javafx.fxml;
+    opens com.amal.amalproject.entities to javafx.fxml;
+    exports  com.amal.amalproject.entities;
 }
