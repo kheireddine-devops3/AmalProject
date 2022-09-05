@@ -1,35 +1,31 @@
-.container {
+.login-view {
     -fx-background-color: #ffffff;
 }
 .left-pane {
-    -fx-background-color: #ffffff;
-    -fx-background-image: url("./../../../images/login-left-section.jpg");
+    -fx-background-color: yellow;
+    -fx-background-image: url("../../../images/login-left-section-500x800.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-background-position: center center;
-
 }
 
 .right-pane {
     -fx-min-width: 500px;
-    -fx-background-color: #ffffff;;
-
-}
-.right-pane-container {
+    -fx-background-color: #ffffff;
     /*-fx-background-color: blue;*/
     /*-fx-effect: dropshadow(one-pass-box, rgb(26, 26, 26), 8, 0.6, 0, 0);*/
-    -fx-border-width: 0 0 0 3px;
+    -fx-border-width: 0 0 0 2px;
     -fx-border-style: solid;
     -fx-border-color: #002B5B;
+    -fx-padding: 1em;
 }
 
 .logo {
     -fx-opacity: 1;
-
 }
 
 .sign-in-label {
-    -fx-font-size: 24px;
+    -fx-font-size: 26px;
     -fx-font-weight: bold;
     -fx-text-fill: black;
     /*-fx-background-color: tomato;*/
@@ -42,8 +38,9 @@
     /*-fx-background-color: white;*/
     -fx-font-weight: bold;
     /*-fx-text-fill: black;*/
-    -fx-label-padding: 1em;
+    -fx-label-padding: 0.5em;
     -fx-font-size: 14px;
+    -fx-max-width: 300px;
 }
 
 .username-field,
@@ -51,9 +48,10 @@
     /*-fx-background-color: white;*/
     -fx-font-weight: bold;
     /*-fx-text-fill: blue;*/
-    -fx-padding: 1em;
+    -fx-padding: 0.5em;
     -fx-font-size: 14px;
     -fx-border-radius: 10px;
+    -fx-max-width: 300px;
 }
 
 .logo-image {
@@ -64,19 +62,24 @@
 }
 
 .button-login {
-    -fx-padding: 1em 2em;
+    -fx-padding: 0.5em;
 }
 
 .button-bar {
     -fx-background-color: #ffffff;
+    -fx-padding: 0.5em;
 }
 
 .error-label {
     -fx-text-fill: tomato;
+    -fx-max-width: 300px;
 }
 
 .error {
     /*-fx-faint-focus-color: tomato;*/
     -fx-border-color: tomato ;
     /*-fx-text-fill: tomato;*/
+}
+.seprator {
+    -fx-padding: 2em 1em 1em;
 }
