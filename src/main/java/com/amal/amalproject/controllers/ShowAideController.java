@@ -11,7 +11,9 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.amal.amalproject.entities.Aide;
+import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.utils.DBConnection;
+import com.amal.amalproject.utils.SessionUtils;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class ShowAideController implements Initializable {
+public class ShowAideController extends SharedController implements Initializable {
 	
 	 @FXML
 	    private  TextField txtlogin;
@@ -75,6 +77,7 @@ public class ShowAideController implements Initializable {
    
     @FXML
     void onShowClick(ActionEvent event) {
+    	Compte compte = SessionUtils.getCurrentUser();
     	String ida = IdUser.getText();
       	 int  iduser = Integer.parseInt(ida);
       	System.out.println("bonjour" +iduser);
@@ -143,6 +146,8 @@ public class ShowAideController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		Compte compte = SessionUtils.getCurrentUser();
+	
 		
 	}
 

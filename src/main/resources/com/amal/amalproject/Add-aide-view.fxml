@@ -5,23 +5,30 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 20; -fx-background-color: #6c757d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddAideController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="801.0" spacing="20.0" style="-fx-padding: 20; -fx-background-color: #6c757d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddAideController">
    <children>
-      <Label contentDisplay="CENTER" text="Sujet" textAlignment="CENTER" textFill="#e9ebee">
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../images/logo.png" />
+         </image>
+      </ImageView>
+      <Label contentDisplay="CENTER" text="Sujet" textAlignment="CENTER" textFill="#01060d">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <TextField fx:id="pubSujet" prefHeight="25.0" prefWidth="667.0" />
-      <Label text="Texte Publication" textFill="#f8f8f8">
+      <Label text="Texte Publication" textFill="#110000">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="pubContenue" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="pubContenue" prefHeight="161.0" prefWidth="761.0" />
       <Button fx:id="addAide" mnemonicParsing="false" onAction="#onAddAideClick" style="-fx-background-color: #28a745; -fx-border-radius: 6px;;" text="Ajouter" textFill="WHITE">
          <font>
             <Font size="24.0" />

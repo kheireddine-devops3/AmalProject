@@ -55,6 +55,10 @@ public class UserHomeController extends SharedController implements Initializabl
                 System.out.println(MenuEnum.MENU_EDIT_USER_VIEW);
                 this.viewsID.setContent(MainApplication.includeView("edit-user-view"));
                 break;
+            case MENU_SHOW_AIDES_VIEW:
+                System.out.println(MenuEnum.MENU_SHOW_AIDES_VIEW);
+                this.viewsID.setContent(MainApplication.includeView("show-aides-view"));
+                break;
             default:
                 System.out.println("MENU : PROBLEM");
         }
@@ -78,7 +82,8 @@ public class UserHomeController extends SharedController implements Initializabl
                     List<MenuItemButton> menuItemButtons = List.of(
                             new MenuItemButton("Rendez-vous",MenuEnum.MENU_RENDEZ_VOUS_VIEW.toString()),
                             new MenuItemButton("Inscription-Doctor",MenuEnum.MENU_INSCRIPTION_DOCTOR_VIEW.toString()),
-                            new MenuItemButton("Edit Profile",MenuEnum.MENU_EDIT_USER_VIEW.toString())
+                            new MenuItemButton("Edit Profile",MenuEnum.MENU_EDIT_USER_VIEW.toString()),
+                            new MenuItemButton("Show Aides",MenuEnum.MENU_SHOW_AIDES_VIEW.toString())
                     );
 
                     menuItemButtons.forEach(menuItemButton -> {
