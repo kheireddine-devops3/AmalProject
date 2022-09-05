@@ -37,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### PC kheirieddine ###
+src/main/java/com/amal/amalproject/test/

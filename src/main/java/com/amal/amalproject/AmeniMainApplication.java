@@ -10,36 +10,24 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class MainApplication extends Application {
+public class AmeniMainApplication extends Application {
 
     private Stage stage;
     private static Scene scene;
 
     @Override
-
-    public void start(Stage primaryStage) throws IOException {
-
-    	/* FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddEmploi.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(new BorderPane(), 1000, 800);
+        loadView("login-view");
         stage.setTitle("Amal Application");
         stage.setScene(scene);
-        stage.show();*/
-        
-        
-        
-        Parent root=FXMLLoader.load(getClass().getResource("ListOffres.fxml"));
-        
-        Scene scene = new Scene(root,800,600);
-        //scene.getStylesheets().add(getClass().getResource("stylessabrine.css").toExternalForm());
-        
-        primaryStage.setTitle("Ajout offre");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+//        stage.setResizable(true);
+        stage.show();
     }
     public static void loadView(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
 
-        URL url = MainApplication.class.getResource(fxml + ".css");
+        URL url = AmeniMainApplication.class.getResource(fxml + ".css");
         if (url != null) {
             scene.getStylesheets().clear();
             scene.getStylesheets().add(url.toExternalForm());
@@ -51,19 +39,19 @@ public class MainApplication extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        URL urlUserHomeCss = MainApplication.class.getResource("user-home-view.css");
-        URL url = MainApplication.class.getResource(fxml + ".css");
+        URL urlUserHomeCss = AmeniMainApplication.class.getResource("user-home-view.css");
+        URL url = AmeniMainApplication.class.getResource(fxml + ".css");
         if (url != null) {
             scene.getStylesheets().clear();
             scene.getStylesheets().add(urlUserHomeCss.toExternalForm());
             scene.getStylesheets().add(url.toExternalForm());
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AmeniMainApplication.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 }
 
