@@ -21,14 +21,14 @@
 
 <!-- maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0"  -->
 
-<BorderPane styleClass="add-beneficier-view" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddMedecinController">
+<BorderPane styleClass="add-beneficier-view" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddBeneficierController">
     <top>
-        <VBox styleClass="add-doctor-header">
+        <VBox styleClass="add-beneficier-header">
             <Label text="" />
         </VBox>
     </top>
     <center>
-        <GridPane hgap="10.0" styleClass="add-doctor-forms">
+        <GridPane hgap="10.0" styleClass="add-beneficier-forms">
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
@@ -96,30 +96,12 @@
                 <Label text="Adresse" GridPane.rowIndex="12" />
                 <TextField fx:id="adresseID" promptText="Tapez votre adresse professionnelle" GridPane.columnIndex="1" GridPane.rowIndex="12" />
 
-                <Label text="Spécialité *" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                <ComboBox fx:id="specialiteID" maxWidth="Infinity" prefWidth="150.0" promptText="Sélectionnez votre spécialité" BorderPane.alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="6">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <!--                            <String fx:value="Sélectionnez votre spécialité"/>-->
-                        </FXCollections>
-                    </items>
-                </ComboBox>
+                <Label text="Carte" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                <TextField fx:id="carteHandicapNumberID" promptText="Tapez le numéro de la carte" GridPane.columnIndex="3" GridPane.rowIndex="8" />
 
-                <Label text="CIN" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                <TextField fx:id="cinID" promptText="Tapez votre numéro C.I.N" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                <Label text="Date Expiration" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                <DatePicker fx:id="dateExpirationID" promptText="Date Expiration" GridPane.columnIndex="3" GridPane.rowIndex="10" />
 
-                <Label text="Matricule" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-                <TextField fx:id="matriculeID" promptText="Tapez votre assurance" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-
-                <Label text="Assurance" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-                <ComboBox fx:id="assuranceID" maxWidth="Infinity" prefWidth="150.0" promptText="Sélectionner votre assurance" BorderPane.alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="12">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="ASSURANCE 1" />
-                            <String fx:value="ASSURANCE 2" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
                 <Label fx:id="errorLoginID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                 <Label fx:id="errorFirstNameID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label fx:id="errorPasswordID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
@@ -129,28 +111,16 @@
                 <Label fx:id="errorDateNaissanceID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                 <Label fx:id="errorTelephoneID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                 <Label fx:id="errorAdresseID" styleClass="error-label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                <Label fx:id="errorSpecialiteID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                <Label fx:id="errorCinID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-                <Label fx:id="errorMatriculeID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="11" />
-                <Label fx:id="errorAssuranceID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+                <Label fx:id="errorCarteHandicapNumberID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                <Label fx:id="errorDateExpirationID" styleClass="error-label" GridPane.columnIndex="3" GridPane.rowIndex="11" />
             </children>
         </GridPane>
     </center>
     <bottom>
-        <ButtonBar styleClass="add-doctor-buttons">
+        <ButtonBar styleClass="add-beneficier-buttons">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#onAddDoctorClick" text="S'inscrire" />
+                <Button mnemonicParsing="false" onAction="#onAddBeneficierClick" text="S'inscrire" />
             </buttons>
         </ButtonBar>
-        <!--                <Button text="Add Photo" onAction="#onAddPhotoClick"/>-->
-        <!--                <TextField fx:id="photoID"/>-->
-        <!--                <ImageView fx:id="imageViewID" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">-->
-        <!--                </ImageView>-->
-        <!--                <ImageView fx:id="TESTimageViewID" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">-->
-        <!--                </ImageView>-->
-        <!--    <Button text="Add Photo" onAction="#onAddVideoClick"/>-->
-        <!--    <MediaView fx:id="mediaViewID" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"/>-->
-
-
     </bottom>
 </BorderPane>

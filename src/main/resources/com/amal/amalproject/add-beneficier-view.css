@@ -2,13 +2,6 @@
     /*-fx-background-color: tomato;*/
     -fx-pref-width: 1000.0;
 }
-.register-doctor-button {
-    -fx-border-radius: 50%;
-    -fx-background-image: url("./../../../images/volunteer.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-    -fx-background-position: center center;
-}
 Label {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -16,29 +9,26 @@ Label {
 TextField , PasswordField {
     -fx-padding: 0.5em;
 }
-.radio-sexe {
-
-}
-.add-doctor-header {
+.add-beneficier-header {
     -fx-pref-height: 300.0;
-    /*-fx-background-image: url("./../../../images/medical-banner-1325-1526.jpg");*/
-    -fx-background-image: url("./../../../images/doctors-nurses.jpg");
+    -fx-max-height: 300.0;
+    -fx-background-image: url("./../../../images/3715.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
-.add-doctor-forms {
+.add-beneficier-forms {
     -fx-background-color: #ffffff;
     -fx-pref-width: 500.0;
     -fx-pref-height: 400.0;
     -fx-text-fill: #212529;
     -fx-padding: 3em 5em;
 }
-.add-doctor-buttons {
+.add-beneficier-buttons {
     -fx-pref-height: 80.0;
     -fx-padding: 0 2em;
 }
-.add-doctor-buttons Button {
+.add-beneficier-buttons Button {
     -fx-padding: 0.5em 2em;
 }
 .error-label {
