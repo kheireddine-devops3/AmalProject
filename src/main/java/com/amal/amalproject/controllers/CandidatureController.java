@@ -51,6 +51,7 @@ public class CandidatureController implements Initializable {
 
     @FXML
     private Button btnannulerc;
+    
     //EmploiModel empModel = new EmploiModel();
     CandidatureModel candModel=new CandidatureModel();
 	private Emploi emp ;
