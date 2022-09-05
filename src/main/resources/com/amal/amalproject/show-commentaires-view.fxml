@@ -5,14 +5,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: grey;" text="Commentaires" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.ShowCommentaireAideController">
   <content>
-    <AnchorPane fx:id="tablecom" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="798.0" style="-fx-background-color: #6c757d;">
+    <AnchorPane fx:id="tablecom" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="798.0" style="-fx-background-color: #fff;">
          <children>
-            <TableView fx:id="tablecommentaire" layoutX="45.0" layoutY="141.0" prefHeight="200.0" prefWidth="708.0">
+            <TableView fx:id="tablecommentaire" layoutX="50.0" layoutY="257.0" prefHeight="200.0" prefWidth="708.0">
               <columns>
                 <TableColumn fx:id="idcom" prefWidth="128.0" text="Identifiant" />
                 <TableColumn fx:id="commentaire" prefWidth="305.0" text="Commentaire" />
@@ -20,10 +22,15 @@
               </columns>
             </TableView>
             <Label fx:id="txtaide" layoutX="399.0" layoutY="55.0" style="visibility: hidden;" text="id" />
-            <Button fx:id="btnAfficherCommentaire" layoutX="92.0" layoutY="57.0" mnemonicParsing="false" onAction="#onShowclick" style="-fx-background-color: #007bff;" text="Afficher les commentaires" textFill="#f8f8f8">
+            <Button fx:id="btnAfficherCommentaire" layoutX="50.0" layoutY="203.0" mnemonicParsing="false" onAction="#onShowclick" style="-fx-background-color: #007bff;" text="Afficher les commentaires" textFill="#f8f8f8">
                <font>
                   <Font size="14.0" />
                </font></Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/logo.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
   </content>
    <font>

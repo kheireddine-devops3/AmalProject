@@ -7,37 +7,43 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="801.0" spacing="20.0" style="-fx-padding: 20; -fx-background-color: #6c757d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddAideController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="801.0" spacing="20.0" style="-fx-padding: 20; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddAideController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../images/logo.png" />
-         </image>
-      </ImageView>
-      <Label contentDisplay="CENTER" text="Sujet" textAlignment="CENTER" textFill="#01060d">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="pubSujet" prefHeight="25.0" prefWidth="667.0" />
-      <Label text="Texte Publication" textFill="#110000">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="pubContenue" prefHeight="161.0" prefWidth="761.0" />
-      <Button fx:id="addAide" mnemonicParsing="false" onAction="#onAddAideClick" style="-fx-background-color: #28a745; -fx-border-radius: 6px;;" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font></Button>
-      <Button fx:id="vider" mnemonicParsing="false" onAction="#vider" prefHeight="51.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-border-radius: 6px;" text="Vider" textFill="#f8f7f7">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
+      <Pane prefHeight="528.0" prefWidth="761.0">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="180.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/logo.png" />
+               </image>
+            </ImageView>
+            <Label contentDisplay="CENTER" layoutX="44.0" layoutY="160.0" text="Sujet" textAlignment="CENTER" textFill="#01060d">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="pubSujet" layoutX="234.0" layoutY="151.0" prefHeight="27.0" prefWidth="459.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+            <Label layoutX="44.0" layoutY="229.0" text="Texte Publication" textFill="#110000">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="pubContenue" layoutX="234.0" layoutY="235.0" prefHeight="161.0" prefWidth="459.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+            <Button fx:id="addAide" layoutX="253.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAddAideClick" style="-fx-background-color: #28a745; -fx-border-radius: 6px;;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="vider" layoutX="476.0" layoutY="420.0" mnemonicParsing="false" onAction="#vider" prefHeight="51.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-border-radius: 6px;" text="Vider" textFill="#f8f7f7">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
    <opaqueInsets>
       <Insets top="21.0" />

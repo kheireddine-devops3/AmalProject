@@ -24,7 +24,7 @@ public class AideModel  {
 	
 		 try {
 
-	            PreparedStatement ps = connection.prepareStatement("INSERT INTO demandeaide(id_demande_aide, contenue, sujet, date_publication, id_user) VALUES (NULL,?,?,?,'1')");
+	            PreparedStatement ps = connection.prepareStatement("INSERT INTO demandeaide(id_demande_aide, contenue, sujet, date_publication, id_user) VALUES (NULL,?,?,?,'3')");
 
 	            aide.setDatePublication(LocalDate.now());
 	            
@@ -66,7 +66,7 @@ public class AideModel  {
             ps.setString(1, aide.getContenue());
             ps.setString(3,aide.getSujet());
             ps.setDate(2, Date.valueOf(aide.getDatePublication())  );
-            ps.setInt(4, 1);
+            ps.setInt(4, 3);
             ps.setInt(5, aide.getIdAide());
             
             n = ps.executeUpdate();

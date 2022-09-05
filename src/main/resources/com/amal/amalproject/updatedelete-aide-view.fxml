@@ -5,24 +5,26 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="801.0" style="-fx-background-color: #6c757d;" text="Modifier supprimer publication aide" textFill="#fffdfd" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.UpdateDeleteAideController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="598.0" style="-fx-background-color: #6c757d;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="598.0" style="-fx-background-color: #fff;">
          <children>
-            <Label fx:id="label" layoutX="42.0" layoutY="113.0" text="Id Publication" textFill="#fffdfd">
+            <Label fx:id="label" layoutX="42.0" layoutY="155.0" text="Id Publication" textFill="#110000">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="42.0" layoutY="157.0" text="Sujet" textFill="#fffdfd">
+            <Label layoutX="42.0" layoutY="199.0" text="Sujet" textFill="#110000">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="42.0" layoutY="201.0" text="Contenue Publication" textFill="#fcf9f9">
+            <Label layoutX="42.0" layoutY="243.0" text="Contenue Publication" textFill="#110000">
                <font>
                   <Font size="18.0" />
                </font>
@@ -37,16 +39,24 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <TextField fx:id="txtid" layoutX="294.0" layoutY="114.0" prefHeight="33.0" prefWidth="152.0" />
-            <TextField fx:id="txtsujet" layoutX="293.0" layoutY="168.0" prefHeight="33.0" prefWidth="376.0" />
-            <TextArea fx:id="txtcontenue" layoutX="293.0" layoutY="215.0" prefHeight="138.0" prefWidth="377.0" />
-            <Button fx:id="btnfind" layoutX="577.0" layoutY="114.0" mnemonicParsing="false" onAction="#trouver" style="-fx-background-color: #007bff;" text="Rechercher" textFill="WHITE" />
-            <Button fx:id="btncom" layoutX="547.0" layoutY="403.0" mnemonicParsing="false" onAction="#onAfficheCommentaire" prefHeight="42.0" prefWidth="164.0" text="Afficher Commentaires" textFill="#322929" />
-            <Label layoutX="42.0" layoutY="34.0" text="Pour chercher une publication insérer l'Id " textFill="#f8f8f8">
+            <TextField fx:id="txtid" layoutX="294.0" layoutY="156.0" prefHeight="33.0" prefWidth="152.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+            <TextField fx:id="txtsujet" layoutX="293.0" layoutY="210.0" prefHeight="33.0" prefWidth="376.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+            <TextArea fx:id="txtcontenue" layoutX="293.0" layoutY="257.0" prefHeight="138.0" prefWidth="377.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+            <Button fx:id="btnfind" layoutX="577.0" layoutY="156.0" mnemonicParsing="false" onAction="#trouver" style="-fx-background-color: #007bff;" text="Rechercher" textFill="WHITE" />
+            <Button fx:id="btncom" layoutX="547.0" layoutY="412.0" mnemonicParsing="false" onAction="#onAfficheCommentaire" prefHeight="42.0" prefWidth="197.0" style="-fx-background-color: none;" text="&gt;&gt;Afficher Commentaires" textFill="#0b057c">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Button>
+            <Label layoutX="294.0" layoutY="35.0" text="Pour chercher une publication insérer l'Id " textFill="#110000">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="6.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/logo.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
   </content>
    <font>

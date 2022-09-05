@@ -13,18 +13,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="ShowAides" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800.0" style="-fx-padding: 20px; -fx-background-color: #6c757d;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.ShowAideController">
+<VBox fx:id="ShowAides" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800.0" style="-fx-padding: 20px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.ShowAideController">
    <children>
       <AnchorPane prefHeight="125.0" prefWidth="760.0">
          <children>
-            <TextField fx:id="txtlogin" layoutX="479.0" layoutY="57.0" />
+            <TextField fx:id="txtlogin" layoutX="479.0" layoutY="57.0" prefHeight="27.0" prefWidth="215.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
             <TextField fx:id="IdUser" layoutX="553.0" layoutY="50.0" style="visibility: hidden;" />
-            <Label layoutX="208.0" text="Bienvenue sur votre espace Demande Aide" textFill="#f8f5f5">
+            <Label layoutX="208.0" text="Bienvenue sur votre espace Demande Aide" textFill="#110000">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="347.0" layoutY="58.0" text="votre login" textFill="#f8f3f3">
+            <Label layoutX="347.0" layoutY="58.0" text="votre login" textFill="#140101">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,7 +41,7 @@
             <Font name="Arial Narrow" size="24.0" />
          </font>
       </Button>
-      <TableView fx:id="tableAide" prefHeight="200.0" prefWidth="607.0" style="-fx-border-style: solid; -fx-border-color: #0d6efd; -fx-background-color: #0dcaf0;">
+      <TableView fx:id="tableAide" prefHeight="200.0" prefWidth="607.0" style="-fx-border-style: solid; -fx-border-color: blue; -fx-background-color: #fff; -fx-border-radius: 10px;">
         <columns>
           <TableColumn fx:id="idDemande" prefWidth="81.0" text="Id Demande" />
             <TableColumn fx:id="datePublication" prefWidth="118.0" text="Date Publication" />
