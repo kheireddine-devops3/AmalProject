@@ -7,9 +7,19 @@
 
 <BorderPane fx:controller="com.amal.amalproject.controllers.ChooseInscriptionController" maxHeight="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <top>
-        <VBox>
+        <VBox styleClass="header">
             <children>
                 <Label styleClass="header-text" text="Choisissez le type de compte:"/>
+                <Label styleClass="ligne-text" text="Bénévoles, docteurs, enseignants, salariés, entreprises, associations … Vous avez toutes et tous le pouvoir d’agir."/>
+                <Label styleClass="ligne-text" text="Pour concrétiser votre engagement , Inscrivez-vous maintenant et devient un membre de la famille Amal"/>
+
+
+                <HBox styleClass="account-login" alignment="CENTER_LEFT" spacing="5" nodeOrientation="LEFT_TO_RIGHT">
+                    <children>
+                        <Label styleClass="ligne-text padding-top" text="Vous avez déjà un compte ?"></Label>
+                        <Hyperlink text="Connectez-vous" onAction="#OnLogInAction" />
+                    </children>
+                </HBox>
             </children>
         </VBox>
     </top>
