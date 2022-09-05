@@ -128,7 +128,7 @@ public class AideModel  {
 		   PreparedStatement ps = connection.prepareStatement("SELECT * FROM demandeaide WHERE id_demande_aide=?");
 		   ps.setInt(1, id);
 		   ResultSet rst = ps.executeQuery();
-		   while (rst.next()) {
+		   if (rst.next()) {
 
 		        int idAide = rst.getInt("id_demande_aide");
 			String contenue = rst.getString("contenue");
@@ -143,6 +143,13 @@ public class AideModel  {
 			   aide.setIdUser(idUser);
 
 		            }
+		   else {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+           	alert.setTitle("Recherche non valide!");
+           	alert.setHeaderText("Information");
+           	alert.setContentText("Ooops! Entrer un ID valide");
+           	alert.showAndWait();
+		   }
 		   
 	   }catch (SQLException e) {
 			System.out.println(e.getMessage());

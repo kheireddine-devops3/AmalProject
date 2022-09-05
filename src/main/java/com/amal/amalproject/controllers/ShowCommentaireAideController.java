@@ -13,10 +13,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -50,6 +52,7 @@ public class ShowCommentaireAideController {
     
     @FXML
     void onShowclick(ActionEvent event) {
+    	obs.clear();
     	String ida = txtaide.getText();
  	    int  iddemande = Integer.parseInt(ida);
 	try {
@@ -58,7 +61,7 @@ public class ShowCommentaireAideController {
             ps.setInt(1, iddemande);
             ResultSet resultSet = ps.executeQuery();
             
-            while (resultSet.next()) {
+            if(resultSet.next()) {
                   int idCommentaire = resultSet.getInt("idCommentaire");
 	              String txtCommentaire = resultSet.getString("txtCommentaire");
 	              LocalDate dateCommentaire = resultSet.getDate("dateCommentaire") != null ? resultSet.getDate("dateCommentaire").toLocalDate() : null;
@@ -66,6 +69,12 @@ public class ShowCommentaireAideController {
 	              int idDemande = resultSet.getInt("idDemandeAide");
 
                 obs.add(new CommentaireAide(idCommentaire, txtCommentaire, dateCommentaire, idCompte, idDemande));
+            }else {
+            	 Alert alert = new Alert(AlertType.INFORMATION);
+                	alert.setTitle("Aucun Commentaire!");
+                	alert.setHeaderText("Information");
+                	alert.setContentText("Ooops! Aucun Commentaire à afficher");
+                	alert.showAndWait();
             }
         }
         catch (SQLException exception) {

@@ -77,6 +77,7 @@ public class ShowAideController extends SharedController implements Initializabl
    
     @FXML
     void onShowClick(ActionEvent event) {
+    	obs.clear();
     	Compte compte = SessionUtils.getCurrentUser();
     	String ida = IdUser.getText();
       	 int  iduser = Integer.parseInt(ida);
