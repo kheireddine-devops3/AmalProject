@@ -95,6 +95,12 @@ public class Emploi {
 		this.ref_emploi = ref_emploi;
 		this.date_expiration = date_expiration;
 	}
+	public Emploi(int id_emploi, String ref_emploi, Date date_expiration) {
+		super();
+		this.id_emploi = id_emploi;
+		this.ref_emploi = ref_emploi;
+		this.date_expiration = date_expiration;
+	}
 	
 
 

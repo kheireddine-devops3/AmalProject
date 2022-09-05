@@ -84,7 +84,7 @@ public class ListEmploiController implements Initializable {
 	@FXML
 	void OnModifier(ActionEvent event) throws IOException {
 		  FXMLLoader loader= Navigate.changerScene(event, "UpdateEmploi.fxml", "Modifier une offre");
-		 
+		//envoi des donnés ente les scénes
 		    UpdateEmploiController controller=loader.getController();
 		    controller.setFields(table.getSelectionModel().getSelectedItem());
 					
@@ -177,12 +177,7 @@ public class ListEmploiController implements Initializable {
 		String choix = combrech.getSelectionModel().getSelectedItem().toString();
 		// txtrech.setText(choix);
 	}
-	/*
-	 * String query = null; Connection connection = null; PreparedStatement
-	 * preparedStatement = null; ResultSet resultSet = null; Emploi emploi = null;
-	 * 
-	 * ObservableList<Emploi> EmploiList = FXCollections.observableArrayList();
-	 */
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -29,9 +29,12 @@
 }
 .button:pressed
 {
--fx-background-color :#7f8c8d;
+-fx-background-color :#CFD2CF;
 }
-
+.ComboBox{
+-fx-text-fill : white;	
+-fx-background-color :red;
+}
 .table-view .column-header,
 .table-view .column-header-background .filler {
     -fx-cell-size : 20;

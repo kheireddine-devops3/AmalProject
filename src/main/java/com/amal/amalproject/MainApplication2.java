@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainApplication extends Application {
+public class MainApplication2 extends Application {
 
     private Stage stage;
 
@@ -23,7 +23,7 @@ public class MainApplication extends Application {
         
         
         
-        Parent root=FXMLLoader.load(getClass().getResource("ListOffres.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("ListEmploi.fxml"));
         
         Scene scene = new Scene(root,800,600);
         //scene.getStylesheets().add(getClass().getResource("stylessabrine.css").toExternalForm());
@@ -32,11 +32,7 @@ public class MainApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-
-
-
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         launch(args);
     }
 }
