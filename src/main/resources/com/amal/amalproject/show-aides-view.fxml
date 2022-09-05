@@ -15,7 +15,7 @@
 
 <VBox fx:id="ShowAides" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800.0" style="-fx-padding: 20px; -fx-background-color: #fff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.ShowAideController">
    <children>
-      <AnchorPane prefHeight="125.0" prefWidth="760.0">
+      <AnchorPane prefHeight="221.0" prefWidth="760.0">
          <children>
             <TextField fx:id="txtlogin" layoutX="479.0" layoutY="57.0" prefHeight="27.0" prefWidth="215.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
             <TextField fx:id="IdUser" layoutX="553.0" layoutY="50.0" style="visibility: hidden;" />
@@ -34,13 +34,13 @@
                   <Image url="@../../../images/logo.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnShowaide" layoutX="347.0" layoutY="132.0" mnemonicParsing="false" onAction="#onShowClick" style="-fx-background-color: blue;" text="Demandes d'aides" textFill="#fffefe">
+               <font>
+                  <Font name="Arial Narrow" size="24.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="btnShowaide" mnemonicParsing="false" onAction="#onShowClick" text="Demandes d'aides" textFill="#fffefe">
-         <font>
-            <Font name="Arial Narrow" size="24.0" />
-         </font>
-      </Button>
       <TableView fx:id="tableAide" prefHeight="200.0" prefWidth="607.0" style="-fx-border-style: solid; -fx-border-color: blue; -fx-background-color: #fff; -fx-border-radius: 10px;">
         <columns>
           <TableColumn fx:id="idDemande" prefWidth="81.0" text="Id Demande" />
@@ -49,7 +49,7 @@
             <TableColumn fx:id="contenue" prefWidth="336.0" text="Demande Aide" />
         </columns>
       </TableView>
-      <Pane prefHeight="200.0" prefWidth="200.0">
+      <Pane prefHeight="143.0" prefWidth="760.0">
          <children>
             <Button fx:id="btnmodif" layoutX="74.0" layoutY="63.0" mnemonicParsing="false" onAction="#onloadModif" style="-fx-background-color: #dc3545;" text="Modifier / Supprimer" textFill="WHITE">
                <font>

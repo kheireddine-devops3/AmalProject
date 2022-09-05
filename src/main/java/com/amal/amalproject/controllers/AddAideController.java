@@ -10,6 +10,11 @@ import javafx.scene.control.*;
 
 
 public class AddAideController {
+	@FXML
+    private Label errorsujet;
+
+    @FXML
+    private Label errortxt;
 	
     @FXML
     private Button addAide;
@@ -28,13 +33,15 @@ public class AddAideController {
     
     @FXML
     protected  void onAddAideClick(ActionEvent Click) {
+    	if(isValid()) {
     	String contenue = pubContenue.getText();
     	String sujet = pubSujet.getText();
         Aide aide = new Aide(contenue,sujet);
        this.aideModel.AddAide(aide);
        pubContenue.clear();
-   	pubSujet.clear();
-
+   	   pubSujet.clear();
+      
+    	}
     }
     @FXML
     
@@ -42,5 +49,24 @@ public class AddAideController {
     	pubContenue.clear();
     	pubSujet.clear();
 
+    }
+    private boolean isValid(){
+    	boolean sujetValid=false;
+    	boolean txtValid=false;
+    	if(pubSujet.getText().isBlank()) {
+    		errorsujet.setText("Merci d'indiquer votre sujet");
+    	}else {
+    		errorsujet.setText("");
+    		sujetValid = true;
+    	}
+    	if(pubContenue.getText().isBlank()) {
+    		errortxt.setText("Merci d'indiquer votre sujet");
+    		sujetValid = false;
+    	}else {
+    		errortxt.setText("");
+    		txtValid = true;
+    	}
+    	return (sujetValid && txtValid);
+    	
     }
 }

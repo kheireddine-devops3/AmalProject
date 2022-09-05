@@ -32,16 +32,18 @@
                </font>
             </Label>
             <TextArea fx:id="pubContenue" layoutX="234.0" layoutY="235.0" prefHeight="161.0" prefWidth="459.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
-            <Button fx:id="addAide" layoutX="253.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAddAideClick" style="-fx-background-color: #28a745; -fx-border-radius: 6px;;" text="Ajouter" textFill="WHITE">
+            <Button fx:id="addAide" layoutX="253.0" layoutY="446.0" mnemonicParsing="false" onAction="#onAddAideClick" style="-fx-background-color: #28a745; -fx-border-radius: 6px;;" text="Ajouter" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="vider" layoutX="476.0" layoutY="420.0" mnemonicParsing="false" onAction="#vider" prefHeight="51.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-border-radius: 6px;" text="Vider" textFill="#f8f7f7">
+            <Button fx:id="vider" layoutX="479.0" layoutY="446.0" mnemonicParsing="false" onAction="#vider" prefHeight="51.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-border-radius: 6px;" text="Vider" textFill="#f8f7f7">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
+            <Label fx:id="errorsujet" layoutX="239.0" layoutY="187.0" textFill="#c30404" />
+            <Label fx:id="errortxt" layoutX="239.0" layoutY="406.0" textFill="#c30404" />
          </children>
       </Pane>
    </children>
