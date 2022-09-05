@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import com.amal.amalproject.utils.MenuEnum;
@@ -55,6 +56,14 @@ public class UserHomeController extends SharedController implements Initializabl
                 System.out.println(MenuEnum.MENU_EDIT_USER_VIEW);
                 this.viewsID.setContent(MainApplication.includeView("edit-user-view"));
                 break;
+            case MENU_SHOW_AIDES_VIEW:
+                System.out.println(MenuEnum.MENU_SHOW_AIDES_VIEW);
+                this.viewsID.setContent(MainApplication.includeView("show-aides-view"));
+                break;
+            case MENU_ADMIN_DASHBOARD_VIEW:
+                System.out.println(MenuEnum.MENU_ADMIN_DASHBOARD_VIEW);
+                this.viewsID.setContent(MainApplication.includeView("admin-dashboard-view"));
+                break;
             default:
                 System.out.println("MENU : PROBLEM");
         }
@@ -72,33 +81,47 @@ public class UserHomeController extends SharedController implements Initializabl
 
         if(compte != null) {
             this.fullnameID.setText(compte.getLogin());
+            List<MenuItemButton> menuItemButtons = new ArrayList<>();
 
             switch (compte.getRole()) {
+                case "ROLE_BENEFICIER":
+                    menuItemButtons.addAll( List.of(
+                            new MenuItemButton("Profile Management",MenuEnum.MENU_EDIT_USER_VIEW.toString())
+                    ));
+                    break;
                 case "ROLE_DOCTOR":
-                    List<MenuItemButton> menuItemButtons = List.of(
+                    menuItemButtons.addAll( List.of(
                             new MenuItemButton("Rendez-vous",MenuEnum.MENU_RENDEZ_VOUS_VIEW.toString()),
-                            new MenuItemButton("Inscription-Doctor",MenuEnum.MENU_INSCRIPTION_DOCTOR_VIEW.toString()),
-                            new MenuItemButton("Edit Profile",MenuEnum.MENU_EDIT_USER_VIEW.toString())
-                    );
-
-                    menuItemButtons.forEach(menuItemButton -> {
-                        Button button = new Button();
-                        button.setStyle("");
-                        button.setAlignment(Pos.CENTER_LEFT);
-                        button.setMaxWidth(Double.POSITIVE_INFINITY);
-                        button.setUserData(menuItemButton.getUserDate());
-                        button.setText(menuItemButton.getText());
-                        button.setOnAction(actionEvent -> {
-                            try {
-                                this.onMenuItemAction(actionEvent);
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        });
-                        this.sidebarID.getChildren().add(button);
-                    });
+                            new MenuItemButton("Aides Management",MenuEnum.MENU_SHOW_AIDES_VIEW.toString()),
+                            new MenuItemButton("Profile Management",MenuEnum.MENU_EDIT_USER_VIEW.toString())
+                    ));
+                    break;
+                case "ROLE_ADMIN":
+                    menuItemButtons.addAll( List.of(
+                            new MenuItemButton("Dashboard",MenuEnum.MENU_ADMIN_DASHBOARD_VIEW.toString()),
+                            new MenuItemButton("Rendez-vous Management",MenuEnum.MENU_RENDEZ_VOUS_VIEW.toString()),
+                            new MenuItemButton("Aides Management",MenuEnum.MENU_SHOW_AIDES_VIEW.toString()),
+                            new MenuItemButton("Profile Management",MenuEnum.MENU_EDIT_USER_VIEW.toString())
+                    ));
                     break;
             }
+
+            menuItemButtons.forEach(menuItemButton -> {
+                Button button = new Button();
+                button.setStyle("");
+                button.setAlignment(Pos.CENTER_LEFT);
+                button.setMaxWidth(Double.POSITIVE_INFINITY);
+                button.setUserData(menuItemButton.getUserDate());
+                button.setText(menuItemButton.getText());
+                button.setOnAction(actionEvent -> {
+                    try {
+                        this.onMenuItemAction(actionEvent);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                this.sidebarID.getChildren().add(button);
+            });
         }
 
 
