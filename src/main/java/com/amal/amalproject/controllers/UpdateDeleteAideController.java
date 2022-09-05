@@ -13,10 +13,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class UpdateDeleteAideController implements Initializable{
@@ -78,25 +80,67 @@ public class UpdateDeleteAideController implements Initializable{
     	txtsujet.setText(aide.getSujet());
     	txtcontenue.setText(aide.getContenue());
     	String contenue =aide.getContenue();
+    	String sujet = aide.getSujet();
     	System.out.println("bonjour" +contenue);
     	System.out.println("bonjour" +id);
+    	System.out.println("bonjour" +sujet);
 
     }
     
     @FXML
     void onAfficheCommentaire(ActionEvent event) throws IOException {
+    	if(isValid()) {
     	String ida = txtid.getText();
+    	String sujet = txtsujet.getText();
+    	String Contenue = txtcontenue.getText();
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/amal/amalproject/show-commentaires-view.fxml"));
 		Parent root = (Parent) loader.load();
 		 ShowCommentaireAideController controller =loader.getController();
-		 controller.GetIddemande(ida);
+		 controller.GetIddemande(ida, sujet, Contenue);
 		 Scene scene = new Scene(root);
 		 Stage stage = new Stage();
 		 stage.setScene(scene);
 		 stage.show();
+    	}
+    	else {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+        	alert.setTitle("Click!");
+        	alert.setHeaderText("Information");
+        	alert.setContentText("Entrer un Id valide et cliquer sur le boutton Rechercher !");
+        	alert.showAndWait();
+    	}
 
     }
     
+    private boolean isValid() {
+    	boolean idValid = false;
+    	boolean sujetValid = false;
+    	boolean contenue =false;
+    	if(txtsujet.getText().isBlank()) {
+    		sujetValid=false;
+    		
+    	}
+    	else {
+    		sujetValid= true;
+    	}
+    	if(txtcontenue.getText().isBlank()) {
+    		contenue=false;
+    		
+    	}
+    	else {
+    		contenue= true;
+    	}
+    	if(txtid.getText().isBlank()) {
+    		idValid=false;
+    		
+    	}
+    	else {
+    		idValid= true;
+    	}
+    
+    	
+    	return (idValid && sujetValid && contenue);
+    }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

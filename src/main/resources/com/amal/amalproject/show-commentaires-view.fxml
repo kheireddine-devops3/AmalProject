@@ -31,6 +31,10 @@
                   <Image url="@../../../images/logo.png" />
                </image>
             </ImageView>
+            <Label layoutX="385.0" layoutY="64.0" text="Sujet" />
+            <Label layoutX="390.0" layoutY="125.0" text="Demande" />
+            <Label fx:id="txtsujet" layoutX="486.0" layoutY="64.0" />
+            <Label fx:id="txtdemande" layoutX="486.0" layoutY="125.0" />
          </children></AnchorPane>
   </content>
    <font>

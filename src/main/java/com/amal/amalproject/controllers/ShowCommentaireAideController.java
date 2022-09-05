@@ -23,7 +23,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class ShowCommentaireAideController {
+	  @FXML
+	    private Label txtdemande;
 
+	    @FXML
+	    private Label txtsujet;
     @FXML
     private Button btnAfficherCommentaire;
 
@@ -46,8 +50,10 @@ public class ShowCommentaireAideController {
     private Label txtaide;
     ObservableList<CommentaireAide> obs = FXCollections.observableArrayList();
     
-    public void GetIddemande(String id) {
-        txtaide.setText(id);
+    public void GetIddemande(String ida, String sujet, String contenue) {
+        txtaide.setText(ida);
+        txtsujet.setText(sujet);
+        txtdemande.setText(contenue);
     }
     
     @FXML
@@ -85,6 +91,8 @@ public class ShowCommentaireAideController {
         commentaire.setCellValueFactory(new PropertyValueFactory<CommentaireAide, String>("txtCommentaire"));
         tablecommentaire.setItems(obs);
     }
+
+	
 
 }
 
