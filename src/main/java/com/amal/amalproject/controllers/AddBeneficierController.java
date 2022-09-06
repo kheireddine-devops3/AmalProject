@@ -3,6 +3,7 @@ package com.amal.amalproject.controllers;
 import com.amal.amalproject.entities.Beneficier;
 import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.models.UserModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -309,6 +310,10 @@ public class AddBeneficierController extends SharedController implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("AddBenificierController.initialize()");
+    }
+
+    public void onRetourClick(ActionEvent actionEvent) {
+        this.switchView("choose-inscription-view");
     }
 
 }

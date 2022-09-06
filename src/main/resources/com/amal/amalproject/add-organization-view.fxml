@@ -24,6 +24,7 @@
     <bottom>
         <ButtonBar styleClass="add-organization-buttons">
             <buttons>
+                <Button mnemonicParsing="false" onAction="#onRetourClick" text="Retour" />
                 <Button mnemonicParsing="false" onAction="#onAddOrganizationClick" text="S'inscrire" />
             </buttons>
         </ButtonBar>

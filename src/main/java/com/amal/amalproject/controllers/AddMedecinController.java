@@ -455,4 +455,8 @@ public class AddMedecinController extends SharedController implements Initializa
 //        ValidationSupport validationSupport = new ValidationSupport();
 //        validationSupport.registerValidator(firstNameID, Validator.createEmptyValidator("FirstName Is Required"));
     }
+
+    public void onRetourClick(ActionEvent actionEvent) {
+        this.switchView("choose-inscription-view");
+    }
 }

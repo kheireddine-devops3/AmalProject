@@ -139,6 +139,7 @@
     <bottom>
         <ButtonBar styleClass="add-doctor-buttons">
             <buttons>
+                <Button mnemonicParsing="false" onAction="#onRetourClick" text="Retour" />
                 <Button mnemonicParsing="false" onAction="#onAddDoctorClick" text="S'inscrire" />
             </buttons>
         </ButtonBar>

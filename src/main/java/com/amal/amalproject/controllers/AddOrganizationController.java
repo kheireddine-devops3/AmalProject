@@ -238,5 +238,9 @@ public class AddOrganizationController extends SharedController implements Initi
         System.out.println("AddOrganizationController.initialize()");
     }
 
+    public void onRetourClick(ActionEvent actionEvent) {
+        this.switchView("choose-inscription-view");
+    }
+
 }
 

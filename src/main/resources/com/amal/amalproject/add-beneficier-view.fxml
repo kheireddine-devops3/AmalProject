@@ -119,6 +119,7 @@
     <bottom>
         <ButtonBar styleClass="add-beneficier-buttons">
             <buttons>
+                <Button mnemonicParsing="false" onAction="#onRetourClick" text="Retour" />
                 <Button mnemonicParsing="false" onAction="#onAddBeneficierClick" text="S'inscrire" />
             </buttons>
         </ButtonBar>
