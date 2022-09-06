@@ -16,13 +16,25 @@ public class MainApplication extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(new BorderPane(), 1000, 800);
-        loadView("login-view");
+
+    public void start(Stage primaryStage) throws IOException {
+
+    	/* FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddEmploi.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Amal Application");
         stage.setScene(scene);
-//        stage.setResizable(true);
-        stage.show();
+        stage.show();*/
+        
+        
+        
+        Parent root=FXMLLoader.load(getClass().getResource("ListOffres.fxml"));
+        
+        Scene scene = new Scene(root,800,600);
+        //scene.getStylesheets().add(getClass().getResource("stylessabrine.css").toExternalForm());
+        
+        primaryStage.setTitle("Ajout offre");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
     public static void loadView(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -51,7 +63,7 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
 
