@@ -1,16 +1,17 @@
 package com.amal.amalproject.models;
 
-import java.util.*;
+import java.sql.SQLException;
+import java.util.List;
 
 import com.amal.amalproject.entities.Formation;
 
+import javafx.collections.ObservableList;
+
 public interface IFormationModel {
-	
-	Formation addFormation(Formation formation);
-	Formation deleteFormation(Formation formation);
-	Formation editFormation(Formation formation);	
-    List<Formation> getAllFormation();
-    
-    
+
+	void addFormation(Formation formation);
+	public void updateFormation(Formation formation);
+	 List<Formation> getAllFormation();
+
 
 }
