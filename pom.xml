@@ -44,8 +44,23 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+          <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>13.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>11.0.2</version>
+        </dependency>
+        <dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-media</artifactId>
+    <version>15</version>
+    <type>pom</type>
+</dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -79,4 +94,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>
