@@ -18,7 +18,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(new BorderPane(), 1000, 800);
-        loadView("add-organization-view");
+        loadView("login-view");
         stage.setTitle("Amal Application");
         stage.setScene(scene);
 //        stage.setResizable(true);
