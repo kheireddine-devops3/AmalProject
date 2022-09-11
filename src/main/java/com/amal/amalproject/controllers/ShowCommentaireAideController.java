@@ -1,10 +1,12 @@
 package com.amal.amalproject.controllers;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import com.amal.amalproject.entities.CommentaireAide;
 import com.amal.amalproject.utils.DBConnection;
@@ -13,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,7 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
-public class ShowCommentaireAideController {
+public class ShowCommentaireAideController implements Initializable {
 	  @FXML
 	    private Label txtdemande;
 
@@ -55,16 +58,16 @@ public class ShowCommentaireAideController {
         txtsujet.setText(sujet);
         txtdemande.setText(contenue);
     }
+   
+	
     
-    @FXML
-    void onShowclick(ActionEvent event) {
+    public void onShowclick(int id) {
     	obs.clear();
-    	String ida = txtaide.getText();
- 	    int  iddemande = Integer.parseInt(ida);
+    	
 	try {
     		Connection connection = DBConnection.getConnection();
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM commentaireaide WHERE idDemandeAide=?");
-            ps.setInt(1, iddemande);
+            ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             
             if(resultSet.next()) {
@@ -93,6 +96,17 @@ public class ShowCommentaireAideController {
     }
 
 	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		 String ida = txtaide.getText();
+			int  iddemande = Integer.parseInt(ida);
+			System.out.println("bonjour" +iddemande);
+		
+		 
+		
+		
+	}
 
 }
 

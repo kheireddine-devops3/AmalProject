@@ -75,20 +75,17 @@ public class ShowAideController extends SharedController implements Initializabl
     	
      }
    
-    @FXML
-    void onShowClick(ActionEvent event) {
+    
+      public  void tableAide() {
     	obs.clear();
-    	Compte compte = SessionUtils.getCurrentUser();
-    	String ida = IdUser.getText();
-      	 int  iduser = Integer.parseInt(ida);
-      	System.out.println("bonjour" +iduser);
+    	
       	 
     	try {
     		
     		Connection connection = DBConnection.getConnection();
     		
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM demandeaide WHERE id_user=?");
-            ps.setInt(1, iduser);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM demandeaide WHERE id_user=3");
+         
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
@@ -146,7 +143,7 @@ public class ShowAideController extends SharedController implements Initializabl
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		tableAide();
 		Compte compte = SessionUtils.getCurrentUser();
 	
 		

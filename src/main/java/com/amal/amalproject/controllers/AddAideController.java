@@ -40,6 +40,8 @@ public class AddAideController {
        this.aideModel.AddAide(aide);
        pubContenue.clear();
    	   pubSujet.clear();
+   	   
+   	   
       
     	}
     }

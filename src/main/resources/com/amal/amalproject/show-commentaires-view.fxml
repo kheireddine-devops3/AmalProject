@@ -22,17 +22,22 @@
               </columns>
             </TableView>
             <Label fx:id="txtaide" layoutX="399.0" layoutY="55.0" style="visibility: hidden;" text="id" />
-            <Button fx:id="btnAfficherCommentaire" layoutX="50.0" layoutY="203.0" mnemonicParsing="false" onAction="#onShowclick" style="-fx-background-color: #007bff;" text="Afficher les commentaires" textFill="#f8f8f8">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
+            
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="14.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../images/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="385.0" layoutY="64.0" text="Sujet" />
-            <Label layoutX="390.0" layoutY="125.0" text="Demande" />
+            <Label layoutX="385.0" layoutY="64.0" text="Sujet :" textFill="#2708b2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="385.0" layoutY="124.0" text="Demande :" textFill="#2708b2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Label fx:id="txtsujet" layoutX="486.0" layoutY="64.0" />
             <Label fx:id="txtdemande" layoutX="486.0" layoutY="125.0" />
          </children></AnchorPane>
