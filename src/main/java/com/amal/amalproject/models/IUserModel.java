@@ -28,4 +28,5 @@ public interface IUserModel {
     boolean existsMedecinByMatricule(String matricule);
     Organization getOrganizationById(int organizationId);
     Medecin getMedecinById(int medecinId);
+    Beneficier getBeneficierById(int beneficierId);
 }

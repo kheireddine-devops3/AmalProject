@@ -777,4 +777,48 @@ public class UserModel implements IUserModel {
         }
         return medecin;
     }
+
+    @Override
+    public Beneficier getBeneficierById(int beneficierId) {
+        Beneficier beneficier = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte, C.login, C.role, C.status, U.nom_user, U.prenom_user, U.email_user, U.telephone_user, U.sexe_user, U.adresse_user, U.date_naissance_user, U.photo_user, B.carte_handicap, B.date_expiration FROM compte C INNER JOIN USER U ON C.id_compte = U.id_user INNER JOIN beneficier B ON C.id_compte = B.id_user WHERE B.id_user = ?;");
+            ps.setInt(1,beneficierId);
+            ResultSet resultSet = ps.executeQuery();
+
+            if(resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                beneficier = new Beneficier();
+                beneficier.setUserId(resultSet.getInt("id_compte"));
+                beneficier.setNom(resultSet.getString("nom_user"));
+                beneficier.setPrenom(resultSet.getString("prenom_user"));
+                beneficier.setEmail(resultSet.getString("email_user"));
+                beneficier.setAdresse(resultSet.getString("adresse_user"));
+                beneficier.setPhoto(resultSet.getString("photo_user"));
+                beneficier.setSexe(resultSet.getString("sexe_user"));
+                beneficier.setDateNaissance(resultSet.getDate("date_naissance_user") != null ? resultSet.getDate("date_naissance_user").toLocalDate() : null);
+                beneficier.setTelephone(resultSet.getString("telephone_user"));
+
+                beneficier.setCarteHandicapNumber(resultSet.getString("carte_handicap"));
+                beneficier.setDateExpiration(resultSet.getDate("date_expiration") != null ? resultSet.getDate("date_expiration").toLocalDate() : null);
+
+                beneficier.setCompte(compte);
+                System.out.println("SUCCESS-GET-BENEFICIER-BY-ID");
+            } else {
+                System.out.println("ERROR-GET-BENEFICIER-BY-ID");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return beneficier;
+    }
 }
