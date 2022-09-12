@@ -13,6 +13,7 @@ public interface IUserModel {
     List<User> getAllUsers();
     List<Compte> getAllComptes();
     List<Organization> getAllOrganizations();
+    List<Medecin> getAllMedecins();
     User getUserById(int userId);
     Medecin addMedecin(Medecin medecin);
     Organization addOrganization(Organization organization);

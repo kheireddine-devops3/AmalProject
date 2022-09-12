@@ -201,8 +201,7 @@ public class UserModel implements IUserModel {
         List<Organization> organizations = new ArrayList<>();
         try {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte,C.login,C.role,C.status," +
-                    "O.matricule_fiscale,O.nom_organisation,O.forme_juridique,O.num_tel,O.email,O.adresse FROM compte C INNER JOIN organisation O ON C.id_compte = O.id_compte;");
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte,C.login,C.role,C.status,O.matricule_fiscale,O.nom_organisation,O.forme_juridique,O.num_tel,O.email,O.adresse FROM compte C INNER JOIN organisation O ON C.id_compte = O.id_compte;");
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
@@ -231,6 +230,51 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return organizations;
+    }
+
+    @Override
+    public List<Medecin> getAllMedecins() {
+        List<Medecin> medecins = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte, C.login, C.role, C.status, " +
+                    "U.nom_user, U.prenom_user, U.email_user, U.telephone_user, U.sexe_user, U.adresse_user, U.date_naissance_user, U.photo_user," +
+                    " M.cin, M.specialite, M.matricule, M.Assurance, M.id_ordre FROM compte C INNER JOIN USER U ON C.id_compte = U.id_user INNER JOIN medecin M ON C.id_compte = M.id_user;");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                Medecin medecin = new Medecin();
+                medecin.setUserId(resultSet.getInt("id_compte"));
+                medecin.setNom(resultSet.getString("nom_user"));
+                medecin.setPrenom(resultSet.getString("prenom_user"));
+                medecin.setEmail(resultSet.getString("email_user"));
+                medecin.setAdresse(resultSet.getString("adresse_user"));
+                medecin.setPhoto(resultSet.getString("photo_user"));
+                medecin.setSexe(resultSet.getString("sexe_user"));
+                medecin.setDateNaissance(resultSet.getDate("date_naissance_user") != null ? resultSet.getDate("date_naissance_user").toLocalDate() : null);
+                medecin.setTelephone(resultSet.getString("telephone_user"));
+
+                medecin.setCin(resultSet.getString("cin"));
+                medecin.setSpecialite(resultSet.getString("specialite"));
+                medecin.setMatricule(resultSet.getString("matricule"));
+
+                medecin.setCompte(compte);
+
+                medecins.add(medecin);
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return medecins;
     }
 
     @Override
