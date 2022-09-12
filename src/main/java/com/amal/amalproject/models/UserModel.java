@@ -821,4 +821,47 @@ public class UserModel implements IUserModel {
         }
         return beneficier;
     }
+
+    @Override
+    public Benevole getBenevoleById(int benevoleId) {
+        Benevole benevole = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte, C.login, C.role, C.status, U.nom_user, U.prenom_user, U.email_user, U.telephone_user, U.sexe_user, U.adresse_user, U.date_naissance_user, U.photo_user, B.profession FROM compte C INNER JOIN USER U ON C.id_compte = U.id_user INNER JOIN benevole B ON C.id_compte = B.id_user WHERE B.id_user = ?;");
+            ps.setInt(1,benevoleId);
+            ResultSet resultSet = ps.executeQuery();
+
+            if(resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                benevole = new Benevole();
+                benevole.setUserId(resultSet.getInt("id_compte"));
+                benevole.setNom(resultSet.getString("nom_user"));
+                benevole.setPrenom(resultSet.getString("prenom_user"));
+                benevole.setEmail(resultSet.getString("email_user"));
+                benevole.setAdresse(resultSet.getString("adresse_user"));
+                benevole.setPhoto(resultSet.getString("photo_user"));
+                benevole.setSexe(resultSet.getString("sexe_user"));
+                benevole.setDateNaissance(resultSet.getDate("date_naissance_user") != null ? resultSet.getDate("date_naissance_user").toLocalDate() : null);
+                benevole.setTelephone(resultSet.getString("telephone_user"));
+
+                benevole.setProfession(resultSet.getString("profession"));
+
+                benevole.setCompte(compte);
+                System.out.println("SUCCESS-GET-BENEVOLE-BY-ID");
+            } else {
+                System.out.println("ERROR-GET-BENEVOLE-BY-ID");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return benevole;
+    }
 }

@@ -29,4 +29,5 @@ public interface IUserModel {
     Organization getOrganizationById(int organizationId);
     Medecin getMedecinById(int medecinId);
     Beneficier getBeneficierById(int beneficierId);
+    Benevole getBenevoleById(int benevoleId);
 }
