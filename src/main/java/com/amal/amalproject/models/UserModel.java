@@ -171,6 +171,32 @@ public class UserModel implements IUserModel {
     }
 
     @Override
+    public List<Compte> getAllComptes() {
+        List<Compte> comptes = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `compte`");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                comptes.add(compte);
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return comptes;
+    }
+
+    @Override
     public User getUserById(int userId) {
         User user = null;
         try {
