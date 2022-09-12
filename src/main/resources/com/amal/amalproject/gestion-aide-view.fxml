@@ -24,10 +24,16 @@
       </ImageView>
       <Pane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #fff; -fx-opacity: 0.8;">
          <children>
-            <VBox layoutX="178.0" layoutY="163.0" prefHeight="200.0" prefWidth="248.0" spacing="20.0">
+            <VBox layoutX="178.0" layoutY="163.0" prefHeight="200.0" prefWidth="248.0" spacing="10.0">
                <children>
                   <TextField fx:id="txtSujet" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+                  <Label fx:id="errorsujet" textFill="#f20808">
+                     <font>
+                        <Font name="Times New Roman" size="12.0" />
+                     </font>
+                  </Label>
                   <TextArea fx:id="TxtPublication" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: blue; -fx-border-radius: 5px;" />
+                  <Label fx:id="errortxt" textFill="#f50707" />
                </children>
             </VBox>
             <TableView fx:id="tableAide" layoutX="491.0" layoutY="147.0" prefHeight="270.0" prefWidth="492.0" style="-fx-background-color: #17A2B4; -fx-border-color: white; -fx-border-radius: 10px;">
@@ -38,7 +44,7 @@
               </columns>
             </TableView>
             <Separator layoutX="466.0" layoutY="100.0" orientation="VERTICAL" prefHeight="405.0" prefWidth="7.0" style="-fx-background-color: black;" />
-            <HBox layoutX="36.0" layoutY="401.0" prefHeight="100.0" prefWidth="390.0" spacing="20.0">
+            <HBox layoutX="36.0" layoutY="450.0" prefHeight="100.0" prefWidth="390.0" spacing="20.0">
                <children>
                   <Button fx:id="btnAjouter" mnemonicParsing="false" onAction="#Ajouter" prefHeight="26.0" prefWidth="85.0" style="-fx-border-radius: 5px; -fx-border-color: white; -fx-background-color: #28a745;" text="Ajouter" textFill="#fcf9f9">
                      <font>
@@ -83,7 +89,7 @@
             </Pane>
          </children>
       </Pane>
-      <VBox layoutX="39.0" layoutY="175.0" prefHeight="200.0" prefWidth="132.0" spacing="20.0">
+      <VBox layoutX="39.0" layoutY="164.0" prefHeight="200.0" prefWidth="132.0" spacing="30.0">
          <children>
             <Label text="Sujet">
                <font>
