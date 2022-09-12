@@ -731,4 +731,50 @@ public class UserModel implements IUserModel {
         }
         return organization;
     }
+
+    @Override
+    public Medecin getMedecinById(int medecinId) {
+        Medecin medecin = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte, C.login, C.role, C.status,U.nom_user, U.prenom_user, U.email_user, U.telephone_user, U.sexe_user, U.adresse_user, U.date_naissance_user, U.photo_user,M.cin, M.specialite, M.matricule, M.Assurance, M.id_ordre FROM compte C INNER JOIN USER U ON C.id_compte = U.id_user INNER JOIN medecin M ON C.id_compte = M.id_user WHERE M.id_user = ?;");
+            ps.setInt(1, medecinId);
+            ResultSet resultSet = ps.executeQuery();
+
+            if(resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                medecin = new Medecin();
+                medecin.setUserId(resultSet.getInt("id_compte"));
+                medecin.setNom(resultSet.getString("nom_user"));
+                medecin.setPrenom(resultSet.getString("prenom_user"));
+                medecin.setEmail(resultSet.getString("email_user"));
+                medecin.setAdresse(resultSet.getString("adresse_user"));
+                medecin.setPhoto(resultSet.getString("photo_user"));
+                medecin.setSexe(resultSet.getString("sexe_user"));
+                medecin.setDateNaissance(resultSet.getDate("date_naissance_user") != null ? resultSet.getDate("date_naissance_user").toLocalDate() : null);
+                medecin.setTelephone(resultSet.getString("telephone_user"));
+
+                medecin.setCin(resultSet.getString("cin"));
+                medecin.setSpecialite(resultSet.getString("specialite"));
+                medecin.setMatricule(resultSet.getString("matricule"));
+
+                medecin.setCompte(compte);
+
+                System.out.println("SUCCESS-GET-MEDECIN-BY-ID");
+            } else{
+                System.out.println("ERROR-GET-MEDECIN-BY-ID");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return medecin;
+    }
 }
