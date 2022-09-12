@@ -26,4 +26,5 @@ public interface IUserModel {
     boolean existsUserByTelephone(String telephone);
     boolean existsMedecinByCIN(String cin);
     boolean existsMedecinByMatricule(String matricule);
+    Organization getOrganizationById(int organizationId);
 }

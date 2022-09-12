@@ -691,4 +691,44 @@ public class UserModel implements IUserModel {
 
         return nb != 0 ? true : false;
     }
+
+    @Override
+    public Organization getOrganizationById(int organizationId) {
+        Organization organization = null;
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte,C.login,C.role,C.status,O.matricule_fiscale,O.nom_organisation,O.forme_juridique,O.num_tel,O.email,O.adresse FROM compte C INNER JOIN organisation O ON C.id_compte = O.id_compte WHERE O.id_compte = ?;");
+            ps.setInt(1,organizationId);
+            ResultSet resultSet = ps.executeQuery();
+
+            if(resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                organization = new Organization();
+                organization.setUserId(resultSet.getInt("id_compte"));
+                organization.setNom(resultSet.getString("nom_organisation"));
+                organization.setEmail(resultSet.getString("email"));
+                organization.setFormJuridique(resultSet.getString("forme_juridique"));
+                organization.setAdresse(resultSet.getString("adresse"));
+                organization.setMatriculeFiscale(resultSet.getString("matricule_fiscale"));
+                organization.setNumPhone(resultSet.getString("num_tel"));
+                organization.setCompte(compte);
+
+                System.out.println("SUCCESS-GET-ORGANIZATION-BY-ID");
+
+            } else {
+                System.out.println("ERROR-GET-ORGANIZATION-BY-ID");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return organization;
+    }
 }
