@@ -15,6 +15,7 @@ public interface IUserModel {
     List<Organization> getAllOrganizations();
     List<Medecin> getAllMedecins();
     List<Beneficier> getAllBeneficiers();
+    List<Benevole> getAllBenevoles();
     User getUserById(int userId);
     Medecin addMedecin(Medecin medecin);
     Organization addOrganization(Organization organization);
