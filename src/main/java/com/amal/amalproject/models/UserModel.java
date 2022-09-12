@@ -197,6 +197,43 @@ public class UserModel implements IUserModel {
     }
 
     @Override
+    public List<Organization> getAllOrganizations() {
+        List<Organization> organizations = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte,C.login,C.role,C.status," +
+                    "O.matricule_fiscale,O.nom_organisation,O.forme_juridique,O.num_tel,O.email,O.adresse FROM compte C INNER JOIN organisation O ON C.id_compte = O.id_compte;");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Compte compte = new Compte();
+                compte.setCompteId(resultSet.getInt("id_compte"));
+                compte.setLogin(resultSet.getString("login"));
+                compte.setRole(resultSet.getString("role"));
+                compte.setStatus(resultSet.getString("status"));
+
+                Organization organization = new Organization();
+                organization.setUserId(resultSet.getInt("id_compte"));
+                organization.setNom(resultSet.getString("nom_organisation"));
+                organization.setEmail(resultSet.getString("email"));
+                organization.setFormJuridique(resultSet.getString("forme_juridique"));
+                organization.setAdresse(resultSet.getString("adresse"));
+                organization.setMatriculeFiscale(resultSet.getString("matricule_fiscale"));
+                organization.setNumPhone(resultSet.getString("num_tel"));
+                organization.setCompte(compte);
+
+                organizations.add(organization);
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return organizations;
+    }
+
+    @Override
     public User getUserById(int userId) {
         User user = null;
         try {
