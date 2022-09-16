@@ -943,4 +943,18 @@ public class UserModel implements IUserModel {
 
         return result;
     }
+    @Override
+    public boolean changePassword(int compteId, String newPassword) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE `compte` SET `password` = ? WHERE `id_compte` = ?");
+            ps.setString(1,DigestUtils.sha256Hex(newPassword));
+            ps.setInt(2,compteId);
+            ps.executeUpdate();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+            return false;
+        }
+        return true;
+    }
 }
