@@ -33,4 +33,5 @@ public interface IUserModel {
     Benevole getBenevoleById(int benevoleId);
     Compte editCompte(int compteId,Compte updatedCompte);
     Organization editOrganization(int organizationId,Organization updatedOrganization);
+    Map<String,Integer> getUserNumbersByRole();
 }

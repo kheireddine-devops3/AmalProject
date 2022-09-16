@@ -924,4 +924,23 @@ public class UserModel implements IUserModel {
         }
         return updatedOrganization;
     }
+
+    @Override
+    public Map<String, Integer> getUserNumbersByRole() {
+        Map<String,Integer> result = new HashMap<>();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT `role` AS 'ROLE',Count(`id_compte`) AS 'NB_USERS' FROM `compte` GROUP BY `role`;");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                result.put(resultSet.getString("ROLE"),resultSet.getInt("NB_USERS"));
+            }
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return result;
+    }
 }
