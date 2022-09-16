@@ -3,6 +3,7 @@ package com.amal.amalproject.models;
 import com.amal.amalproject.entities.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IUserModel {
     Compte login(String username, String password);
@@ -30,4 +31,6 @@ public interface IUserModel {
     Medecin getMedecinById(int medecinId);
     Beneficier getBeneficierById(int beneficierId);
     Benevole getBenevoleById(int benevoleId);
+    Compte editCompte(int compteId,Compte updatedCompte);
+    Organization editOrganization(int organizationId,Organization updatedOrganization);
 }

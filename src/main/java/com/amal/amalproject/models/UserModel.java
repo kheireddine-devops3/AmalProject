@@ -6,7 +6,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserModel implements IUserModel {
     Connection connection = DBConnection.getConnection();
@@ -863,5 +865,63 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return benevole;
+    }
+
+    @Override
+    public Compte editCompte(int compteId, Compte updatedCompte) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE `compte` SET `login` = ?, `role`=?, `status`=? WHERE `id_compte` = ?;");
+            ps.setString(1,updatedCompte.getLogin());
+//            ps.setString(2, DigestUtils.sha256Hex(updatedCompte.getPassword()));
+            ps.setString(2,updatedCompte.getRole());
+            ps.setString(3,updatedCompte.getStatus());
+            ps.setInt(4,compteId);
+
+            int n = ps.executeUpdate();
+
+            if(n == 1) {
+                System.out.println("SUCCESS-EDIT-COMPTE");
+            } else {
+                System.out.println("ERROR-EDIT-COMPTE");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return updatedCompte;
+    }
+
+    @Override
+    public Organization editOrganization(int organizationId, Organization updatedOrganization) {
+        try {
+
+            Compte updatedCompte = this.editCompte(organizationId,updatedOrganization.getCompte());
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE organisation SET `matricule_fiscale` = ?, `nom_organisation` = ?, `forme_juridique` = ?, `num_tel` = ?, `email` = ?, `adresse` = ? WHERE id_compte = ?;");
+
+            ps.setString(1,updatedOrganization.getMatriculeFiscale());
+            ps.setString(2,updatedOrganization.getNom());
+            ps.setString(3,updatedOrganization.getFormJuridique());
+            ps.setString(4,updatedOrganization.getNumPhone());
+            ps.setString(5,updatedOrganization.getEmail());
+            ps.setString(6,updatedOrganization.getAdresse());
+            ps.setInt(7,organizationId);
+
+            int n = ps.executeUpdate();
+
+            if(n == 1) {
+                System.out.println("SUCCESS-EDIT-ORGANIZATION");
+            } else {
+                System.out.println("ERROR-EDIT-ORGANIZATION");
+            }
+
+            ps.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return updatedOrganization;
     }
 }
