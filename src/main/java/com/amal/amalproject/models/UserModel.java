@@ -18,7 +18,7 @@ public class UserModel implements IUserModel {
         Compte compte = null;
         try {
             System.out.println("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
+            PreparedStatement ps = connection.prepareStatement("SELECT id_compte,login,password,role,status FROM `compte` WHERE `login` = ? AND `password` = ?;");
             ps.setString(1,username);
             ps.setString(2,DigestUtils.sha256Hex(password));
 
@@ -367,7 +367,7 @@ public class UserModel implements IUserModel {
         User user = null;
         try {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `user` WHERE `id_user` = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT id_user,nom_user,prenom_user,date_naissance_user,photo_user,email_user,telephone_user,sexe_user,adresse_user FROM `user` WHERE `id_user` = ?");
             ps.setInt(1,userId);
 
             ResultSet resultSet = ps.executeQuery();
@@ -447,7 +447,7 @@ public class UserModel implements IUserModel {
 
             organization.setUserId(savedCompte.getCompteId());
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `organisation` (`matricule_fiscale`, `nom_organisation`, `forme_juridique`, `num_tel`, `email`, `adresse`, `id_compte`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `organisation` (`matricule_fiscale`, `nom_organisation`, `forme_juridique`, `num_tel`, `email`, `adresse`, `id_compte`,`photo`) VALUES (?, ?, ?, ?, ?, ?, ?,?);");
 
             ps.setString(1,organization.getMatriculeFiscale());
             ps.setString(2,organization.getNom());
@@ -456,6 +456,7 @@ public class UserModel implements IUserModel {
             ps.setString(5,organization.getEmail());
             ps.setString(6,organization.getAdresse());
             ps.setInt(7,organization.getUserId());
+            ps.setString(8,organization.getPhoto());
 
             int n = ps.executeUpdate();
 
@@ -699,7 +700,7 @@ public class UserModel implements IUserModel {
         Organization organization = null;
         try {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte,C.login,C.role,C.status,O.matricule_fiscale,O.nom_organisation,O.forme_juridique,O.num_tel,O.email,O.adresse FROM compte C INNER JOIN organisation O ON C.id_compte = O.id_compte WHERE O.id_compte = ?;");
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte,C.login,C.role,C.status,O.matricule_fiscale,O.nom_organisation,O.forme_juridique,O.num_tel,O.email,O.adresse,O.photo FROM compte C INNER JOIN organisation O ON C.id_compte = O.id_compte WHERE O.id_compte = ?;");
             ps.setInt(1,organizationId);
             ResultSet resultSet = ps.executeQuery();
 
@@ -718,6 +719,7 @@ public class UserModel implements IUserModel {
                 organization.setAdresse(resultSet.getString("adresse"));
                 organization.setMatriculeFiscale(resultSet.getString("matricule_fiscale"));
                 organization.setNumPhone(resultSet.getString("num_tel"));
+                organization.setPhoto(resultSet.getString("photo"));
                 organization.setCompte(compte);
 
                 System.out.println("SUCCESS-GET-ORGANIZATION-BY-ID");
@@ -956,5 +958,39 @@ public class UserModel implements IUserModel {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String editUserProfilePhoto(int userId, String photo) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE `user` SET `photo_user` = ? WHERE `id_user` = ?");
+            ps.setString(1,photo);
+            ps.setInt(2,userId);
+            int resultat = ps.executeUpdate();
+
+            if(resultat == 1) {
+                return photo;
+            }
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public String editOrganizationProfilePhoto(int organizationId, String photo) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE `organisation` SET `photo` = ? WHERE `id_compte` = ?");
+            ps.setString(1,photo);
+            ps.setInt(2,organizationId);
+            int resultat = ps.executeUpdate();
+
+            if(resultat == 1) {
+                return photo;
+            }
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return null;
     }
 }

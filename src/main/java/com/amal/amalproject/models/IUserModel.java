@@ -35,4 +35,6 @@ public interface IUserModel {
     Organization editOrganization(int organizationId,Organization updatedOrganization);
     Map<String,Integer> getUserNumbersByRole();
     boolean changePassword(int compteId,String newPassword);
+    String editUserProfilePhoto(int userId,String photo);
+    String editOrganizationProfilePhoto(int organizationId,String photo);
 }
