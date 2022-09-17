@@ -4,6 +4,8 @@ import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.entities.Medecin;
 import com.amal.amalproject.models.UserModel;
 import com.amal.amalproject.utils.FileUploaderUtils;
+import com.amal.amalproject.utils.enums.AccountStatus;
+import com.amal.amalproject.utils.enums.RoleEnum;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -107,8 +109,8 @@ public class AddMedecinController extends SharedController implements Initializa
             Compte compte = new Compte();
             compte.setLogin(loginID.getText());
             compte.setPassword(passwordID.getText());
-            compte.setRole("ROLE_DOCTOR");
-            compte.setStatus("ACTIVE");
+            compte.setRole(RoleEnum.ROLE_DOCTOR.toString());
+            compte.setStatus(AccountStatus.STATUS_ACTIVE_NOT_VERIFIED_PHONE_NOT_VERIFIED_MAIL.toString());
             System.out.println(compte);
             /******************************** End Entity Compte ********************************/
             /******************************** Start Entity Medecin ********************************/

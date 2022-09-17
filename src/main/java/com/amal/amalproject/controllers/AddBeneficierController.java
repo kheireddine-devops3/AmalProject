@@ -3,6 +3,8 @@ package com.amal.amalproject.controllers;
 import com.amal.amalproject.entities.Beneficier;
 import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.models.UserModel;
+import com.amal.amalproject.utils.enums.AccountStatus;
+import com.amal.amalproject.utils.enums.RoleEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -76,8 +78,8 @@ public class AddBeneficierController extends SharedController implements Initial
             Compte compte = new Compte();
             compte.setLogin(loginID.getText());
             compte.setPassword(passwordID.getText());
-            compte.setRole("ROLE_BENEFICIER");
-            compte.setStatus("ACTIVE");
+            compte.setRole(RoleEnum.ROLE_BENEFICIER.toString());
+            compte.setStatus(AccountStatus.STATUS_ACTIVE_NOT_VERIFIED_PHONE_NOT_VERIFIED_MAIL.toString());
             System.out.println(compte);
             /******************************** End Entity Compte ********************************/
             /******************************** Start Entity Benificier ********************************/

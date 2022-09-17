@@ -4,6 +4,8 @@ import com.amal.amalproject.entities.Beneficier;
 import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.entities.Organization;
 import com.amal.amalproject.models.UserModel;
+import com.amal.amalproject.utils.enums.AccountStatus;
+import com.amal.amalproject.utils.enums.RoleEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,8 +63,8 @@ public class AddOrganizationController extends SharedController implements Initi
             Compte compte = new Compte();
             compte.setLogin(loginID.getText());
             compte.setPassword(passwordID.getText());
-            compte.setRole("ROLE_ORGANIZATION");
-            compte.setStatus("ACTIVE");
+            compte.setRole(RoleEnum.ROLE_ORGANIZATION.toString());
+            compte.setStatus(AccountStatus.STATUS_ACTIVE_NOT_VERIFIED_PHONE_NOT_VERIFIED_MAIL.toString());
             System.out.println(compte);
             /******************************** End Entity Compte ********************************/
             /******************************** Start Entity Organization ********************************/
@@ -74,6 +76,7 @@ public class AddOrganizationController extends SharedController implements Initi
             organization.setFormJuridique(formJuridiqueID.getValue());
             organization.setMatriculeFiscale(matriculeID.getText());
             organization.setNumPhone(telephoneID.getText());
+            organization.setPhoto("DEFAULT-URL");
             organization.setCompte(compte);
 
             System.out.println(organization);
