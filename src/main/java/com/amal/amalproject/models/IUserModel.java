@@ -37,4 +37,6 @@ public interface IUserModel {
     boolean changePassword(int compteId,String newPassword);
     String editUserProfilePhoto(int userId,String photo);
     String editOrganizationProfilePhoto(int organizationId,String photo);
+
+    int getUserIdByEmail(String email);
 }

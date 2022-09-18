@@ -50,11 +50,13 @@ public class UserModel implements IUserModel {
     @Override
     public Compte addCompte(Compte compte) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `compte` (`id_compte`, `login`, `password`, `role`, `status`) VALUES (NULL, ?, ?, ?, ?);");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `compte` (`id_compte`, `login`, `password`, `role`, `status`,`temp_validate_mail`,`temp_validate_phone`) VALUES (NULL, ?, ?, ?, ?,?,?);");
             ps.setString(1,compte.getLogin());
             ps.setString(2, DigestUtils.sha256Hex(compte.getPassword()));
             ps.setString(3,compte.getRole());
             ps.setString(4,compte.getStatus());
+            ps.setString(5,compte.getTempValidateMail());
+            ps.setString(6,compte.getTempValidateMail());
 
 
             int n = ps.executeUpdate();
@@ -992,5 +994,22 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public int getUserIdByEmail(String email) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT C.id_compte AS 'ID' FROM compte C LEFT JOIN user U ON U.id_user = C.id_compte LEFT JOIN organisation O ON O.id_compte = C.id_compte WHERE (U.email_user = ?) OR (O.email = ?);");
+            ps.setString(1,email);
+            ps.setString(2,email);
+            ResultSet resultat = ps.executeQuery();
+            if(resultat.next()) {
+                return resultat.getInt("ID");
+            }
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return -1;
     }
 }
