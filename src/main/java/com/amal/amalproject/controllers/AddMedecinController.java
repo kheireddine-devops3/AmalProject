@@ -5,6 +5,7 @@ import com.amal.amalproject.entities.Medecin;
 import com.amal.amalproject.models.UserModel;
 import com.amal.amalproject.utils.FileUploaderUtils;
 import com.amal.amalproject.utils.MailUtils;
+import com.amal.amalproject.utils.TwilioSMSUtils;
 import com.amal.amalproject.utils.enums.AccountStatus;
 import com.amal.amalproject.utils.enums.RoleEnum;
 import javafx.collections.FXCollections;
@@ -159,6 +160,9 @@ public class AddMedecinController extends SharedController implements Initializa
 
                 MailUtils.sendHtmlMail(medecin.getEmail(),subjectMail,htmlMail);
                 System.out.println("SUCCESS-SEND-MAIL");
+                String smsMessage = "Bonjour "+medecin.getNom()+"\nVotre code de validation : "+medecin.getCompte().getTempValidatePhone();
+                TwilioSMSUtils.sendMessage("+216" + medecin.getTelephone(),smsMessage);
+                System.out.println("SUCCESS-SEND-SMS");
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Vous avez terminé avec succès le processus d'inscription\ncliquer sur ok puis s'authentifiez par votre login et mot de passe", ButtonType.OK);
                 alert.setTitle("Inscription");

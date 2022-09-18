@@ -5,6 +5,7 @@ import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.entities.Organization;
 import com.amal.amalproject.models.UserModel;
 import com.amal.amalproject.utils.MailUtils;
+import com.amal.amalproject.utils.TwilioSMSUtils;
 import com.amal.amalproject.utils.enums.AccountStatus;
 import com.amal.amalproject.utils.enums.RoleEnum;
 import javafx.event.ActionEvent;
@@ -107,6 +108,9 @@ public class AddOrganizationController extends SharedController implements Initi
 
                 MailUtils.sendHtmlMail(savedOrganization.getEmail(),subjectMail,htmlMail);
                 System.out.println("SUCCESS-SEND-MAIL");
+                String smsMessage = "Bonjour "+organization.getNom()+"\nVotre code de validation : "+organization.getCompte().getTempValidatePhone();
+                TwilioSMSUtils.sendMessage("+216" + savedOrganization.getNumPhone(),smsMessage);
+                System.out.println("SUCCESS-SEND-SMS");
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Vous avez terminé avec succès le processus d'inscription\ncliquer sur ok puis s'authentifiez par votre login et mot de passe", ButtonType.OK);
                 alert.setTitle("Inscription");
