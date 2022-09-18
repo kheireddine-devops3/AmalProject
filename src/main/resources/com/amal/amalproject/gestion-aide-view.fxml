@@ -87,6 +87,13 @@
                   </ImageView>
                </children>
             </Pane>
+            <Button fx:id="btnCom" layoutX="737.0" layoutY="505.0" mnemonicParsing="false" onAction="#afficherCom" style="-fx-background-color: none;" text="&gt;&gt; Afficher les commentaires" textFill="#180668">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="idd" layoutX="150.0" layoutY="121.0" style="visibility: hidden;" />
+            <Label fx:id="dated" layoutX="209.0" layoutY="121.0" style="visibility: hidden;" />
          </children>
       </Pane>
       <VBox layoutX="39.0" layoutY="164.0" prefHeight="200.0" prefWidth="132.0" spacing="30.0">

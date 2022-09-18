@@ -1,4 +1,5 @@
 package com.amal.amalproject.controllers;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,7 +16,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +30,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class GestionAideController implements Initializable {
 
@@ -49,6 +54,8 @@ public class GestionAideController implements Initializable {
 
     @FXML
     private Button btnVider;
+    @FXML
+    private Button btnCom;
 
     @FXML
     private TableColumn<Aide, Date> date;
@@ -61,6 +68,10 @@ public class GestionAideController implements Initializable {
 
     @FXML
     private TableView<Aide> tableAide;
+    @FXML
+    private Label idd;
+    @FXML
+    private Label dated;
 
     @FXML
     private TextField txtSujet;
@@ -193,6 +204,32 @@ public class GestionAideController implements Initializable {
  		}
 
     }
+    
+    @FXML
+    void afficherCom(ActionEvent event) throws IOException {
+    	if(isValid()) {
+    	String ida = idd.getText();
+    	String sujet = txtSujet.getText();
+    	String date = dated.getText();
+    	String contenue = TxtPublication.getText();
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/amal/amalproject/show-commentaire-aide-view.fxml"));
+		Parent root = (Parent) loader.load();
+		ShowCommentaireController controller =loader.getController();
+		 controller.getDemande(ida, date, contenue, sujet);
+		 Scene scene = new Scene(root);
+		 Stage stage = new Stage();
+		 stage.setScene(scene);
+		 stage.show();
+    	}
+    	else{
+    		Alert alert = new Alert(AlertType.INFORMATION);
+        	alert.setTitle("Click!");
+        	alert.setHeaderText("Information");
+        	alert.setContentText("Slectionner une demande S'il vous plait !");
+        	alert.showAndWait();
+    	}
+
+    }
 
     @FXML
     void vider(ActionEvent event) {
@@ -205,18 +242,11 @@ public class GestionAideController implements Initializable {
     
     public  void tableAide() {
     	obs.clear();
-    	
-      	 
     	try {
-    		
     		Connection connection = DBConnection.getConnection();
-    		
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM demandeaide WHERE id_user=3");
-         
             ResultSet resultSet = ps.executeQuery();
-
             while (resultSet.next()) {
-
         int idAide = resultSet.getInt("id_demande_aide");
 	String contenue = resultSet.getString("contenue");
 	LocalDate datePublication = resultSet.getDate("date_publication") != null ? resultSet.getDate("date_publication").toLocalDate() : null;
@@ -249,10 +279,8 @@ public class GestionAideController implements Initializable {
                   id = Integer.parseInt(String.valueOf(tableAide.getItems().get(myIndex).getIdAide()));
                   txtSujet.setText(tableAide.getItems().get(myIndex).getSujet());
                   TxtPublication.setText(tableAide.getItems().get(myIndex).getContenue());
-                      
-                                 
-                               
-                                 
+                  idd.setText(String.valueOf(tableAide.getItems().get(myIndex).getIdAide()));
+                  dated.setText(String.valueOf(tableAide.getItems().get(myIndex).getDatePublication()));
                }
             });
                return myRow;

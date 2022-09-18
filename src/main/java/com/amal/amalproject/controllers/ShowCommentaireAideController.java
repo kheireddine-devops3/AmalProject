@@ -45,6 +45,9 @@ public class ShowCommentaireAideController implements Initializable {
 
     @FXML
     private AnchorPane tablecom;
+    @FXML
+    private Button btnAfficher;
+
 
     @FXML
     private TableView<CommentaireAide> tablecommentaire;
@@ -61,10 +64,12 @@ public class ShowCommentaireAideController implements Initializable {
    
 	
     
-    public void onShowclick(int id) {
+    @FXML
+    void afficher(ActionEvent event) {
     	obs.clear();
     	
-	try {
+	try {String ida = txtaide.getText();
+	int  id = Integer.parseInt(ida);
     		Connection connection = DBConnection.getConnection();
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM commentaireaide WHERE idDemandeAide=?");
             ps.setInt(1, id);
@@ -99,12 +104,6 @@ public class ShowCommentaireAideController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		 String ida = txtaide.getText();
-			int  iddemande = Integer.parseInt(ida);
-			System.out.println("bonjour" +iddemande);
-		
-		 
-		
 		
 	}
 
