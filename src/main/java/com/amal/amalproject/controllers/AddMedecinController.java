@@ -4,6 +4,7 @@ import com.amal.amalproject.entities.Compte;
 import com.amal.amalproject.entities.Medecin;
 import com.amal.amalproject.models.UserModel;
 import com.amal.amalproject.utils.FileUploaderUtils;
+import com.amal.amalproject.utils.MailUtils;
 import com.amal.amalproject.utils.enums.AccountStatus;
 import com.amal.amalproject.utils.enums.RoleEnum;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
+import org.apache.commons.lang.RandomStringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -111,6 +113,8 @@ public class AddMedecinController extends SharedController implements Initializa
             compte.setPassword(passwordID.getText());
             compte.setRole(RoleEnum.ROLE_DOCTOR.toString());
             compte.setStatus(AccountStatus.STATUS_ACTIVE_NOT_VERIFIED_PHONE_NOT_VERIFIED_MAIL.toString());
+            compte.setTempValidateMail(RandomStringUtils.random(6, false, true));
+            compte.setTempValidatePhone(RandomStringUtils.random(6, false, true));
             System.out.println(compte);
             /******************************** End Entity Compte ********************************/
             /******************************** Start Entity Medecin ********************************/
@@ -136,6 +140,25 @@ public class AddMedecinController extends SharedController implements Initializa
             Medecin savedDoctor = userModel.addMedecin(medecin);
 
             if (savedDoctor != null) {
+
+                String subjectMail = "Validation de l'adresse e-mail associée à votre compte";
+                String htmlMail = " <div style='background-color:#ffffff;border: solid 1px silver ;padding:1em;color: #2C3333;font-family: Arial, Helvetica, sans-serif;font-size: 14px; line-height: 1.5em;'>\n" +
+                        "        <h2 style='text-align:center'>Validation de l'adresse e-mail associée à votre compte</h2>\n" +
+                        "        <hr>\n" +
+                        "        <h3>Bonjour "+medecin.getNom()+",</h3>\n" +
+                        "\n" +
+                        "        <p>Bienvenue chez AmalApplication !</p>\n" +
+                        "        <p>Vous faites désormais partie de la communauté tunisienne des beneficiers, des benevoles des medecins et d'organizations collaborant pour aidez les autres et participer à la vie associative</p>\n" +
+                        "\n" +
+                        "        <p>Une fois connecté(e), rendez vous dans vos paramètres pour valider votre email et compléter votre profil.</p>\n" +
+                        "\n" +
+                        "        <p>Code de validation: <span style='letter-spacing: 0.3em;border: solid 1px silver  ;padding:0.5em 1em;font-weight: bold;background-color: #B7C4CF;'>"+medecin.getCompte().getTempValidateMail()+"</span></p>\n" +
+                        "\n" +
+                        "        <p>À bientôt,<br>L'équipe AmalApplication</p>\n" +
+                        "    </div>";
+
+                MailUtils.sendHtmlMail(medecin.getEmail(),subjectMail,htmlMail);
+                System.out.println("SUCCESS-SEND-MAIL");
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Vous avez terminé avec succès le processus d'inscription\ncliquer sur ok puis s'authentifiez par votre login et mot de passe", ButtonType.OK);
                 alert.setTitle("Inscription");
