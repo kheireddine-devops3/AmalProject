@@ -1,15 +1,15 @@
 package com.amal.amalproject.models;
 
-import com.amal.amalproject.entities.User;
-import com.amal.amalproject.entities.dons;
+import com.amal.amalproject.entities.Dons;
 
-import java.util.List;
+
 
 public interface IDonsModel {
-    dons addDons(dons DON);
-    dons removeDons(dons DON);
-    dons modifyDOns(dons DON);
 
-    List<dons> getAllDons();
 
+    public void addDons(Dons DON);
+
+    public void removeDons(Dons DON);
+
+    void modifyDons(Dons DON);
 }

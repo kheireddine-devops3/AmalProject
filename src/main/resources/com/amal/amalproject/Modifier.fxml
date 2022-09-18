@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.ModifierController">
+   <children>
+      <AnchorPane prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #191970;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="27.0" fitWidth="34.0" layoutX="966.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/close.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnretour" layoutX="6.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnRetourClicked" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" fx:id="x1">
+                     <image>
+                        <Image url="@../../../image/retour.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="234.0" layoutY="190.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="250.0" style="-fx-background-color: transaparent;" text="Menu" textAlignment="RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/list.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="21.0" layoutY="119.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #191970;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <Button fx:id="BAccueil3" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: transaparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" text="Accueil" textAlignment="RIGHT" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/home-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BAjouter3" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToAjouter" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: transaparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" text="Ajouter" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BModifier3" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#goToModifier" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #008B8B; -fx-border-color: white; -fx-border-width: 0 0 2 0;" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/write.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="BSupprimer3" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#goToSupprimer" prefHeight="60.0" style="-fx-background-color: transaparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/x-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="540.0" layoutY="80.0" text="Modifier Dons">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font></Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebf5fb" height="452.0" layoutX="273.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="319.0" />
+      <Label layoutX="288.0" layoutY="140.0" text="Nom du don">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="libelleDonID" layoutX="287.0" layoutY="165.0" prefHeight="40.0" prefWidth="275.0" style="-fx-border-color: green; -fx-border-width: 3;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextArea fx:id="descDonsId" layoutX="287.0" layoutY="445.0" prefHeight="106.0" prefWidth="275.0" style="-fx-border-color: green; -fx-border-width: 3;" />
+      <Label layoutX="288.0" layoutY="218.0" text="Photo produit">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="photoDonID" layoutX="287.0" layoutY="246.0" prefHeight="40.0" prefWidth="275.0" style="-fx-border-color: green; -fx-border-width: 3;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="288.0" layoutY="330.0" text="Type don">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="typeDonsID" layoutX="287.0" layoutY="358.0" prefHeight="40.0" prefWidth="275.0" style="-fx-border-color: green; -fx-border-width: 3;" />
+      <Label layoutX="287.0" layoutY="414.0" text="Description Don">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="modifyDons" layoutX="709.0" layoutY="525.0" mnemonicParsing="false" onAction="#modifyDonsClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #3498DB;" text="Modifier Don" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <TableView fx:id="TableDons" layoutX="601.0" layoutY="126.0" prefHeight="385.0" prefWidth="396.0">
+         <columns>
+            <TableColumn fx:id="id_col" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="photo_col" prefWidth="61.59991455078125" text="Photo" />
+            <TableColumn fx:id="type_col" prefWidth="46.39996337890625" text="Type" />
+            <TableColumn fx:id="lib_col" prefWidth="75.0" text="libele" />
+            <TableColumn fx:id="desc_col" prefWidth="190.4000244140625" text="description" />
+         </columns>
+      </TableView>
+      <Button fx:id="addImage" layoutX="420.0" layoutY="293.0" mnemonicParsing="false" onAction="#addImageClicked" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #00008B; -fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 6; -fx-background-radius: 8;" text="Ajouter Images" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package com.amal.amalproject.controllers;
+/* package com.amal.amalproject.controllers;
 
 import com.amal.amalproject.entities.dons;
 import com.amal.amalproject.models.DonsModel;
@@ -38,3 +38,4 @@ public class AddDonsController {
         }
     }
 }
+*/

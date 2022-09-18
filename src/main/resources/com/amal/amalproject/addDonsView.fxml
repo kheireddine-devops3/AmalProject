@@ -1,36 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.VBox?>
 
-<?import javafx.geometry.Insets?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.amal.amalproject.controllers.AddDonsController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.amal.amalproject.controllers.AddDonsController">
 <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 </padding>
-<Label text="libelle dons"/>
-<TextField fx:id="LibDonsID" />
+   <Button fx:id="Home" mnemonicParsing="false" prefHeight="43.0" prefWidth="92.0" text="Accueil">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin>
+   </Button>
+   <Button fx:id="ModifyDonsB" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Modifier Don">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin>
+   </Button>
+<Label text="libelle dons">
+      <VBox.margin>
+         <Insets right="550.0" top="50.0" />
+      </VBox.margin></Label>
+<TextField fx:id="LibDonsID" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="232.0">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></TextField>
 
-<Label text="Description dons"/>
-<TextField fx:id="DsDonsID"/>
+<Label text="Description dons">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></Label>
+<TextField fx:id="DsDonsID" prefHeight="50.0">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></TextField>
 
-<Label text="Photo produit"/>
-<TextField fx:id="PhotoPrdDonsID"/>
+<Label text="Photo produit">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></Label>
+<TextField fx:id="PhotoPrdDonsID" prefHeight="50.0" prefWidth="232.0">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></TextField>
 
-<Label text="Type de dons"/>
-<TextField fx:id="TyDonID"/>
+<Label text="Type de dons">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></Label>
+<TextField fx:id="TyDonID" prefHeight="50.0" prefWidth="232.0">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></TextField>
 
-<Button text="Add Dons" onAction="#onAddDonsClick"/>
+<Button onAction="#onAddDonsClick" prefHeight="52.0" prefWidth="102.0" text="Add Dons">
+      <VBox.margin>
+         <Insets right="550.0" />
+      </VBox.margin></Button>
+   <Accordion />
 </VBox>
+ -->
