@@ -18,9 +18,12 @@ public class UserModel implements IUserModel {
         Compte compte = null;
         try {
             System.out.println("SELECT * FROM `compte` WHERE `login` = ? AND `password` = ?;");
-            PreparedStatement ps = connection.prepareStatement("SELECT id_compte,login,password,role,status FROM `compte` WHERE `login` = ? AND `password` = ?;");
+            PreparedStatement ps = connection.prepareStatement("SELECT id_compte,login,password,role,status FROM `compte` WHERE `login` = ? AND ((`password` = ?) OR (`temp_reset_password` = ?));");
             ps.setString(1,username);
             ps.setString(2,DigestUtils.sha256Hex(password));
+            ps.setString(3,DigestUtils.sha256Hex(password));
+
+            System.out.println(DigestUtils.sha256Hex("ShTfdNXxAi"));
 
             ResultSet resultSet = ps.executeQuery();
 
@@ -1011,5 +1014,22 @@ public class UserModel implements IUserModel {
             System.out.println(exception.getMessage());
         }
         return -1;
+    }
+
+    @Override
+    public boolean forgotPassword(int compteId, String passwordGenerated) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE `compte` C SET C.temp_reset_password = ? WHERE C.id_compte = ?");
+            ps.setString(1,DigestUtils.sha256Hex(passwordGenerated));
+            ps.setInt(2,compteId);
+            int resultat = ps.executeUpdate();
+
+            if(resultat == 1) {
+                return true;
+            }
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return false;
     }
 }

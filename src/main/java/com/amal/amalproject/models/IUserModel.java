@@ -39,4 +39,6 @@ public interface IUserModel {
     String editOrganizationProfilePhoto(int organizationId,String photo);
 
     int getUserIdByEmail(String email);
+
+    boolean forgotPassword(int compteId, String passwordGenerated);
 }
