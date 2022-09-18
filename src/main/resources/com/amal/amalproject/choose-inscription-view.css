@@ -1,0 +1,18 @@
+.header {
+    -fx-padding: 2em;
+    -fx-background-color: #ffffff;
+    -fx-pref-height: 200px ;
+}
+.header-text {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-pref-width: Infinity;
+    -fx-padding: 0.5em 0;
+}
+.ligne-text {
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 0 1em;
+}
+.account-login {
+    -fx-padding: 1em 0 0 0;
+}

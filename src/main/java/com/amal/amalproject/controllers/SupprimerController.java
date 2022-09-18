@@ -1,6 +1,6 @@
 package com.amal.amalproject.controllers;
 
-import com.amal.amalproject.MainApplication;
+import com.amal.amalproject.MainApplication3;
 import com.amal.amalproject.entities.Dons;
 import com.amal.amalproject.models.DonsModel;
 import com.amal.amalproject.utils.DBConnection;
@@ -102,7 +102,7 @@ public class SupprimerController implements Initializable {
                 stage = (Stage) BAccueil4.getScene().getWindow();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(
-                        MainApplication.class.getResource("Accueil.fxml"));
+                        MainApplication3.class.getResource("Accueil.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -123,7 +123,7 @@ public class SupprimerController implements Initializable {
                 stage = (Stage) BAjouter4.getScene().getWindow();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(
-                        MainApplication.class.getResource("Ajouter.fxml"));
+                        MainApplication3.class.getResource("Ajouter.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -144,7 +144,7 @@ public class SupprimerController implements Initializable {
                 stage = (Stage) BAccueil4.getScene().getWindow();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(
-                        MainApplication.class.getResource("Modifier.fxml"));
+                        MainApplication3.class.getResource("Modifier.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -165,7 +165,7 @@ public class SupprimerController implements Initializable {
                 stage = (Stage) BAccueil4.getScene().getWindow();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(
-                        MainApplication.class.getResource("Supprimer.fxml"));
+                        MainApplication3.class.getResource("Supprimer.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -232,7 +232,7 @@ public class SupprimerController implements Initializable {
                 stage = (Stage) btnretour.getScene().getWindow();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(
-                        MainApplication.class.getResource("Home.fxml"));
+                        MainApplication3.class.getResource("Home.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
                 Stage stage = new Stage();
                 stage.setScene(scene);

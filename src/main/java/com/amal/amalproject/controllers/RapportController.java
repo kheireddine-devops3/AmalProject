@@ -1,7 +1,6 @@
 package com.amal.amalproject.controllers;
 
-import com.amal.amalproject.MainApplication;
-import com.amal.amalproject.entities.Dons;
+import com.amal.amalproject.MainApplication3;
 import com.amal.amalproject.entities.Rapport;
 import com.amal.amalproject.models.RapportModel;
 import javafx.event.ActionEvent;
@@ -63,7 +62,7 @@ public class RapportController {
                 stage = (Stage) btnretour.getScene().getWindow();
 
                 FXMLLoader fxmlLoader = new FXMLLoader(
-                        MainApplication.class.getResource("Home.fxml"));
+                        MainApplication3.class.getResource("Home.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
                 Stage stage = new Stage();
                 stage.setScene(scene);

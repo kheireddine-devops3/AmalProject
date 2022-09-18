@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Apid" prefHeight="613.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.amal.amalproject.controllers.AddEmploiController">
+   <children>
+      <Pane layoutX="12.0" layoutY="20.0" prefHeight="602.0" prefWidth="817.0" stylesheets="@stylessabrine.css">
+         <children>
+            <Button fx:id="btnajout" layoutX="659.0" layoutY="554.0" mnemonicParsing="false" onAction="#onClick" prefHeight="31.0" prefWidth="116.0" text="Ajouter" />
+            <TextField fx:id="txtref" layoutX="90.0" layoutY="88.0" prefHeight="44.0" prefWidth="606.0" promptText="Référence" />
+            <TextField fx:id="txttitre" layoutX="90.0" layoutY="148.0" prefHeight="44.0" prefWidth="606.0" promptText="Titre" />
+            <TextField fx:id="txtsecteur" layoutX="92.0" layoutY="206.0" prefHeight="44.0" prefWidth="606.0" promptText="Secteur" />
+            <DatePicker fx:id="dateExp" layoutX="93.0" layoutY="263.0" prefHeight="44.0" prefWidth="606.0" promptText="Date d'expiration" />
+            <TextArea fx:id="txtdesc" layoutX="90.0" layoutY="338.0" prefHeight="189.0" prefWidth="606.0" promptText="Description de l'offre" />
+            <Button fx:id="btnretour" layoutX="473.0" layoutY="554.0" mnemonicParsing="false" onAction="#OnRetour" prefHeight="31.0" prefWidth="116.0" text="Retour" />
+            <HBox layoutX="-11.0" layoutY="-22.0" prefHeight="85.0" prefWidth="829.0" style="-fx-background-color: #FFDAAF;">
+               <children>
+                  <ImageView fitHeight="73.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagessab/alvo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="78.0" prefWidth="233.0" text="Nouvelle Offre" textFill="#a15467" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font name="Arial Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="80.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagessab/logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="445.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
