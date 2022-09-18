@@ -35,11 +35,9 @@
                      <children>
                         <TableView fx:id="tableallaide" layoutX="15.0" layoutY="67.0" prefHeight="307.0" prefWidth="658.0" style="-fx-background-color: #17A2B4; -fx-border-color: white; -fx-border-radius: 10px;">
                           <columns>
-                            <TableColumn fx:id="nom" prefWidth="75.0" text="Nom"  />
-                            <TableColumn fx:id="prenom" prefWidth="75.0" text="Prénom" />
-                              <TableColumn fx:id="sujet" prefWidth="75.0" text="Sujet" />
-                              <TableColumn fx:id="date" prefWidth="113.0" text="Date Publication" />
-                              <TableColumn fx:id="demande" prefWidth="316.0" text="Demande" />
+                              <TableColumn fx:id="date" prefWidth="141.0" text="Date Publication" />
+                              <TableColumn fx:id="sujet" prefWidth="150.0" text="Sujet" />
+                              <TableColumn fx:id="demande" prefWidth="356.0" text="Demande" />
                           </columns>
                         </TableView>
                         <Label fx:id="idd" layoutX="55.0" layoutY="14.0" style="visibility: hidden;" />

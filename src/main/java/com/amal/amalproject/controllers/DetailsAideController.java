@@ -125,7 +125,7 @@ public class DetailsAideController implements Initializable {
         	System.out.println("bonjour " +iduser);
     	Connection connection = DBConnection.getConnection();
     	PreparedStatement ps = connection.prepareStatement("SELECT * FROM user WHERE id_user = ?");
-    	ps.setInt(1, 3);
+    	ps.setInt(1, iduser);
         ResultSet resultSet = ps.executeQuery();
         while (resultSet.next()) {
         	 Nom = resultSet.getString("nom_user");

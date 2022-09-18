@@ -39,12 +39,6 @@ public class SowAllAideController implements Initializable {
     private TableColumn<Aide, String> demande;
 
     @FXML
-    private TableColumn<?, ?> nom;
-
-    @FXML
-    private TableColumn<?, ?> prenom;
-
-    @FXML
     private TableColumn<Aide, String> sujet;
 
     @FXML
