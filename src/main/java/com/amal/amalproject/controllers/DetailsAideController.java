@@ -60,7 +60,7 @@ public class DetailsAideController implements Initializable {
     private Button btnuser;
     @FXML
     private Label idUser;
-    static  int iduser;
+    static  int iduser = 3;
     ObservableList<User> obs = FXCollections.observableArrayList();
     
     public void getDemande(String id, String demande) {
@@ -152,6 +152,7 @@ public class DetailsAideController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	
 		try {
 			aff();
 		} catch (SQLException e) {

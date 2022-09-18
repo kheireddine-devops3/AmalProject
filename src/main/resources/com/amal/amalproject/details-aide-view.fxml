@@ -32,6 +32,11 @@
                      </image>
                   </ImageView>
                   <Label fx:id="idAide" layoutX="261.0" layoutY="51.0" style="visibility: hidden;" />
+                  <Label layoutX="412.0" layoutY="36.0" text="Demandes Aides " textFill="#fffefe">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Label layoutX="227.0" layoutY="137.0" text="Demande Aide">
@@ -98,9 +103,9 @@
                </children>
             </Pane>
             <Separator layoutX="464.0" layoutY="232.0" orientation="VERTICAL" prefHeight="292.0" prefWidth="5.0" style="-fx-background-color: black;" />
-            <VBox layoutX="500.0" layoutY="242.0" prefHeight="268.0" prefWidth="363.0" spacing="30.0">
+            <VBox layoutX="500.0" layoutY="242.0" prefHeight="268.0" prefWidth="363.0" spacing="30.0" style="-fx-alignment: center;">
                <children>
-                  <Label style="-fx-underline: solid;" text="Ajouter un commentaire" textAlignment="CENTER">
+                  <Label style="-fx-underline: blue;" text="Ajouter un commentaire" textAlignment="CENTER" underline="true">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="18.0" />
                      </font>

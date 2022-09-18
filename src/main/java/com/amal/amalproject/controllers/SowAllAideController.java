@@ -51,6 +51,11 @@ public class SowAllAideController implements Initializable {
     private Button btnAfficher;
     @FXML
     private Label idbenif;
+    @FXML
+    private Label nameUser;
+
+    @FXML
+    private Label prenomuser;
 
     ObservableList<Aide> obs = FXCollections.observableArrayList();
     int myIndex;
