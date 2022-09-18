@@ -19,14 +19,7 @@ public class MainApplication extends Application {
 
     public void start(Stage primaryStage) throws IOException {
 
-    	/* FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddEmploi.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Amal Application");
-        stage.setScene(scene);
-        stage.show();*/
-        
-        
-        
+    	
         Parent root=FXMLLoader.load(getClass().getResource("ListOffres.fxml"));
         
         Scene scene = new Scene(root,800,600);
