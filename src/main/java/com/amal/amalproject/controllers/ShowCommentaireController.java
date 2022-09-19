@@ -55,10 +55,11 @@ public class ShowCommentaireController {
     void AficherCommentaire(ActionEvent event) {
     	obs.clear();
     	
-    	try {String ida = id.getText();
-    	int  id = Integer.parseInt(ida);
+    	try {
+    		String ida = id.getText();
+    	    int  id = Integer.parseInt(ida);
         		Connection connection = DBConnection.getConnection();
-                PreparedStatement ps = connection.prepareStatement("SELECT * FROM commentaireaide WHERE idDemandeAide=?");
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM commentaireaide WHERE idDemandeAide= ?");
                 ps.setInt(1, id);
                 ResultSet resultSet = ps.executeQuery();
                 

@@ -18,7 +18,7 @@ public class AmeniMainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(new BorderPane(), 1000, 600);
-        loadView("show-allaide-view");
+        loadView("Show-allaide-view");
         stage.setTitle("Amal Application");
         stage.setScene(scene);
 //        stage.setResizable(true);
