@@ -5,15 +5,12 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import com.amal.amalproject.entities.Candidature;
 import com.amal.amalproject.entities.Emploi;
 import com.amal.amalproject.models.CandidatureModel;
 import com.amal.amalproject.models.EmploiModel;
 import com.amal.amalproject.utils.JavaMailAttachement;
 import com.amal.amalproject.utils.Navigate;
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +23,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-
 public class CandidatureController implements Initializable {
 
     @FXML
@@ -71,10 +67,11 @@ public class CandidatureController implements Initializable {
     @FXML
     void OnConfirmer(ActionEvent event) throws IOException {
      if (isInputValid()){
-     
+     // envoi du mail de cadidature
+
     	 final String from=txtmail.getText();
     	 final String password=txtpassword.getText();
-    	 final String to="sabrinehasni3@gmail.com";
+    	 final String to="sabrine.hasni@esprit.tn";
     	 final String title="Candidature au poste de référence :"+emp.getRef_emploi();
     	 final String content="Madame, Monsieur"
     		    + "\r\n"
@@ -86,14 +83,12 @@ public class CandidatureController implements Initializable {
     	 final String anexo=txturlcv.getText();
     	 JavaMailAttachement.sendEmail( from, password,  to,  title, content,anexo);
     	 System.out.println("mail sending");
-    	 
-    	 
-    	 
-    	 
+    	
      Candidature cand =new Candidature(emp.getId_emploi(),1,emp.getDate_expiration(),txturlcv.getText(),txtetude.getText());	
      candModel.add(cand);
      
      Navigate.changerScene(event, "ListOffres.fxml", "Liste des offres");
+     
     }
     }
 
@@ -128,7 +123,6 @@ public class CandidatureController implements Initializable {
 	}
 	
 	
-	
 	public void getFields(Emploi e) {
 	
 		emp =new Emploi(e.getId_emploi(),e.getRef_emploi(),e.getDate_expiration());
@@ -150,9 +144,14 @@ public class CandidatureController implements Initializable {
 		if (txtprenom.getText() == null || txtprenom.getText().length() == 0){
 			errorMessage += "Prenom invalide!\n";
 		}
+
 		if (txtmail.getText() == null || txtmail.getText().length() == 0){
-			errorMessage += "Adresse mail invalide!\n";
+			errorMessage += "Adresse mail doit etre sous forme exemple@esprit.tn\n";
 		}
+		
+		/*if (!txtmail.getText().matches("^([a-zA-Z]+[a-zA-Z1-9\\\\_\\\\-]*)@esprit.tn$")){
+			errorMessage += "Adresse mail doit etre sous forme exemple@esprit.tn\n";
+		}*/
 		if (txtpassword.getText() == null || txtpassword.getText().length() == 0){
 			errorMessage += "Merci de saisir votre mot de passe !\n";
 		}

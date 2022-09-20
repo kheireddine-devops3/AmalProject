@@ -102,8 +102,8 @@ public class ListOffresController implements Initializable {
     }
 
     @FXML
-    void OnCandidatures(ActionEvent event) {
-
+    void OnCandidatures(ActionEvent event) throws IOException {
+    	Navigate.changerScene(event, "ListCandidatures.fxml", "Mes candidatures");
     }
 
     @FXML
