@@ -54,7 +54,8 @@ public class ProfilFormation implements Initializable {
 
 	@FXML
 	public void GererPublication(ActionEvent event) {
-
+		
+		      
 		try {
 
 			if (event.getSource() == publication) {
@@ -62,16 +63,19 @@ public class ProfilFormation implements Initializable {
 
 				FXMLLoader fxmlLoader = new FXMLLoader(
 						MainApplication.class.getResource("GestionPublicationFormation.fxml"));
-				Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+				Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
 				Stage stage = new Stage();
 				stage.setScene(scene);
 				stage.initStyle(StageStyle.UTILITY);
 				stage.show();
+				
 			}
 		} catch (IOException ex) {
 			Logger.getLogger(ProfilFormation.class.getName()).log(Level.SEVERE, null, ex);
 
 		}
+		
+		
 	}
 
 	@FXML
@@ -83,12 +87,13 @@ public class ProfilFormation implements Initializable {
 				stage = (Stage) tutoriel.getScene().getWindow();
 
 				FXMLLoader fxmlLoader = new FXMLLoader(
-						MainApplication.class.getResource("GestionTutorielFormationView.fxml"));
-				Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+						MainApplication.class.getResource("Gestiontutoriel.fxml"));
+				Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
 				Stage stage = new Stage();
 				stage.setScene(scene);
 				stage.initStyle(StageStyle.UTILITY);
 				stage.show();
+				stage.close();
 			}
 		} catch (IOException ex) {
 			Logger.getLogger(ProfilFormation.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,20 +4,25 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream.GetField;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAccessor;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.sql.*;
+import javafx.scene.control.Hyperlink;
 import com.amal.amalproject.MainApplication;
 import com.amal.amalproject.entities.Formation;
 import com.amal.amalproject.entities.Video;
 import com.amal.amalproject.models.FormationModel;
 import com.amal.amalproject.models.TutorielModel;
+import com.amal.amalproject.utils.DBConnection;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +33,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -48,7 +55,9 @@ public class MediaPlayController implements Initializable {
 
 	@FXML
 	private Button back;
-	
+	@FXML
+	private ListView<Video> lview;
+
 	@FXML
 	private MediaView mediaView;
 	private File file;
@@ -59,9 +68,9 @@ public class MediaPlayController implements Initializable {
 
 	TutorielModel tutorielModel = new TutorielModel();
 	int ID;
+	ObservableList<Video> VEDIOS = FXCollections.observableArrayList();
 
-
-	
+	// BOUTTON RETOUR A LA PAGE ACCEUIL
 	@FXML
 	public void backCLICK(ActionEvent event) {
 
@@ -70,8 +79,7 @@ public class MediaPlayController implements Initializable {
 			if (event.getSource() == back) {
 				stage = (Stage) back.getScene().getWindow();
 
-				FXMLLoader fxmlLoader = new FXMLLoader(
-						MainApplication.class.getResource("GestionTutorielFormationView.fxml"));
+				FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ProfilFormation.fxml"));
 				Scene scene = new Scene(fxmlLoader.load(), 800, 600);
 				Stage stage = new Stage();
 				stage.setScene(scene);
@@ -84,24 +92,26 @@ public class MediaPlayController implements Initializable {
 		}
 	}
 
+	// BOUTTON FERMER LA fenétre
 	@FXML
 	public void close(ActionEvent event) {
 		System.exit(0);
 
 	}
-	
+
+	// LECTEUR VIDEO BOUTTON PLAY
 	@FXML
 	public void play(ActionEvent event) {
 		mediaPlayer.play();
 	}
-	
-	
 
+	// LECTEUR VIDEO BOUTTON PAUSE
 	@FXML
 	public void pause(ActionEvent event) {
 
 		mediaPlayer.pause();
 	}
+	// LECTEUR VIDEO BOUTTON STOP
 
 	@FXML
 	public void stop(ActionEvent event) {
@@ -109,19 +119,103 @@ public class MediaPlayController implements Initializable {
 		mediaPlayer.stop();
 	}
 
+	// AJOUTER VIDEO PATH AU LISTE DES VIDEO
+	@FXML
+	public void AjouterVideo(ActionEvent event) throws MalformedURLException {
+
+		// choisir le fichier a ajouer au liste
+		FileChooser fc = new FileChooser();
+		fc.setInitialDirectory(new File("C:\\Videos"));
+		fc.getExtensionFilters().addAll(new ExtensionFilter("choisir un vidéo", "*.mp4"));
+		
+		File SelectedFile = (File) fc.showOpenDialog(null);
+		
+		if (SelectedFile != null) {
+			String path = SelectedFile.getAbsolutePath();
+			lview.refresh();
+			Video ved = new Video(path);
+			tutorielModel.addTutoriel(ved);
+			SelectedFile.getAbsolutePath();
+			lview.setItems(tutorielModel.getAllVideo());
+			System.out.println("testtttttttttt 	ajout" + tutorielModel.getAllVideo());
+
+			lview.refresh();
+
+		} else {
+			System.out.println("vidéo non trouver !!");
+
+		}
+
+	}
+
+	// SUPPRIMER VIDEO
+	@FXML
+	public void supprimerVideo(ActionEvent event) throws MalformedURLException {
+
+		Video VED = (Video) lview.getSelectionModel().getSelectedItem();
+		if (VED == null) {
+			System.out.println("aucune VIDEO a supprimer !");
+			return;
+		}
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Supression d'une formation !");
+		alert.setContentText("Etes vous totalement sur de vouloir supprimer la vidéo <" + VED.getId_video() + "-"
+				+ VED.getUrl() + "> ??\n");
+		alert.getDialogPane().setMinHeight(ID);
+		alert.setHeight(400);
+		Optional<ButtonType> reponse = alert.showAndWait();
+		if (reponse.get().equals(ButtonType.OK)) {
+			try {
+				Connection connection = DBConnection.getConnection();
+				Statement sqlCommand = connection.createStatement();
+				sqlCommand.execute(
+
+						("Delete  FROM `video` WHERE `id_video` = " + VED.getId_video()));
+
+				lview.getItems().remove(lview.getSelectionModel().getSelectedItem());
+
+				lview.refresh();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
 
 		// TODO Auto-generated method stub
 
-		String path = new File("src/main/resources/com/amal/amalproject/videos/handicapetscolarité.mp4")
-				.getAbsolutePath();
-		media = new Media(new File(path).toURI().toString());
+		lview.setItems(tutorielModel.getAllVideo());
+
+		
+
+		Video VIDEOS = (Video) lview.getSelectionModel().getSelectedItem();
+
+		System.out.println("" + "t3adiiiiiiiiiiiiiiit  haw star eli 3maltooo selectl" + VIDEOS);
+		
+
+		String pathname = "C:\\Users\\ASUS\\Videos\\Captures\\Meet – structure de travail - Google Chrome 2022-08-20 19-57-48.mp4";
+	
+
+		media = new Media(new File(pathname).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
 		mediaView.setMediaPlayer(mediaPlayer);
 		mediaPlayer.setAutoPlay(false);
 
-	};
+	}
+
+	/*******************************************************************/
+
+	// selection des lignes
+
+	public void clickTable(Event e) {
+		Video VIDEOS = (Video) lview.getSelectionModel().getSelectedItem();
+		ID = VIDEOS.getId_formation();
+		String url = VIDEOS.getUrl();
+
+	}
 
 }

@@ -29,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -50,14 +51,7 @@ public class GestionTutorielController implements Initializable {
 
 	@FXML
 	private Button back;
-	@FXML
-	private TableView<Video> TableVideoView;
-	@FXML
-	private TableColumn<Video, Integer> id_col;
-	@FXML
-	private TableColumn<Video, String> nom_col;
-	@FXML
-	private TableColumn<Video, String> url_col;
+	
 	@FXML
 	private ListView lview;
 	@FXML
@@ -76,10 +70,10 @@ public class GestionTutorielController implements Initializable {
 	// selection des lignes
 
 	public void clickTable(Event e) {
-		Video tutoriel = (Video) TableVideoView.getSelectionModel().getSelectedItem();
-		Formation f = (Formation) TableVideoView.getSelectionModel().getSelectedItem();
-		nom_col.setText(tutoriel.getNom());
-		url_col.setText(tutoriel.getUrl());
+		Video tutoriel = (Video) lview.getSelectionModel().getSelectedItem();
+		Formation f = (Formation) lview.getSelectionModel().getSelectedItem();
+	
+		
 
 		ID = tutoriel.getId_video();
 		int IDF = tutoriel.getId_formation();
@@ -89,28 +83,28 @@ public class GestionTutorielController implements Initializable {
 	@FXML
 	public void AjouterVideo(ActionEvent event) throws MalformedURLException {
 
-		String nom = nom_col.getText();
-		String url = url_col.getText();
+		
 
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File("C:\\Users\\ASUS\\Videos\\Captures"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("choisir un vidéo", "*.mp4"));
 		File SelectedFile = (File) fc.showOpenDialog(null);
+		String filePath = SelectedFile.toURI().toString();
 
 		if (SelectedFile != null) {
 
 			lview.getItems().add(SelectedFile.getAbsolutePath());
-			// TableVideoView.getItems().addListener(SelectedFile.getAbsolutePath());
+			// lview.getItems().addListener(SelectedFile.getAbsolutePath());
 
-			/*
-			 * mediaPlayer.stop(); media =new Media(file.toURI().toURL().toExternalForm());
-			 * mediaPlayer=new MediaPlayer(media);
-			 * 
-			 * mediaView.setMediaPlayer(mediaPlayer);
-			 */
+			
+			 mediaPlayer.stop(); media =new Media(file.toURI().toURL().toExternalForm());
+			 mediaPlayer=new MediaPlayer(media);
+			 
+			 mediaView.setMediaPlayer(mediaPlayer);
+			 
 
 			// TableVideoView.getItems().add((Video) v);
-			TableVideoView.setItems((ObservableList<Video>) tutorielModel.getAllVideo());
+		//	ListView.setItems((ObservableList<Video>) tutorielModel.getAllVideo());
 
 		} else {
 			System.out.println("vidéo non trouver !!");
@@ -151,7 +145,7 @@ public class GestionTutorielController implements Initializable {
 	// pour afficher la fenetere de lecteur video 
 
 	
-	@FXML
+	/*@FXML
 	public void mediaPlay(ActionEvent event) {
 
 		try {
@@ -160,7 +154,7 @@ public class GestionTutorielController implements Initializable {
 				stage = (Stage) btnmedia.getScene().getWindow();
 
 				FXMLLoader fxmlLoader = new FXMLLoader(
-						MainApplication.class.getResource("mediaPlay.fxml"));
+				MainApplication.class.getResource("mediaPlay.fxml"));
 				Scene scene = new Scene(fxmlLoader.load(), 800, 600);
 				Stage stage = new Stage();
 				stage.setScene(scene);
@@ -173,14 +167,13 @@ public class GestionTutorielController implements Initializable {
 		}
 	}
 	
-
+*/
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		id_col.setCellValueFactory(new PropertyValueFactory<Video, Integer>("id_video"));
-		nom_col.setCellValueFactory(new PropertyValueFactory<Video, String>("nom"));
-		url_col.setCellValueFactory(new PropertyValueFactory<Video, String>("url"));
+		
+		lview.setCellFactory(new PropertyValueFactory<Video, String>("path"));
 
-		TableVideoView.setItems((ObservableList<Video>) tutorielModel.getAllVideo());
+		//ListView.setItems((ObservableList<Video>) tutorielModel.getAllVideo());
 
 		System.out.print("*".repeat(50));
 		tutorielModel.getAllVideo().forEach(System.out::println);

@@ -1,73 +1,105 @@
 package com.amal.amalproject.entities;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.Objects;
 
+import javafx.collections.ObservableList;
+
+import java.sql.*;
 public class Video extends Formation {
 	    private int id_video;
-	    private String nom;
 	    private String url;
-		private int id_formation;
 		
+		
+	
+	    public Video( String url) {
+			super();
+			
+			this.url = url;
+		}
+
+
+		public Video(int id_video, String url) {
+			super();
+			this.id_video = id_video;
+			this.url = url;
+		}
+
+
 		public Video() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-		public Video(int id_video, String nom, String url) {
-			super();
-			this.id_video = id_video;
-			this.nom = nom;
-			this.url = url;
-		
-		}
-		
-		
-		public Video(int id_video, String nom, String url, int id_formation) {
-			super();
-			this.id_video = id_video;
-			this.nom = nom;
-			this.url = url;
-			this.id_formation = id_formation;
-		}
-		
-		public Video(int id_formation, String theme, String descriptif, LocalDate date_publication) {
-			super(id_formation, theme, descriptif, date_publication);
+
+
+		public Video(int id_formation, String theme, String descriptif, LocalDate date_debut, LocalDate dateFin,
+				String nbr_jours, String Nbr_personnes, int id_compte) {
+			super(id_formation, theme, descriptif, date_debut, dateFin, nbr_jours, Nbr_personnes, id_compte);
 			// TODO Auto-generated constructor stub
 		}
+
+
+		public Video(int id_formation, String theme, String descriptif, LocalDate date_debut) {
+			super(id_formation, theme, descriptif, date_debut);
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Video(int id_formation, String theme, String descriptif) {
+			super(id_formation, theme, descriptif);
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Video(String theme, String descriptif, LocalDate date_debut, LocalDate dateFin, String nbr_jours,
+				String Nbr_personnes) {
+			super(theme, descriptif, date_debut, dateFin, nbr_jours, Nbr_personnes);
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Video(String theme, String descriptif, LocalDate date_debut) {
+			super(theme, descriptif, date_debut);
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Video(String theme, String descriptif) {
+			super(theme, descriptif);
+			// TODO Auto-generated constructor stub
+		}
+
+
 		public int getId_video() {
 			return id_video;
 		}
+
+
 		public void setId_video(int id_video) {
 			this.id_video = id_video;
 		}
-		public String getNom() {
-			return nom;
-		}
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
+
+
 		public String getUrl() {
 			return url;
 		}
+
+
 		public void setUrl(String url) {
 			this.url = url;
 		}
-		public int getId_formation() {
-			return id_formation;
-		}
-		public void setId_formation(int id_formation) {
-			this.id_formation = id_formation;
-		}
-		
-		
+
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = super.hashCode();
-			result = prime * result + Objects.hash(id_formation, id_video, nom, url);
+			result = prime * result + Objects.hash(id_video, url);
 			return result;
 		}
+
+
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -77,16 +109,16 @@ public class Video extends Formation {
 			if (getClass() != obj.getClass())
 				return false;
 			Video other = (Video) obj;
-			return id_formation == other.id_formation && id_video == other.id_video && Objects.equals(nom, other.nom)
-					&& Objects.equals(url, other.url);
+			return id_video == other.id_video && Objects.equals(url, other.url);
 		}
+
+
 		@Override
 		public String toString() {
-			return "Video [id_video=" + id_video + ", nom=" + nom + ", url=" + url + ", id_formation=" + id_formation
-					+ ", getId_video()=" + getId_video() + ", getNom()=" + getNom() + ", getUrl()=" + getUrl()
-					+ ", getId_formation()=" + getId_formation() + "]";
+			return "Video [id_video=" + id_video + ", url=" + url + "]";
 		}
-		
+	
+	
 		
 	  
 

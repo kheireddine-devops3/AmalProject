@@ -54,6 +54,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import com.amal.amalproject.utils.DBConnection;
 
@@ -63,14 +64,19 @@ public class GestionFormationController implements Initializable {
 	private AnchorPane dateformation;
 	@FXML
 	private TableView<Formation> formationTableView;
+	
 	@FXML
-	private TableColumn<Formation, Integer> id_col;
+	private TableColumn<Formation, LocalDate> date_colD;
 	@FXML
-	private TableColumn<Formation, LocalDate> date_col;
+	private TableColumn<Formation, LocalDate> date_colF;
 	@FXML
 	private TableColumn<Formation, String> theme_col;
 	@FXML
 	private TableColumn<Formation, String> detail_col;
+	@FXML
+	private TableColumn<Formation, Integer> nbr_jours_col;
+	@FXML
+	private TableColumn<Formation, Integer> nbr_per_col;
 	@FXML
 	private TextField theme;
 	@FXML
@@ -78,12 +84,21 @@ public class GestionFormationController implements Initializable {
 	@FXML
 	private DatePicker Date_publication;
 	@FXML
+	private DatePicker Date_publicationF;
+	@FXML
+	private TextField nbr_jours;
+	@FXML
+	private TextField Nbr_personnes;
+	@FXML
 	private Button btnBack;
 	@FXML
 	private Button back;
 	@FXML
 	private Stage stage;
-
+	@FXML
+	private Hyperlink publicationlien;
+	@FXML
+	private Hyperlink tutoriel;
 	FormationModel formationModel = new FormationModel();
 	int ID;
 	ObservableList<Formation> formations = FXCollections.observableArrayList();
@@ -95,15 +110,30 @@ public class GestionFormationController implements Initializable {
 
 		String FormationTheme = theme.getText();
 		String FormationDescriptif = descriptif.getText();
-		LocalDate date = Date_publication.getValue();
+		LocalDate dateD = Date_publication.getValue();	
+		LocalDate dateF = Date_publicationF.getValue();
+		String  nbrjours=nbr_jours.getText();
+		String  nbrpers=Nbr_personnes.getText();
+		
+		
 		formationTableView.refresh();
-		System.out.print("ASMA date==> " + date);
-		Formation formation = new Formation(FormationTheme, FormationDescriptif, date);
+		System.out.print("Date_publicationF date==> " + Date_publication);
+		System.out.print("Date_publicationF date==> " + Date_publicationF);
+		Formation formation = new Formation( FormationTheme, FormationDescriptif, dateD,dateF,nbrjours,nbrpers);
+		
 		formationModel.addFormation(formation);
+		System.out.println(formation);
 		theme.getText();
 		descriptif.getText();
 		Date_publication.getValue();
+		Date_publicationF.getValue();
+		
+		nbr_jours.getText();
+		Nbr_personnes.getText();
+		
 		formationTableView.setItems(formationModel.getAllFormation());
+		System.out.println("testtttttttttt 	ajout"+formationModel.getAllFormation());
+	
 
 	}
 
@@ -137,6 +167,9 @@ public class GestionFormationController implements Initializable {
 				theme.setText("");
 				descriptif.setText("");
 				Date_publication.setValue(null);
+				Date_publicationF.setValue(null);
+				nbr_jours.setText("");
+				Nbr_personnes.setText("");
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -151,10 +184,14 @@ public class GestionFormationController implements Initializable {
 		// TODO Auto-generated method stub
 
 		// reference de chaque coloune avec son valeur dans la base
-		id_col.setCellValueFactory(new PropertyValueFactory<Formation, Integer>("id_formation"));
+	
 		theme_col.setCellValueFactory(new PropertyValueFactory<Formation, String>("theme"));
 		detail_col.setCellValueFactory(new PropertyValueFactory<Formation, String>("descriptif"));
-		date_col.setCellValueFactory(new PropertyValueFactory<Formation, LocalDate>("Date_publication"));
+		date_colD.setCellValueFactory(new PropertyValueFactory<Formation, LocalDate>("Date_publication"));
+		date_colF.setCellValueFactory(new PropertyValueFactory<Formation, LocalDate>("Date_publicationf"));
+		nbr_jours_col.setCellValueFactory(new PropertyValueFactory<Formation, Integer>("Nbr_jours"));
+		nbr_per_col.setCellValueFactory(new PropertyValueFactory<Formation, Integer>("Nbr_personnes"));
+
 
 		formationTableView.setItems(formationModel.getAllFormation());
 
@@ -190,7 +227,7 @@ public class GestionFormationController implements Initializable {
 
 				FXMLLoader fxmlLoader = new FXMLLoader(
 						MainApplication.class.getResource("ProfilFormation.fxml"));
-				Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+				Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
 				Stage stage = new Stage();
 				stage.setScene(scene);
 				stage.initStyle(StageStyle.UTILITY);
@@ -208,21 +245,33 @@ public class GestionFormationController implements Initializable {
 
 		Formation formation = new Formation();
 
-		if (!theme.getText().equals("") && !descriptif.getText().equals("")
-				&& !Date_publication.getValue().equals("")) {
+		if (!theme.getText().equals("") 
+				&& !descriptif.getText().equals("") 
+				&& !Date_publication.getValue().equals(null) 
+				&& !Date_publicationF.getValue().equals(null) 
+				&& !nbr_jours.getText().equals("") 
+				&& !Nbr_personnes.getText().equals("")) {
 
 			formation.setTheme(theme.getText());
 			formation.setDescriptif(descriptif.getText());
-			formation.setDate_publication((Date_publication.getValue()));
+			formation.setDate_publication(Date_publication.getValue());
+			formation.setDate_publicationf(Date_publicationF.getValue());
+			formation.setNbr_jours(nbr_jours.getText());
+			formation.setNbr_personnes(Nbr_personnes.getText());
 			formation.setId_formation(ID);
 
 			formationModel.updateFormation(formation);
+			System.out.println(formation);
 			formationTableView.setItems(formationModel.getAllFormation());
+			
 			formationTableView.refresh();
 
 			theme.setText("");
 			descriptif.setText("");
 			Date_publication.setValue(null);
+			Date_publicationF.setValue(null);
+			nbr_jours.setText("");
+			Nbr_personnes.setText("");
 
 			System.out.println("affichage de modification 2" + formationModel.getAllFormation());
 
@@ -234,11 +283,67 @@ public class GestionFormationController implements Initializable {
 
 	public void clickTable(Event e) {
 		Formation formation = (Formation) formationTableView.getSelectionModel().getSelectedItem();
+		ID = formation.getId_formation();
 		theme.setText(formation.getTheme());
 		descriptif.setText(formation.getDescriptif() + "");
 		Date_publication.setValue(formation.getDate_publication());
-		ID = formation.getId_formation();
+		Date_publicationF.setValue(formation.getDate_publicationf());
+		nbr_jours.setText(formation.getNbr_jours() + "");
+		Nbr_personnes.setText(formation.getNbr_personnes() + "");
 
 	}
+	
+	
+	
+	
+	
+	@FXML
+	public void GererPublication(ActionEvent event) {
+
+		try {
+
+			if (event.getSource() == publicationlien) {
+				stage = (Stage) publicationlien.getScene().getWindow();
+
+				FXMLLoader fxmlLoader = new FXMLLoader(
+						MainApplication.class.getResource("GestionPublicationFormation.fxml"));
+				Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+				Stage stage = new Stage();
+				stage.setScene(scene);
+				stage.initStyle(StageStyle.UTILITY);
+				stage.show();
+			}
+		} catch (IOException ex) {
+			Logger.getLogger(ProfilFormation.class.getName()).log(Level.SEVERE, null, ex);
+
+		}
+	}
+
+	
+	
+	
+	@FXML
+	public void GererTutoriel(ActionEvent event) throws IOException {
+
+		try {
+
+			if (event.getSource() == tutoriel) {
+				stage = (Stage) tutoriel.getScene().getWindow();
+
+				FXMLLoader fxmlLoader = new FXMLLoader(
+						MainApplication.class.getResource("GestionTutorielFormationView.fxml"));
+				Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+				Stage stage = new Stage();
+				stage.setScene(scene);
+				stage.initStyle(StageStyle.UTILITY);
+				stage.show();
+			}
+		} catch (IOException ex) {
+			Logger.getLogger(ProfilFormation.class.getName()).log(Level.SEVERE, null, ex);
+
+		}
+
+	}
+
 
 }

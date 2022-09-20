@@ -117,7 +117,7 @@
                         </ImageInput>
                      </effect>
                   </Button>
-                  <Button fx:id="back" mnemonicParsing="false" prefHeight="44.0" prefWidth="46.0" text="BACK">
+                  <Button fx:id="back" mnemonicParsing="false"  prefHeight="44.0" prefWidth="46.0" text="BACK">
                      <effect>
                         <ImageInput>
                            <source>
@@ -178,7 +178,7 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="794.0" style="-fx-background-color: #e0e0d2;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="44.0" prefWidth="462.0" text=" Théme du formation">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="462.0" text=" Théme du formation" textAlignment="CENTER">
                                  <font>
                                     <Font name="Arial" size="14.0" />
                                  </font>
@@ -207,7 +207,7 @@
                                     <Font name="Arial" size="14.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="Date_publicationF" prefHeight="49.0" prefWidth="544.0" />
+                              <DatePicker fx:id="dateFin" prefHeight="49.0" prefWidth="544.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="55.0" prefWidth="489.0" style="-fx-background-color: white;">

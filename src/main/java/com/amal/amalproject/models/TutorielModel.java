@@ -1,5 +1,7 @@
 package com.amal.amalproject.models;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -30,92 +32,69 @@ public class TutorielModel extends FormationModel implements ITutorielModel {
 		 try {
 
 	            PreparedStatement ps = connection.prepareStatement
-	            		("INSERT INTO video("
-	            				+ "id_video,nom,url) VALUES (?,?,?,?)"
+	            		("INSERT INTO video("+ "id_video,url)"
+	            				             + " VALUES (?,?)"
 	            				
 	            				);
+	           
+	            System.out.println("d5alét lelrequettemta3 insert");
+	            
 	            
 	             ps.setInt(1,video.getId_video());
-	            ps.setString(2,video.getNom());
-	            ps.setString(3,video.getUrl());
+	         System.out.println(" haw id f base chnowa fih"+video.getId_video());
+	         
+	            ps.setString(2,video.getUrl());
+	            System.out.println("url haw chnowa fihhh"+video.getUrl());
 	           
-	            ps.setInt(4,video.getId_formation());
-	        
+	          
 	            int n = ps.executeUpdate();
-
+	            System.out.println("kamelt 5idmti f base"+ps.executeUpdate());
 	        } catch (SQLException exception) {
 	            System.out.println(exception.getMessage());
 	        }
-		
-		
-		
 		
 		
 
 	}
 
-	@Override
-	public void updateTutoriel(Video video) {
-		
-		 try {
-
-	            PreparedStatement ps = connection.prepareStatement
-	            		("UPDATE video set   nom = " +"'"+video.getNom()+"'" +
-       		              ", url = " +"'"+ video.getUrl() 
-       	    	+ " WHERE id_formation = "+video.getId_video() 
-     				
-	            				);
-	  
-	            int n = ps.executeUpdate();
-
-	        } catch (SQLException exception) {
-	            System.out.println(exception.getMessage());
-	        }
 	
-		
-		
+	// affichage lise video
 
-	}
+	// return all data as observable list because table parmetar is observable
+	 
+		public ObservableList<Video> getAllVideo() {
 
-	@Override
-	public List<Video> getAllVideo() {
-		// TODO Auto-generated method stub
+			ObservableList<Video> VEDIOS = FXCollections.observableArrayList();
 
+			try {
+				PreparedStatement ps = connection.prepareStatement("SELECT  * FROM `video` ");
+				ResultSet resultSet = ps.executeQuery();
 
-		ObservableList<Video> video = FXCollections.observableArrayList();
+				while (resultSet.next()) {
 
-		try {
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM video;");
-			ResultSet resultSet = ps.executeQuery();
+					// afficher  chaque valeurs des champs 
 
-			while (resultSet.next()) {
+					Video VD = new Video();
 
-				// si définir l'objet pendant que stockera la dernière ligne n foi
+					VD.setId_video(resultSet.getInt(1));
 
-				Video v = new Video();
-				v.setId_video(resultSet.getInt(1));
+					VD.setUrl(resultSet.getString(2));
 
-				v.setNom(resultSet.getString(2));
+				
 
-				v.setUrl(resultSet.getString(3));
-				v.setId_formation(resultSet.getInt(4));
+					System.out.println("============> " + VD.getUrl());
 
-				System.out.println("============> " + v);
+					VEDIOS.add(VD);
 
-				video.add(v);
+				}
+
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
 
 			}
-
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
+			System.out.println("tous les videos" + VEDIOS);
+			return VEDIOS;
 
 		}
-		System.out.println("tous les video" + video);
-		return video;
-		
-		
-		
-		
-	}
 
 }

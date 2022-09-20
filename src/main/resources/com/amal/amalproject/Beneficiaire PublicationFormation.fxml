@@ -178,11 +178,6 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="794.0" style="-fx-background-color: #e0e0d2;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="44.0" prefWidth="462.0" text=" Théme du formation">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
                                 <TextField fx:id="theme" prefHeight="47.0" prefWidth="489.0" promptText="Théme de formation">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
@@ -192,51 +187,26 @@
                         </HBox>
                         <HBox prefHeight="55.0" prefWidth="489.0" style="-fx-background-color: white;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="519.0" text="Date début" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="Date_publication" prefHeight="48.0" prefWidth="544.0" />
+                              <DatePicker fx:id="Date_publication" prefHeight="48.0" prefWidth="544.0" promptText="Date début" />
                            </children>
                         </HBox>
                         <HBox prefHeight="55.0" prefWidth="489.0" style="-fx-background-color: #e0e0d2;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="519.0" text="Date fin" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="Date_publicationF" prefHeight="49.0" prefWidth="544.0" />
+                              <DatePicker fx:id="Date_publicationF" prefHeight="49.0" prefWidth="544.0" promptText="Date fin" />
                            </children>
                         </HBox>
                         <HBox prefHeight="55.0" prefWidth="489.0" style="-fx-background-color: white;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="522.0" text="Nombre de jours" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nbr_jours" prefHeight="49.0" prefWidth="545.0" />
+                              <TextField fx:id="nbr_jours" prefHeight="49.0" prefWidth="545.0" promptText="Nombre de jours" />
                            </children>
                         </HBox>
                         <HBox prefHeight="55.0" prefWidth="489.0" style="-fx-background-color: #e0e0d2;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="531.0" text="Nombre des personnes" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="Nbr_personnes" prefHeight="50.0" prefWidth="549.0" />
+                              <TextField fx:id="Nbr_personnes" prefHeight="50.0" prefWidth="549.0" promptText="Nombre des personnes" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="489.0" style="-fx-background-color: white;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="536.0" text=" Déscriptif de la formation" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Arial" size="14.0" />
-                                 </font>
-                              </Label>
                                 <TextArea fx:id="descriptif" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="552.0" promptText="Description de la formation">
                                  <font>
                                     <Font name="System Bold" size="12.0" />

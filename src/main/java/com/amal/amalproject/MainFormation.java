@@ -13,7 +13,7 @@ public class MainFormation extends Application {
 	    public void start(Stage stage) throws IOException {
 			FXMLLoader fxmlLoader = new FXMLLoader(
 					MainApplication.class.getResource("GestionPublicationFormation.fxml"));
-			Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+			Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
 			stage.setTitle("Plateform AMAL ");
 			stage.setScene(scene);
 			// String css = this.getClass().getResource("style.css").toExternalForm();

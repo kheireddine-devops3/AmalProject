@@ -9,7 +9,7 @@ public interface ITutorielModel {
 	
 	 
 	void addTutoriel(Video video);
-	public void updateTutoriel(Video video);
+	
 	 List<Video> getAllVideo();
 
 

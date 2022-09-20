@@ -14,10 +14,11 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ProfilFormation.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
         stage.setTitle("Amal Application");
         stage.setScene(scene);
         stage.show();
+       
     }
 
 

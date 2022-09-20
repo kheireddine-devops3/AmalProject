@@ -36,21 +36,34 @@ public class FormationModel implements IFormationModel {
 		try {
 
 			PreparedStatement ps = connection.prepareStatement(
-					"INSERT INTO formation(" + "id_formation,theme,descriptif,Date_publication) VALUES (?,?,?,?)"
+					"INSERT INTO formation(" + "theme,descriptif,date_debut, dateFin, Nbr_jours, Nbr_personnes,id_compte) "
+							                 + "VALUES (?,?,?,?,?,?,?)"
+						);
 
-			);
-
-			ps.setInt(1, formation.getId_formation());
+			//ps.setInt(1, formation.getId_formation());
 			// TEST ID
 
-			ps.setString(2, formation.getTheme());
-			ps.setString(3, formation.getDescriptif());
+			ps.setString(1, formation.getTheme());
+			ps.setString(2, formation.getDescriptif());
 
 			if (formation.getDate_publication() != null)
-				ps.setDate(4, Date.valueOf(formation.getDate_publication()));
+				ps.setDate(3, Date.valueOf(formation.getDate_publication()));
+			else
+				ps.setDate(3, null);
+
+		
+			if (formation.getDate_publicationf() != null)
+				ps.setDate(4, Date.valueOf(formation.getDate_publicationf()));
 			else
 				ps.setDate(4, null);
-
+			
+			ps.setString(5, formation.getNbr_jours());
+			
+			ps.setString(6, formation.getNbr_personnes());
+			
+			ps.setInt(7, formation.getId_compte());
+			
+			
 			int n = ps.executeUpdate();
 
 		} catch (SQLException exception) {
@@ -71,7 +84,7 @@ public class FormationModel implements IFormationModel {
 
 			while (resultSet.next()) {
 
-				// si définir l'objet pendant que stockera la dernière ligne n foi
+				// afficher  chaque valeurs des champs 
 
 				Formation fr = new Formation();
 
@@ -80,16 +93,37 @@ public class FormationModel implements IFormationModel {
 				fr.setTheme(resultSet.getString(2));
 
 				fr.setDescriptif(resultSet.getString(3));
-
+				
+				// test si la date de début est vide 
 				Date date = resultSet.getDate(4);
-
-				if (date != null) {
+				
+				  if (date != null) {
 					fr.setDate_publication(date.toLocalDate());
 				} else {
 					System.out.println("la date est null");
 				}
+				 
+				  
+				  
+				// test si la date de date_Fin est vide 
+				  
+					Date dateF = resultSet.getDate(5);
+					
+					if (dateF != null) {
+						fr.setDate_publicationf(dateF.toLocalDate());
+						
+					} else {
+						System.out.println("la date est null");
+					}
+				
+				fr.setNbr_jours(resultSet.getString(6));
+				
+				fr.setNbr_personnes(resultSet.getString(7));
+				
+				fr.setId_compte(resultSet.getInt(8));
+				
 
-				System.out.println("============> " + fr);
+				System.out.println("============> iciii " + fr);
 
 				formations.add(fr);
 
@@ -110,15 +144,20 @@ public class FormationModel implements IFormationModel {
 
 		try {
 
-			PreparedStatement ps = connection.prepareStatement("UPDATE formation set   theme = " + "'"
-					+ formation.getTheme() + "'" + ", descriptif = " + "'" + formation.getDescriptif() + "'"
-					+ ", Date_publication = " + "'" + formation.getDate_publication() + "'" + ""
+			PreparedStatement ps = connection.prepareStatement("UPDATE formation set   theme = " + "'"+ formation.getTheme() + "'"
+			        + ", descriptif = " + "'" + formation.getDescriptif() + "'"
+				    + ", date_debut = " + "'" + formation.getDate_publication() + "'" + ""
+				    + ", dateFin = " + "'" + formation.getDate_publicationf() + "'" + ""
+				    + ", Nbr_jours = " + "'" + formation.getNbr_jours() + "'" + ""
+				    + ", Nbr_personnes = " + "'" + formation.getNbr_personnes() + "'" + ""
+					
 					+ " WHERE id_formation = " + formation.getId_formation()
 
 			);
 
+		
 			int n = ps.executeUpdate();
-
+			
 		} catch (SQLException exception) {
 			System.out.println(exception.getMessage());
 		}

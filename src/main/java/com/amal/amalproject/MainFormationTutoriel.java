@@ -11,8 +11,8 @@ public class MainFormationTutoriel extends Application {
 	  private Stage stage;
 
 	    public void start(Stage stage) throws IOException {
-	        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("GestionTutorielFormationView.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+	        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Gestiontutoriel.fxml"));
+	        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
 	        stage.setTitle("Plateform AMAL ");
 	        stage.setScene(scene);
 	        //String css = this.getClass().getResource("style.css").toExternalForm();
