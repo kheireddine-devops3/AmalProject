@@ -12,7 +12,7 @@ import com.amal.amalproject.models.FormationModel;
 import com.amal.amalproject.models.IFormationModel;
 
 import javafx.scene.control.cell.PropertyValueFactory;
-import com.amal.amalproject.models.UserModel;
+
 import com.amal.amalproject.utils.DBConnection;
 
 import javafx.scene.control.TextField;
@@ -107,14 +107,28 @@ public class GestionFormationController implements Initializable {
 
 	@FXML
 	public void btnAjouter_clicked(ActionEvent event) {
-
+		if (theme.getText().length() > 0 && descriptif.getText().length() > 0 &&nbr_jours.getText().length()>0 && 	Nbr_personnes.getText().length()>0 )
+		{
+			
 		String FormationTheme = theme.getText();
 		String FormationDescriptif = descriptif.getText();
 		LocalDate dateD = Date_publication.getValue();	
 		LocalDate dateF = Date_publicationF.getValue();
 		String  nbrjours=nbr_jours.getText();
 		String  nbrpers=Nbr_personnes.getText();
-		
+		}	else
+		{
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			
+			alert.setContentText("saisie un théme pour votre formation ");
+	
+		}
+		String FormationTheme = theme.getText();
+		String FormationDescriptif = descriptif.getText();
+		LocalDate dateD = Date_publication.getValue();	
+		LocalDate dateF = Date_publicationF.getValue();
+		String  nbrjours=nbr_jours.getText();
+		String  nbrpers=Nbr_personnes.getText();
 		
 		formationTableView.refresh();
 		System.out.print("Date_publicationF date==> " + Date_publication);
@@ -131,9 +145,12 @@ public class GestionFormationController implements Initializable {
 		nbr_jours.getText();
 		Nbr_personnes.getText();
 		
+
+	
+
 		formationTableView.setItems(formationModel.getAllFormation());
 		System.out.println("testtttttttttt 	ajout"+formationModel.getAllFormation());
-	
+		
 
 	}
 

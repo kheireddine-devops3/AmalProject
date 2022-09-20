@@ -125,7 +125,7 @@ public class MediaPlayController implements Initializable {
 
 		// choisir le fichier a ajouer au liste
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\Videos"));
+		fc.setInitialDirectory(new File("C:\\"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("choisir un vidéo", "*.mp4"));
 		
 		File SelectedFile = (File) fc.showOpenDialog(null);

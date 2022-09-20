@@ -23,78 +23,63 @@ public class TutorielModel extends FormationModel implements ITutorielModel {
 
 	// return all data as observable list because table parmetar is observable
 
-	
-
 	@Override
 	public void addTutoriel(Video video) {
 		// TODO Auto-generated method stub
-		
-		 try {
 
-	            PreparedStatement ps = connection.prepareStatement
-	            		("INSERT INTO video("+ "id_video,url)"
-	            				             + " VALUES (?,?)"
-	            				
-	            				);
-	           
-	            System.out.println("d5alét lelrequettemta3 insert");
-	            
-	            
-	             ps.setInt(1,video.getId_video());
-	         System.out.println(" haw id f base chnowa fih"+video.getId_video());
-	         
-	            ps.setString(2,video.getUrl());
-	            System.out.println("url haw chnowa fihhh"+video.getUrl());
-	           
-	          
-	            int n = ps.executeUpdate();
-	            System.out.println("kamelt 5idmti f base"+ps.executeUpdate());
-	        } catch (SQLException exception) {
-	            System.out.println(exception.getMessage());
-	        }
-		
-		
+		try {
+
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO video(" + "id_video,url)" + " VALUES (?,?)"
+
+			);
+
+			ps.setInt(1, video.getId_video());
+
+			ps.setString(2, video.getUrl());
+
+			int n = ps.executeUpdate();
+
+		} catch (SQLException exception) {
+			System.out.println(exception.getMessage());
+		}
 
 	}
 
-	
 	// affichage lise video
 
 	// return all data as observable list because table parmetar is observable
-	 
-		public ObservableList<Video> getAllVideo() {
 
-			ObservableList<Video> VEDIOS = FXCollections.observableArrayList();
+	public ObservableList<Video> getAllVideo() {
 
-			try {
-				PreparedStatement ps = connection.prepareStatement("SELECT  * FROM `video` ");
-				ResultSet resultSet = ps.executeQuery();
+		ObservableList<Video> VEDIOS = FXCollections.observableArrayList();
 
-				while (resultSet.next()) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("SELECT  * FROM `video` ");
+			ResultSet resultSet = ps.executeQuery();
 
-					// afficher  chaque valeurs des champs 
+			while (resultSet.next()) {
 
-					Video VD = new Video();
+				// afficher chaque valeurs des champs
 
-					VD.setId_video(resultSet.getInt(1));
+				Video VD = new Video();
 
-					VD.setUrl(resultSet.getString(2));
+				VD.setId_video(resultSet.getInt(1));
 
-				
+				VD.setUrl(resultSet.getString(2));
 
-					System.out.println("============> " + VD.getUrl());
+				System.out.println("============> " + VD.getUrl());
 
-					VEDIOS.add(VD);
-
-				}
-
-			} catch (SQLException ex) {
-				System.out.println(ex.getMessage());
+				VEDIOS.add(VD);
 
 			}
-			System.out.println("tous les videos" + VEDIOS);
-			return VEDIOS;
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
 
 		}
+		System.out.println("tous les videos" + VEDIOS);
+		return VEDIOS;
+
+	}
 
 }
